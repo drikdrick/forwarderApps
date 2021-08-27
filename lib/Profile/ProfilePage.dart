@@ -1,5 +1,7 @@
 import 'package:bokshaulforwarder/Setting/AppSettingPage.dart';
 import 'package:bokshaulforwarder/Setting/HelpCentrePage.dart';
+import 'package:bokshaulforwarder/Setting/PrivatePolicyPage.dart';
+import 'package:bokshaulforwarder/Setting/TermsAndConditionPage.dart';
 import 'package:flutter/material.dart';
 
 import '../Index.dart';
@@ -75,6 +77,16 @@ class _ProfileState extends State<Profile> {
                   settingOption(
                     "Halaman Bantuan",
                     HelpCentre(),
+                  ),
+                  Divider(),
+                  settingOption(
+                    "Kebijakan Privasi",
+                    PrivacyPolicy(),
+                  ),
+                  Divider(),
+                  settingOption(
+                    "Syarat dan Ketentuan",
+                    TermCondition(),
                   ),
                   Divider(),
                   // settingOption(

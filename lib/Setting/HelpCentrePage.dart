@@ -13,7 +13,15 @@ class _HelpCentreState extends State<HelpCentre> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Icon(Icons.arrow_back_ios),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
         title: Text(
           "Halaman Bantuan",
           style: TextStyle(color: Colors.black),
@@ -22,26 +30,11 @@ class _HelpCentreState extends State<HelpCentre> {
       body: Column(
         // crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  children: [
-                    Icon(Icons.chat_bubble_outline),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text("Chat dengan CS kami.")
-                  ],
-                ),
-              ),
-            ),
-          ),
+          cardOption(Icon(Icons.chat_bubble_outline), "Chat dengan CS kami."),
           cardOption(Icon(Icons.email_outlined), "Hubungi kami melalui Email"),
-          cardOption(Icon(Icons.navigation), "Hubungi kami melalui Whatsapp"),
-          cardOption(Icon(Icons.phone_callback_outlined), "Hubungi kami melalui Telepon"),
+          cardOption(Icon(Icons.aod_outlined), "Hubungi kami melalui Whatsapp"),
+          cardOption(Icon(Icons.phone_callback_outlined),
+              "Hubungi kami melalui Telepon"),
         ],
       ),
     );

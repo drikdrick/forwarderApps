@@ -20,7 +20,15 @@ class _EditProfileState extends State<EditProfile> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Icon(Icons.arrow_back_ios),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
         title: Text(
           "Edit Profile",
           style: TextStyle(color: Colors.black),
@@ -36,7 +44,8 @@ class _EditProfileState extends State<EditProfile> {
                 height: 25,
               ),
               CircleAvatar(
-                backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+                backgroundImage:
+                    NetworkImage('https://via.placeholder.com/150'),
                 backgroundColor: Colors.blue,
                 radius: 50,
               ),

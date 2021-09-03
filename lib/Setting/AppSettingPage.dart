@@ -14,44 +14,44 @@ class _SettingState extends State<Setting> {
   bool _isCheckedFontSize = false;
   bool _isCheckedAssistHour = false;
 
-  Widget listSetting(title, desc, status) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            Text(
-              desc,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ],
-        ),
-        Checkbox(
-          value: status,
-          activeColor: Colors.blue,
-          onChanged: (bool? newValue) {
-            setState(() {
-              status = newValue!;
-            });
-            setState(() {
-              status = newValue!;
-            });
-          },
-        )
-      ],
-    );
-  }
+  // Widget listSetting(title, desc, status) {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //     children: [
+  //       Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           Text(
+  //             title,
+  //             style: TextStyle(
+  //               fontSize: 12,
+  //               fontWeight: FontWeight.w400,
+  //             ),
+  //           ),
+  //           Text(
+  //             desc,
+  //             style: TextStyle(
+  //               fontSize: 12,
+  //               fontWeight: FontWeight.w400,
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //       Checkbox(
+  //         value: status,
+  //         activeColor: Colors.blue,
+  //         onChanged: (bool? newValue) {
+  //           setState(() {
+  //             status = newValue!;
+  //           });
+  //           setState(() {
+  //             status = newValue!;
+  //           });
+  //         },
+  //       )
+  //     ],
+  //   );
+  // }
 
   @override
   void dispose() {

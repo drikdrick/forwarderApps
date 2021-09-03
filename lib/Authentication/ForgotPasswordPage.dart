@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'EmailResetPassword.dart';
 import '../Resource/stylesheet.dart';
+import 'EmailVerificationPage.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -72,12 +72,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   child: ElevatedButton(
                     child: Text("Kirim Kode"),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EmailVerification(),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => EmailVerification(),
+                      //   ),
+                      // );
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.blue,

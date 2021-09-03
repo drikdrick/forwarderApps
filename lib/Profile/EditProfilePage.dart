@@ -1,5 +1,5 @@
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
-import 'package:flutter/gestures.dart';
+// import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../Authentication/EmailVerificationPage.dart';
@@ -83,6 +83,7 @@ class _EditProfileState extends State<EditProfile> {
               // ),
               TextFormField(
                 decoration: InputDecoration(
+                  prefix: Text("+62"),
                   labelText: "No. Handphone",
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: inputBorder),
@@ -144,12 +145,12 @@ class _EditProfileState extends State<EditProfile> {
                 child: ElevatedButton(
                   child: Text("SIMPAN"),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EmailVerification(),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => EmailVerification(),
+                    //   ),
+                    // );
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.blue,

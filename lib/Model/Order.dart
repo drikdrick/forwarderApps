@@ -1,166 +1,64 @@
-
 class Order {
-  String orderId;
+  String gkOrder;
+  String eTD;
   String noContainer;
-  String namaDriver;
-  String noPol;
-  String asal;
-  String tujuan;
-  String status;
-  String shipLine;
-  String jadwal;
+  int statusOrder;
+  String slName;
+  String vesselName;
+  String voyageNumber;
+  String name;
+  String noPolisi;
+  String namaPort;
+  String addressPort;
+  String namaGudang;
+  String addressGudang;
 
-  Order({
-    required this.orderId,
-    required this.noContainer,
-    required this.namaDriver,
-    required this.noPol,
-    required this.asal,
-    required this.tujuan,
-    required this.status,
-    required this.shipLine,
-    required this.jadwal,
-  });
+  Order(
+      {this.gkOrder,
+      this.eTD,
+      this.noContainer,
+      this.statusOrder,
+      this.slName,
+      this.vesselName,
+      this.voyageNumber,
+      this.name,
+      this.noPolisi,
+      this.namaPort,
+      this.addressPort,
+      this.namaGudang,
+      this.addressGudang});
+
+  Order.fromJson(Map<String, dynamic> json) {
+    gkOrder = json['gk_order'];
+    eTD = json['ETD'];
+    noContainer = json['no_container'];
+    statusOrder = json['status_order'];
+    slName = json['sl_name'];
+    vesselName = json['vessel_name'];
+    voyageNumber = json['voyage_number'];
+    name = json['name'];
+    noPolisi = json['no_polisi'];
+    namaPort = json['nama_port'];
+    addressPort = json['address_port'];
+    namaGudang = json['nama_gudang'];
+    addressGudang = json['address_gudang'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['gk_order'] = this.gkOrder;
+    data['ETD'] = this.eTD;
+    data['no_container'] = this.noContainer;
+    data['status_order'] = this.statusOrder;
+    data['sl_name'] = this.slName;
+    data['vessel_name'] = this.vesselName;
+    data['voyage_number'] = this.voyageNumber;
+    data['name'] = this.name;
+    data['no_polisi'] = this.noPolisi;
+    data['nama_port'] = this.namaPort;
+    data['address_port'] = this.addressPort;
+    data['nama_gudang'] = this.namaGudang;
+    data['address_gudang'] = this.addressGudang;
+    return data;
+  }
 }
-
-var orderList = [
-  Order(
-    orderId: 'GK-123456789',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Ongoing',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-123456790',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Ongoing',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-123456791',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Ongoing',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-543',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Pending',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-76543',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Pending',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-76543',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Pending',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-23r221',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Pending',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-543452',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Selesai',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-23rqv',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Selesai',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-vwff23',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Selesai',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-3r3cq',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Selesai',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-  Order(
-    orderId: 'GK-2332fdw',
-    noContainer: 'TUC-12345',
-    namaDriver: 'Joko',
-    noPol: 'B 055 Q',
-    asal: 'Tanjung Priok',
-    tujuan: 'Karawang',
-    status: 'Dibatalkan',
-    shipLine: 'Evergreen',
-    jadwal: '10:00 WIB',
-  ),
-];
-
-List<String> status = [
-  'Pending',
-  'Ongoing',
-  'Selesai',
-  'Dibatalkan',
-];

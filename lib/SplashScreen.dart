@@ -15,12 +15,12 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     //Lama nya splashscreen
     Future.delayed(Duration(milliseconds: 1850), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => LoginPage(),
-        ),
-      );
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginPage(),
+          ),
+          (route) => false);
     });
     super.initState();
   }

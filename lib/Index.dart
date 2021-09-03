@@ -5,8 +5,6 @@ import 'package:bokshaulforwarder/Profile/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 class Index extends StatefulWidget {
-  const Index({Key? key}) : super(key: key);
-
   @override
   _IndexState createState() => _IndexState();
 }

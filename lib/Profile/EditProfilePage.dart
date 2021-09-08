@@ -2,7 +2,7 @@ import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 // import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../Authentication/EmailVerificationPage.dart';
+// import '../Authentication/EmailVerificationPage.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);

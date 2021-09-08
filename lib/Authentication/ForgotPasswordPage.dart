@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Resource/stylesheet.dart';
-import 'EmailVerificationPage.dart';
+// import 'EmailVerificationPage.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);

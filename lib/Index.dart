@@ -76,32 +76,6 @@ class _IndexState extends State<Index> {
         fontFamily: 'Poppins',
       ),
       home: Scaffold(
-        //Top Bar
-        // appBar: AppBar(
-        //   elevation: 0,
-        //   leading: Icon(Icons.menu),
-        //   title: Text(
-        //     bottomIndex == 2 ? "Profil" : "Joko Susilo",
-        //     style: TextStyle(
-        //       fontWeight: FontWeight.w500,
-        //       fontSize: 22,
-        //     ),
-        //   ),
-        //   centerTitle: true,
-        //   actions: [
-        //     IconButton(
-        //       onPressed: () {
-        //         Navigator.push(
-        //           context,
-        //           MaterialPageRoute(
-        //             builder: (context) => Notifications(),
-        //           ),
-        //         );
-        //       },
-        //       icon: Icon(Icons.notifications),
-        //     ),
-        //   ],
-        // ),
         body: _widget[bottomIndex],
         //Bottom NavBar
         bottomNavigationBar: BottomNavigationBar(

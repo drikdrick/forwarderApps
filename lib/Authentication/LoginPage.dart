@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:bokshaulforwarder/Authentication/ForgotPasswordPage.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/gestures.dart';
 import 'package:http/http.dart' as http;
@@ -19,6 +18,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  SharedPreferences? preferences;
   final _formKey = GlobalKey<FormState>();
   // late String email, password;
   bool _isLoading = false;
@@ -27,9 +27,10 @@ class _LoginPageState extends State<LoginPage> {
   late ScaffoldMessengerState scaffoldMessenger;
   var errorMsg;
 
-
   bool isVisible = true;
   Uri url = Uri.parse('https://apiflutter.forwarder.boksman.co.id/login');
+
+
   @override
   Widget build(BuildContext context) {
     scaffoldMessenger = ScaffoldMessenger.of(context);
@@ -276,6 +277,7 @@ class _LoginPageState extends State<LoginPage> {
           _isLoading = false;
         });
         sharedPreferences.setString("token", jsonResponse['data']['token']);
+        sharedPreferences.setInt("idUser", jsonResponse['data']['id']);
       }
     } else {
       setState(() {

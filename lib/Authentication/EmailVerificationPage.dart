@@ -7,9 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:http/http.dart' as http;
 
-import '../Index.dart';
-// import 'package:pin_code_fields/pin_code_fields.dart';
-
 class EmailVerification extends StatefulWidget {
   final String username, email;
   const EmailVerification({required this.username, required this.email});
@@ -22,8 +19,6 @@ class _EmailVerificationState extends State<EmailVerification> {
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    widget.username;
-    widget.email;
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(

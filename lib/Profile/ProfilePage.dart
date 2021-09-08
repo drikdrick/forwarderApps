@@ -1,10 +1,12 @@
+import 'package:bokshaulforwarder/Services/Authenticationi.dart';
 import 'package:bokshaulforwarder/Setting/AppSettingPage.dart';
 import 'package:bokshaulforwarder/Setting/HelpCentrePage.dart';
 import 'package:bokshaulforwarder/Setting/PrivatePolicyPage.dart';
 import 'package:bokshaulforwarder/Setting/TermsAndConditionPage.dart';
 import 'package:flutter/material.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Index.dart';
+// import '../Index.dart';
 import 'EditProfilePage.dart';
 
 class Profile extends StatefulWidget {
@@ -65,26 +67,31 @@ class _ProfileState extends State<Profile> {
                   ),
                   Divider(),
                   settingOption(
+                    context,
                     "Edit Profile",
                     EditProfile(),
                   ),
                   Divider(),
                   settingOption(
+                    context,
                     "Pengaturan Aplikasi",
                     Setting(),
                   ),
                   Divider(),
                   settingOption(
+                    context,
                     "Halaman Bantuan",
                     HelpCentre(),
                   ),
                   Divider(),
                   settingOption(
+                    context,
                     "Kebijakan Privasi",
                     PrivacyPolicy(),
                   ),
                   Divider(),
                   settingOption(
+                    context,
                     "Syarat dan Ketentuan",
                     TermCondition(),
                   ),
@@ -114,12 +121,7 @@ class _ProfileState extends State<Profile> {
                   child: ElevatedButton(
                     child: Text("Log Out"),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Index(),
-                        ),
-                      );
+                      reset(context);
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.red,
@@ -139,7 +141,7 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Widget settingOption(headline, screen) {
+  Widget settingOption(context, headline, screen) {
     return InkWell(
       onTap: () {
         Navigator.push(

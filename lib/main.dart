@@ -23,9 +23,6 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme().apply(bodyColor: Colors.black, displayColor: Colors.black),
       ),
       home: Splashscreen(),
-      // routes: {
-      //   '/' : (context)
-      // },
     );
   }
 }

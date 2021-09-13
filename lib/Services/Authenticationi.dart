@@ -1,9 +1,7 @@
 import 'package:bokshaulforwarder/Authentication/LoginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-
-//Login
+import 'package:http/http.dart' as http;
 
 //Logout
 Future reset(context) async {
@@ -18,3 +16,5 @@ Future reset(context) async {
   );
   prefs.clear();
 }
+
+//getProfile

@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   var errorMsg;
 
   bool isVisible = true;
-  Uri url = Uri.parse('https://apiflutter.forwarder.boksman.co.id/login');
+  // Uri url = Uri.parse('https://apiflutter.forwarder.boksman.co.id/login');
 
 
   @override

@@ -4,6 +4,8 @@ import 'package:bokshaulforwarder/Order/OrderPage.dart';
 import 'package:bokshaulforwarder/Profile/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
+import 'InvoicePage.dart';
+
 class Index extends StatefulWidget {
   @override
   _IndexState createState() => _IndexState();
@@ -39,16 +41,16 @@ class _IndexState extends State<Index> {
         color: Colors.blue,
       ),
     ),
-    // BottomNavigationBarItem(
-    //   label: 'Invoice',
-    //   icon: Icon(
-    //     Icons.article_outlined,
-    //   ),
-    //   activeIcon: Icon(
-    //     Icons.article,
-    //     color: Colors.blue,
-    //   ),
-    // ),
+    BottomNavigationBarItem(
+      label: 'Invoice',
+      icon: Icon(
+        Icons.article_outlined,
+      ),
+      activeIcon: Icon(
+        Icons.article,
+        color: Colors.blue,
+      ),
+    ),
     BottomNavigationBarItem(
       label: 'Profile',
       icon: Icon(
@@ -65,7 +67,7 @@ class _IndexState extends State<Index> {
   List<Widget> _widget = [
     Home(),
     OrderPage(),
-    // Invoice(),
+    Invoice(),
     Profile(),
   ];
 
@@ -73,7 +75,7 @@ class _IndexState extends State<Index> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        fontFamily: 'Poppins',
+        fontFamily: 'Inter',
       ),
       home: Scaffold(
         body: _widget[bottomIndex],

@@ -152,8 +152,21 @@ class _HomeState extends State<Home> {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       List? freshOrders = snapshot.data;
+                      if (freshOrders!.length == 0) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset('images/null_ongoing.png'),
+                            Text(
+                              "Belum ada order yang berlangsung.",
+                              style: TextStyle(fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        );
+                      }
                       return new Column(
-                        children: freshOrders!
+                        children: freshOrders
                             .map(
                               (freshOrders) => new Column(
                                 children: <Widget>[

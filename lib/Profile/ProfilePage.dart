@@ -1,3 +1,4 @@
+import 'package:bokshaulforwarder/Model/User.dart';
 import 'package:bokshaulforwarder/Services/Authenticationi.dart';
 import 'package:bokshaulforwarder/Setting/AppSettingPage.dart';
 import 'package:bokshaulforwarder/Setting/HelpCentrePage.dart';
@@ -21,124 +22,122 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Nama Perusahaan"),
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  // Align(
-                  //   alignment: Alignment.topCenter,
-                  //   child: Text(
-                  //     "Nama Perusahaan",
-                  //     style: TextStyle(
-                  //       fontSize: 14,
-                  //       fontWeight: FontWeight.w600,
-                  //     ),
-                  //   ),
-                  // ),
-                  // Divider(),
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.blue,
-                        radius: width * 0.075,
-                      ),
-                      SizedBox(
-                        width: width * 0.05,
-                      ),
-                      Flexible(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return FutureBuilder(
+        future: getUserProfile(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            print("Test");
+            Object? currentUser = snapshot.data;
+            print(currentUser);
+          }
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(snapshot.connectionState == ConnectionState.waiting
+                  ? "Company"
+                  : "Berhasil"),
+              centerTitle: true,
+            ),
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Row(
                           children: [
-                            userProfile("Nama Lengkap", "No Telepon", "Email"),
-                            Icon(Icons.edit_outlined),
+                            CircleAvatar(
+                              backgroundColor: Colors.blue,
+                              radius: width * 0.075,
+                            ),
+                            SizedBox(
+                              width: width * 0.05,
+                            ),
+                            Flexible(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  userProfile(
+                                      "Nama Lengkap", "No Telepon", "Email"),
+                                  Icon(Icons.edit_outlined),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                  Divider(),
-                  settingOption(
-                    context,
-                    "Edit Profile",
-                    EditProfile(),
-                  ),
-                  Divider(),
-                  settingOption(
-                    context,
-                    "Pengaturan Aplikasi",
-                    Setting(),
-                  ),
-                  Divider(),
-                  settingOption(
-                    context,
-                    "Halaman Bantuan",
-                    HelpCentre(),
-                  ),
-                  Divider(),
-                  settingOption(
-                    context,
-                    "Kebijakan Privasi",
-                    PrivacyPolicy(),
-                  ),
-                  Divider(),
-                  settingOption(
-                    context,
-                    "Syarat dan Ketentuan",
-                    TermCondition(),
-                  ),
-                  Divider(),
-                  // settingOption(
-                  //   "Halaman Bantuan",
-                  //   ,
-                  // ),
-                  // Divider(),
-                ],
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  height: height * 0.05,
-                  width: width * 1,
-                  child: ElevatedButton(
-                    child: Text("Log Out"),
-                    onPressed: () {
-                      reset(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.red,
-                      textStyle: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
+                        Divider(),
+                        settingOption(
+                          context,
+                          "Edit Profile",
+                          EditProfile(),
+                        ),
+                        Divider(),
+                        settingOption(
+                          context,
+                          "Pengaturan Aplikasi",
+                          Setting(),
+                        ),
+                        Divider(),
+                        settingOption(
+                          context,
+                          "Halaman Bantuan",
+                          HelpCentre(),
+                        ),
+                        Divider(),
+                        settingOption(
+                          context,
+                          "Kebijakan Privasi",
+                          PrivacyPolicy(),
+                        ),
+                        Divider(),
+                        settingOption(
+                          context,
+                          "Syarat dan Ketentuan",
+                          TermCondition(),
+                        ),
+                        Divider(),
+                      ],
                     ),
-                  ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        height: height * 0.05,
+                        width: width * 1,
+                        child: ElevatedButton(
+                          child: Text("Log Out"),
+                          onPressed: () {
+                            reset(context);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.red,
+                            textStyle: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+              ),
+            ),
+          );
+        });
   }
 
   Widget settingOption(context, headline, screen) {
@@ -151,21 +150,24 @@ class _ProfileState extends State<Profile> {
           }),
         );
       },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            headline,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
+      child: SizedBox(
+        height: 40,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              headline,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+              ),
             ),
-          ),
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 15,
-          ),
-        ],
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 15,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -177,14 +179,14 @@ class _ProfileState extends State<Profile> {
         Text(
           nama,
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
         Text(
           noTelp,
           style: TextStyle(
-            fontSize: 10,
+            fontSize: 12,
             fontWeight: FontWeight.w600,
             color: Color(0xFF767675),
           ),
@@ -192,7 +194,7 @@ class _ProfileState extends State<Profile> {
         Text(
           email,
           style: TextStyle(
-            fontSize: 10,
+            fontSize: 12,
             fontWeight: FontWeight.w600,
             color: Color(0xFF767675),
           ),

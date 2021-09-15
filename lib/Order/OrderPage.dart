@@ -3,7 +3,9 @@ import 'package:bokshaulforwarder/Model/OrderDetailJson.dart';
 import 'package:bokshaulforwarder/Order/PendingOrderPage.dart';
 import 'package:bokshaulforwarder/Order/SuccessOrderPage.dart';
 import 'package:bokshaulforwarder/Resource/OrderCard.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({Key? key}) : super(key: key);
@@ -13,6 +15,23 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+  late Image imageOrderDone, imageOrderPending, imageOrderOngoing;
+  
+  @override
+  void initState(){
+    super.initState();
+    imageOrderDone = Image.asset('images/null_done.png');
+    imageOrderPending = Image.asset('images/null_pending.png');
+    imageOrderOngoing = Image.asset('images/null_ongoing.png');
+  }
+  @override
+  void didChangeDependencies(){
+    super.didChangeDependencies();
+    precacheImage(imageOrderDone.image, context);
+    precacheImage(imageOrderPending.image, context);
+    precacheImage(imageOrderOngoing.image, context);
+  }
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: DefaultTabController(
@@ -43,8 +62,24 @@ class _OrderPageState extends State<OrderPage> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         List? freshOrders = snapshot.data;
+                        if (freshOrders!.length == 0) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 100,
+                              ),
+                              imageOrderOngoing,
+                              Text(
+                                "Belum ada order yang berlangsung.",
+                                style: TextStyle(fontWeight: FontWeight.w700),
+                              ),
+                            ],
+                          );
+                        }
                         return new Column(
-                          children: freshOrders!
+                          children: freshOrders
                               .map((freshOrders) => new Column(
                                     children: <Widget>[
                                       cardOnGoingOrder(
@@ -85,8 +120,24 @@ class _OrderPageState extends State<OrderPage> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         List? freshOrders = snapshot.data;
+                        if (freshOrders!.length == 0) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 100,
+                              ),
+                              imageOrderPending,
+                              Text(
+                                "Belum ada order yang ditunda.",
+                                style: TextStyle(fontWeight: FontWeight.w700),
+                              ),
+                            ],
+                          );
+                        }
                         return new Column(
-                          children: freshOrders!
+                          children: freshOrders
                               .map((freshOrders) => new Column(
                                     children: <Widget>[
                                       InkWell(
@@ -140,8 +191,25 @@ class _OrderPageState extends State<OrderPage> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         List? freshOrders = snapshot.data;
+                        if (freshOrders!.length == 0) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 100,
+                              ),
+                              imageOrderDone,
+                              Text(
+                                "Belum ada order yang selesai.",
+                                style: TextStyle(fontWeight: FontWeight.w700),
+                              ),
+                            ],
+                          );
+                        }
+                        print(freshOrders);
                         return new Column(
-                          children: freshOrders!
+                          children: freshOrders
                               .map(
                                 (freshOrders) => new Column(
                                   children: <Widget>[

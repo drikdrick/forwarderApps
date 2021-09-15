@@ -4,12 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: Colors.blue.withOpacity(0.2),
-    )
-  );
- runApp(MyApp()); 
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.blue.withOpacity(0.2),
+  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +18,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Inter',
         primaryColor: Colors.black,
-        textTheme: TextTheme().apply(bodyColor: Colors.black, displayColor: Colors.black),
+        textTheme: TextTheme()
+            .apply(bodyColor: Colors.black, displayColor: Colors.black),
       ),
       home: Splashscreen(),
     );

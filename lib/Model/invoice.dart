@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-InvoiceUnpaid invoiceUnpaidFromJson(String str) =>
-    InvoiceUnpaid.fromJson(json.decode(str));
+Invoice invoiceFromJson(String str) =>
+    Invoice.fromJson(json.decode(str));
 
-String invoiceUnpaidToJson(InvoiceUnpaid data) => json.encode(data.toJson());
+String invoiceToJson(Invoice data) => json.encode(data.toJson());
 
-class InvoiceUnpaid {
-  InvoiceUnpaid({
+class Invoice {
+  Invoice({
     required this.invoiceCode,
     required this.company,
     required this.invoiceDate,
@@ -22,7 +22,7 @@ class InvoiceUnpaid {
   String dueDateInvoice;
   DateTime dueDate;
 
-  factory InvoiceUnpaid.fromJson(Map<String, dynamic> json) => InvoiceUnpaid(
+  factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
         invoiceCode: json["invoice_code"],
         company: json["company"],
         invoiceDate: DateTime.parse(json["invoice_date"]),
@@ -39,7 +39,7 @@ class InvoiceUnpaid {
       };
 }
 
-Future<List<InvoiceUnpaid>> fetchInvoiceUnpaid() async {
+Future<List<Invoice>> fetchInvoiceUnpaid() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token')!;
   int userId = prefs.getInt('idUser')!;
@@ -53,5 +53,22 @@ Future<List<InvoiceUnpaid>> fetchInvoiceUnpaid() async {
     jsonResult = jsonDecode(response.body);
   }
 
-  return (jsonResult["data"] as List).map((e) => InvoiceUnpaid.fromJson(e)).toList();
+  return (jsonResult["data"] as List).map((e) => Invoice.fromJson(e)).toList();
+}
+
+Future<List<Invoice>> fetchInvoicePaid() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String token = prefs.getString('token')!;
+  int userId = prefs.getInt('idUser')!;
+
+  Uri url = Uri.parse(
+      "https://apiflutter.forwarder.boksman.co.id/invoice/paid/$userId");
+
+  var response = await http.get(url, headers: {'token': token});
+  var jsonResult;
+  if (response.statusCode == 201) {
+    jsonResult = jsonDecode(response.body);
+  }
+
+  return (jsonResult["data"] as List).map((e) => Invoice.fromJson(e)).toList();
 }

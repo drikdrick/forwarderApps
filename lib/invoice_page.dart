@@ -1,9 +1,11 @@
-import 'package:bokshaulforwarder/Model/invoice_unpaid.dart';
+import 'package:bokshaulforwarder/Model/invoice.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+
+import 'Resource/invoice_card.dart';
 
 class Invoice extends StatefulWidget {
   const Invoice({Key? key}) : super(key: key);
@@ -13,6 +15,22 @@ class Invoice extends StatefulWidget {
 }
 
 class _InvoiceState extends State<Invoice> {
+  late Image imageNoUnpaid, imageNoPaid;
+
+  @override
+  void initState() {
+    super.initState();
+    imageNoUnpaid = Image.asset('images/null_unpaid.png');
+    imageNoPaid = Image.asset('images/null_paid.png');
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(imageNoUnpaid.image, context);
+    precacheImage(imageNoPaid.image, context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -40,16 +58,18 @@ class _InvoiceState extends State<Invoice> {
                     future: fetchInvoiceUnpaid(),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        List? invoiceUpdate = snapshot.data;
-                        if (invoiceUpdate!.length == 0) {
+                        List? invoiceUnpaid = snapshot.data;
+                        print(invoiceUnpaid);
+                        if (invoiceUnpaid!.length == 0) {
                           return Center(
                             child: Column(
                               children: [
                                 SizedBox(
                                   height: 100,
                                 ),
+                                Image.asset('images/null_unpaid.png'),
                                 Text(
-                                  "Belum ada invoice terbaru.",
+                                  "Semua invoice sudah dibayar.",
                                   style: TextStyle(fontWeight: FontWeight.w700),
                                 ),
                               ],
@@ -57,14 +77,14 @@ class _InvoiceState extends State<Invoice> {
                           );
                         }
                         return Column(
-                          children: invoiceUpdate
+                          children: invoiceUnpaid
                               .map(
-                                (invoiceUpdate) => Column(
+                                (invoiceUnpaid) => Column(
                                   children: <Widget>[
                                     cardUnpaid(
-                                      "invoiceId",
-                                      "tglTempo",
-                                      "perusahaan",
+                                      invoiceUnpaid.invoiceCode,
+                                      invoiceUnpaid.dueDate,
+                                      invoiceUnpaid.company,
                                     )
                                   ],
                                 ),
@@ -90,192 +110,62 @@ class _InvoiceState extends State<Invoice> {
               ),
               //Paid
               ListView(
+                padding: EdgeInsets.zero,
                 children: [
-                  cardPaid(),
-                  cardPaid(),
-                  cardPaid(),
-                  cardPaid(),
-                  cardPaid(),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget cardUnpaid(invoiceId, tglTempo, perusahaan) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
-      child: Card(
-        shadowColor: Colors.blue,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(perusahaan),
-                      Text(
-                        invoiceId,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
+                  FutureBuilder<List>(
+                    future: fetchInvoicePaid(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        List? invoiceUnpaid = snapshot.data;
+                        print(invoiceUnpaid);
+                        if (invoiceUnpaid!.length == 0) {
+                          return Center(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 100,
+                                ),
+                                Image.asset('images/null_paid.png'),
+                                Text(
+                                  "Belum ada invoice yang dibayar.",
+                                  style: TextStyle(fontWeight: FontWeight.w700),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                        return Column(
+                          children: invoiceUnpaid
+                              .map(
+                                (invoiceUnpaid) => Column(
+                                  children: <Widget>[
+                                    cardPaid(
+                                      invoiceUnpaid.invoiceCode,
+                                      invoiceUnpaid.dueDate,
+                                      invoiceUnpaid.company,
+                                    )
+                                  ],
+                                ),
+                              )
+                              .toList(),
+                        );
+                      } else if (snapshot.hasError) {
+                        return Center(
+                          child: Text(snapshot.error.toString()),
+                        );
+                      }
+                      return new Center(
+                        child: new Column(
+                          children: <Widget>[
+                            new Padding(padding: new EdgeInsets.all(50.0)),
+                            new CircularProgressIndicator(),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  Icon(Icons.chevron_right),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Tanggal jatuh tempo",
-                        style: TextStyle(
-                            color: Colors.red, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "Jumlah tagihan",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "No. Tagihan",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "No. Kontainer",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        tglTempo.toString(),
-                        style: TextStyle(
-                            color: Colors.red, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "Jumlah tagihan",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "No. Tagihan",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "No. Kontainer",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                    ],
+                      );
+                    },
                   )
                 ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget cardPaid() {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
-      child: Card(
-        shadowColor: Colors.blue,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Tanggal Pembuatan"),
-                      Text(
-                        "Invoide ID",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Icon(Icons.chevron_right),
-                ],
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Jumlah tagihan",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "No. Tagihan",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "No. Kontainer",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        "Jumlah tagihan",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "No. Tagihan",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "No. Kontainer",
-                        style: TextStyle(
-                            color: abuProfile, fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  )
-                ],
-              )
             ],
           ),
         ),

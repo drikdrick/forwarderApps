@@ -69,7 +69,7 @@ class _OrderPageState extends State<OrderPage> {
                               SizedBox(
                                 height: 100,
                               ),
-                              imageOrderOngoing,
+                              Image.asset('images/null_ongoing.png'),
                               Text(
                                 "Belum ada order yang berlangsung.",
                                 style: TextStyle(fontWeight: FontWeight.w700),
@@ -129,7 +129,7 @@ class _OrderPageState extends State<OrderPage> {
                               SizedBox(
                                 height: 100,
                               ),
-                              imageOrderPending,
+                              Image.asset('images/null_pending.png'),
                               Text(
                                 "Belum ada order yang ditunda.",
                                 style: TextStyle(fontWeight: FontWeight.w700),
@@ -200,7 +200,7 @@ class _OrderPageState extends State<OrderPage> {
                               SizedBox(
                                 height: 100,
                               ),
-                              imageOrderDone,
+                              Image.asset('images/null_done.png'),
                               Text(
                                 "Belum ada order yang selesai.",
                                 style: TextStyle(fontWeight: FontWeight.w700),

@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Authentication/LoginPage.dart';
-import 'Index.dart';
+import 'index.dart';
 import 'package:http/http.dart' as http;
 
 class Splashscreen extends StatefulWidget {

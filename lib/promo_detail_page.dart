@@ -1,4 +1,4 @@
-import 'package:bokshaulforwarder/Model/Promo.dart';
+import 'package:bokshaulforwarder/Model/promo.dart';
 import 'package:flutter/material.dart';
 
 class DetailPromo extends StatelessWidget {

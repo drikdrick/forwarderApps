@@ -1,9 +1,7 @@
-import 'package:bokshaulforwarder/Model/OrderJson.dart';
-import 'package:bokshaulforwarder/Order/OrderPage.dart';
+import 'package:bokshaulforwarder/Order/order_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:bokshaulforwarder/Resource/OrderCard.dart';
 
 final List<String> imgList = [
   'images/profitGanda.jpeg',
@@ -143,64 +141,64 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                FutureBuilder<List>(
-                  future: fetchOrderBerlangsung(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      List? freshOrders = snapshot.data;
-                      if (freshOrders!.length == 0) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset('images/null_ongoing.png'),
-                            Text(
-                              "Belum ada order yang berlangsung.",
-                              style: TextStyle(fontWeight: FontWeight.w700),
-                            ),
-                          ],
-                        );
-                      }
-                      return new Column(
-                        children: freshOrders
-                            .map(
-                              (freshOrders) => new Column(
-                                children: <Widget>[
-                                  cardOnGoingOrder(
-                                      freshOrders.gkOrder,
-                                      freshOrders.name,
-                                      freshOrders.noContainer,
-                                      freshOrders.addressPort,
-                                      freshOrders.namaPort,
-                                      freshOrders.namaGudang,
-                                      freshOrders.addressGudang)
-                                ],
-                              ),
-                            )
-                            .toList(),
-                      );
-                    } else if (snapshot.hasError) {
-                      return Text(
-                        snapshot.error.toString(),
-                      );
-                    }
-                    return new Center(
-                      child: new Column(
-                        children: <Widget>[
-                          new Padding(padding: new EdgeInsets.all(50.0)),
-                          new CircularProgressIndicator(),
-                        ],
-                      ),
-                    );
-                  },
-                )
-              ],
-            ),
-          ),
+          // Expanded(
+          //   child: ListView(
+          //     padding: EdgeInsets.zero,
+          //     children: [
+          //       FutureBuilder<List>(
+          //         future: fetchOrderBerlangsung(),
+          //         builder: (context, snapshot) {
+          //           if (snapshot.hasData) {
+          //             List? freshOrders = snapshot.data;
+          //             if (freshOrders!.length == 0) {
+          //               return Column(
+          //                 crossAxisAlignment: CrossAxisAlignment.center,
+          //                 mainAxisAlignment: MainAxisAlignment.center,
+          //                 children: [
+          //                   Image.asset('images/null_ongoing.png'),
+          //                   Text(
+          //                     "Belum ada order yang berlangsung.",
+          //                     style: TextStyle(fontWeight: FontWeight.w700),
+          //                   ),
+          //                 ],
+          //               );
+          //             }
+          //             return new Column(
+          //               children: freshOrders
+          //                   .map(
+          //                     (freshOrders) => new Column(
+          //                       children: <Widget>[
+          //                         cardOnGoingOrder(
+          //                             freshOrders.gkOrder,
+          //                             freshOrders.name,
+          //                             freshOrders.noContainer,
+          //                             freshOrders.addressPort,
+          //                             freshOrders.namaPort,
+          //                             freshOrders.namaGudang,
+          //                             freshOrders.addressGudang)
+          //                       ],
+          //                     ),
+          //                   )
+          //                   .toList(),
+          //             );
+          //           } else if (snapshot.hasError) {
+          //             return Text(
+          //               snapshot.error.toString(),
+          //             );
+          //           }
+          //           return new Center(
+          //             child: new Column(
+          //               children: <Widget>[
+          //                 new Padding(padding: new EdgeInsets.all(50.0)),
+          //                 new CircularProgressIndicator(),
+          //               ],
+          //             ),
+          //           );
+          //         },
+          //       )
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     );

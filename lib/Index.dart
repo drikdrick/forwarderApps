@@ -1,10 +1,9 @@
-import 'package:bokshaulforwarder/HomePage.dart';
-// import 'package:bokshaulforwarder/InvoicePage.dart';
-import 'package:bokshaulforwarder/Order/OrderPage.dart';
-import 'package:bokshaulforwarder/Profile/ProfilePage.dart';
+import 'package:bokshaulforwarder/home_page.dart';
+import 'package:bokshaulforwarder/Order/order_page.dart';
+import 'package:bokshaulforwarder/Profile/profile_page.dart';
+import 'package:bokshaulforwarder/invoice_page.dart';
 import 'package:flutter/material.dart';
 
-import 'InvoicePage.dart';
 
 class Index extends StatefulWidget {
   @override

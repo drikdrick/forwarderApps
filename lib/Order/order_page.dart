@@ -1,11 +1,9 @@
-import 'package:bokshaulforwarder/Model/OrderJson.dart';
-import 'package:bokshaulforwarder/Model/OrderDetailJson.dart';
-import 'package:bokshaulforwarder/Order/PendingOrderPage.dart';
-import 'package:bokshaulforwarder/Order/SuccessOrderPage.dart';
-import 'package:bokshaulforwarder/Resource/OrderCard.dart';
+import 'package:bokshaulforwarder/Model/order_json.dart';
+import 'package:bokshaulforwarder/Order/pending_order_page.dart';
+import 'package:bokshaulforwarder/Order/success_order_page.dart';
+import 'package:bokshaulforwarder/Resource/order_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({Key? key}) : super(key: key);
@@ -16,16 +14,17 @@ class OrderPage extends StatefulWidget {
 
 class _OrderPageState extends State<OrderPage> {
   late Image imageOrderDone, imageOrderPending, imageOrderOngoing;
-  
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     imageOrderDone = Image.asset('images/null_done.png');
     imageOrderPending = Image.asset('images/null_pending.png');
     imageOrderOngoing = Image.asset('images/null_ongoing.png');
   }
+
   @override
-  void didChangeDependencies(){
+  void didChangeDependencies() {
     super.didChangeDependencies();
     precacheImage(imageOrderDone.image, context);
     precacheImage(imageOrderPending.image, context);
@@ -80,18 +79,20 @@ class _OrderPageState extends State<OrderPage> {
                         }
                         return new Column(
                           children: freshOrders
-                              .map((freshOrders) => new Column(
-                                    children: <Widget>[
-                                      cardOnGoingOrder(
-                                          freshOrders.gkOrder ?? "Uknown",
-                                          freshOrders.name ?? "Uknown",
-                                          freshOrders.noContainer ?? "Uknown",
-                                          freshOrders.addressPort ?? "Uknown",
-                                          freshOrders.namaPort ?? "Uknown",
-                                          freshOrders.namaGudang ?? "Uknown",
-                                          freshOrders.addressGudang ?? "Uknown")
-                                    ],
-                                  ))
+                              .map(
+                                (freshOrders) => new Column(
+                                  children: <Widget>[
+                                    cardOnGoingOrder(
+                                        freshOrders.gkOrder ?? "Uknown",
+                                        freshOrders.name ?? "Uknown",
+                                        freshOrders.noContainer ?? "Uknown",
+                                        freshOrders.addressPort ?? "Uknown",
+                                        freshOrders.namaPort ?? "Uknown",
+                                        freshOrders.namaGudang ?? "Uknown",
+                                        freshOrders.addressGudang ?? "Uknown")
+                                  ],
+                                ),
+                              )
                               .toList(),
                         );
                       } else if (snapshot.hasError) {
@@ -207,7 +208,6 @@ class _OrderPageState extends State<OrderPage> {
                             ],
                           );
                         }
-                        print(freshOrders);
                         return new Column(
                           children: freshOrders
                               .map(

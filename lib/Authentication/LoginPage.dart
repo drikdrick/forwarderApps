@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/gestures.dart';
 import 'package:http/http.dart' as http;
 
-import '../Index.dart';
+import '../index.dart';
 import '../Resource/stylesheet.dart';
 import './SignUpPage.dart';
 

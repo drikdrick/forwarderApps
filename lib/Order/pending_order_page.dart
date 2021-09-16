@@ -1,4 +1,4 @@
-import 'package:bokshaulforwarder/Model/OrderJson.dart';
+import 'package:bokshaulforwarder/Model/order_json.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

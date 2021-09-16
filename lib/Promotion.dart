@@ -1,5 +1,5 @@
-import 'package:bokshaulforwarder/Model/Promo.dart';
-import 'package:bokshaulforwarder/PromoDetailPage.dart';
+import 'package:bokshaulforwarder/Model/promo.dart';
+import 'package:bokshaulforwarder/promo_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class Promotion extends StatefulWidget {

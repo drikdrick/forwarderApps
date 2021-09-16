@@ -1,5 +1,5 @@
 // import 'package:bokshaulforwarder/LoginPage.dart';
-import 'package:bokshaulforwarder/SplashScreen.dart';
+import 'package:bokshaulforwarder/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

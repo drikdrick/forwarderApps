@@ -1,4 +1,4 @@
-import 'package:bokshaulforwarder/Order/DetailChatPage.dart';
+import 'package:bokshaulforwarder/Order/detail_chat_page.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {

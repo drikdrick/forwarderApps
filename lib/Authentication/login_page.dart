@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:bokshaulforwarder/Authentication/ForgotPasswordPage.dart';
+import 'package:bokshaulforwarder/Authentication/forgot_password_page.dart';
+import 'package:bokshaulforwarder/Services/Authenticationi.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/gestures.dart';
@@ -8,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 import '../index.dart';
 import '../Resource/stylesheet.dart';
-import './SignUpPage.dart';
+import 'sign_up_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -29,7 +30,6 @@ class _LoginPageState extends State<LoginPage> {
 
   bool isVisible = true;
   // Uri url = Uri.parse('https://apiflutter.forwarder.boksman.co.id/login');
-
 
   @override
   Widget build(BuildContext context) {
@@ -262,86 +262,42 @@ class _LoginPageState extends State<LoginPage> {
       'username': _usernameController.text,
       'password': _passwordController.text
     };
-    var jsonResponse;
-    Uri url = Uri.parse('https://apiflutter.forwarder.boksman.co.id/login');
-    var response = await http.post(url, body: data);
-    if (response.statusCode == 201) {
-      jsonResponse = json.decode(response.body);
-      print(jsonResponse);
-      if (jsonResponse["success"]) {
-        sharedPreferences.setBool('isLoggedIn', true);
+    try {
+      var jsonResponse;
+      Uri url = Uri.parse('https://apiflutter.forwarder.boksman.co.id/login');
+      var response = await http.post(url, body: data);
+      if (response.statusCode == 201) {
+        jsonResponse = json.decode(response.body);
+        print(jsonResponse);
+        if (jsonResponse["success"]) {
+          sharedPreferences.setBool('isLoggedIn', true);
 
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => Index()), (route) => false);
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => Index()),
+              (route) => false);
+          setState(() {
+            _isLoading = false;
+          });
+          sharedPreferences.setString("token", jsonResponse['data']['token']);
+          sharedPreferences.setInt("idUser", jsonResponse['data']['id']);
+        }
+      } else {
         setState(() {
           _isLoading = false;
         });
-        sharedPreferences.setString("token", jsonResponse['data']['token']);
-        sharedPreferences.setInt("idUser", jsonResponse['data']['id']);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Username/Password salah. Coba lagi."),
+          ),
+        );
       }
-    } else {
-      setState(() {
-        _isLoading = false;
-      });
+    } catch (e) {
+      reset(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Username/Password salah. Coba lagi."),
+          content: Text("Silahkan login kembali."),
         ),
       );
     }
   }
-
-  // _cekLogin(username, password) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   Map data = {'username': username, 'password': password};
-  //   try {
-  //     var res = await http.post(url, body: data);
-  //     if (res.statusCode == 200) {
-  //       var response = json.decode(res.body);
-  //       if (response['success']) {
-  //         prefs.setBool('success', true);
-  //         setState(() {
-  //           _isLoading = false;
-  //         });
-
-  //         Navigator.of(context).pushAndRemoveUntil(
-  //             MaterialPageRoute(builder: (context) => Index()),
-  //             (route) => false);
-  //         print("Login berhasil");
-  //       } else {
-  //         setState(() {
-  //           _isLoading = false;
-  //         });
-  //         print("Logini Failed");
-  //       }
-  //     }
-  //   } catch (e) {}
-  // }
-
-  // Future<void> login() async {
-  //   Uri url = Uri.parse('https://apiflutter.forwarder.boksman.co.id/login');
-  //   var response = await http.post(url, body: {
-  //     'username': _usernameController.text,
-  //     'password': _passwordController.text
-  //   });
-  //   if (response.statusCode == 201) {
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //     Navigator.of(context).push(
-  //       MaterialPageRoute(
-  //         builder: (context) => Index(),
-  //       ),
-  //     );
-  //   } else {
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(
-  //         content: Text("Username/Password salah. Coba lagi."),
-  //       ),
-  //     );
-  //   }
-  // }
 }

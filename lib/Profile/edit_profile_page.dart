@@ -1,20 +1,35 @@
+import 'dart:math';
+
+import 'package:bokshaulforwarder/Model/user.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
-// import 'package:flutter/gestures.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// import '../Authentication/EmailVerificationPage.dart';
-
 class EditProfile extends StatefulWidget {
-  const EditProfile({Key? key}) : super(key: key);
+  final User currentUser;
+  const EditProfile({required this.currentUser});
 
   @override
   _EditProfileState createState() => _EditProfileState();
 }
 
 class _EditProfileState extends State<EditProfile> {
+  late String avatar;
   bool isVisible = true;
+  TextEditingController namaController = TextEditingController();
+  TextEditingController noHandphone = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    avatar = Random().nextInt(15).toString();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(widget.currentUser.company);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -44,10 +59,9 @@ class _EditProfileState extends State<EditProfile> {
                 height: 25,
               ),
               CircleAvatar(
-                backgroundImage:
-                    NetworkImage('https://via.placeholder.com/150'),
                 backgroundColor: Colors.blue,
                 radius: 50,
+                backgroundImage: AssetImage("images/avatar/" + avatar + ".png"),
               ),
               Text(
                 "Edit Profil",
@@ -61,6 +75,7 @@ class _EditProfileState extends State<EditProfile> {
                 height: 25,
               ),
               TextFormField(
+                controller: namaController,
                 decoration: InputDecoration(
                   labelText: "Nama Lengkap",
                   enabledBorder: OutlineInputBorder(
@@ -71,26 +86,20 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: Text(
-              //     "Contoh nama perusahaan : Boksman Asia_PT",
-              //     style: TextStyle(
-              //       fontSize: 10,
-              //       color: Colors.grey,
-              //     ),
-              //   ),
-              // ),
-              TextFormField(
-                decoration: InputDecoration(
-                  prefix: Text("+62"),
-                  labelText: "No. Handphone",
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: inputBorder),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
-                  ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.currentUser.phone,
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                    OutlinedButton(
+                      child: Text("Ubah"),
+                      onPressed: () {},
+                    ),
+                  ],
                 ),
               ),
               TextFormField(
@@ -104,38 +113,22 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Email",
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: inputBorder),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
-                  ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.currentUser.email,
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                    OutlinedButton(
+                      child: Text("Ubah"),
+                      onPressed: () {},
+                    ),
+                  ],
                 ),
               ),
-              // TextFormField(
-              //   obscureText: isVisible,
-              //   decoration: InputDecoration(
-              //     labelText: "Kata Sandi",
-              //     enabledBorder: OutlineInputBorder(
-              //       borderSide: BorderSide(color: inputBorder),
-              //     ),
-              //     focusedBorder: OutlineInputBorder(
-              //       borderSide: BorderSide(color: Colors.blue),
-              //     ),
-              //     suffixIcon: IconButton(
-              //       onPressed: () {
-              //         setState(() {
-              //           isVisible == true ? isVisible = false : isVisible = true;
-              //         });
-              //       },
-              //       icon: Icon(
-              //           isVisible ? Icons.visibility_off : Icons.remove_red_eye),
-              //     ),
-              //   ),
-              // ),
               SizedBox(
                 height: height * 0.1,
               ),
@@ -144,14 +137,7 @@ class _EditProfileState extends State<EditProfile> {
                 width: width * 0.55,
                 child: ElevatedButton(
                   child: Text("SIMPAN"),
-                  onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => EmailVerification(),
-                    //   ),
-                    // );
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     primary: Colors.blue,
                     textStyle: TextStyle(

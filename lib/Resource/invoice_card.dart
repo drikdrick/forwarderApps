@@ -1,4 +1,3 @@
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 //Unpaid
@@ -45,21 +44,21 @@ Widget cardUnpaid(invoiceId, tglTempo, perusahaan) {
                       style: TextStyle(
                           color: Colors.red, fontWeight: FontWeight.w600),
                     ),
-                    Text(
-                      "Jumlah tagihan",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "No. Tagihan",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "No. Kontainer",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
+                    // Text(
+                    //   "Jumlah tagihan",
+                    //   style: TextStyle(
+                    //       color: abuProfile, fontWeight: FontWeight.w600),
+                    // ),
+                    // Text(
+                    //   "No. Tagihan",
+                    //   style: TextStyle(
+                    //       color: abuProfile, fontWeight: FontWeight.w600),
+                    // ),
+                    // Text(
+                    //   "No. Kontainer",
+                    //   style: TextStyle(
+                    //       color: abuProfile, fontWeight: FontWeight.w600),
+                    // ),
                   ],
                 ),
                 Column(
@@ -70,21 +69,21 @@ Widget cardUnpaid(invoiceId, tglTempo, perusahaan) {
                       style: TextStyle(
                           color: Colors.red, fontWeight: FontWeight.w600),
                     ),
-                    Text(
-                      "Jumlah tagihan",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "No. Tagihan",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "No. Kontainer",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
+                    // Text(
+                    //   "Jumlah tagihan",
+                    //   style: TextStyle(
+                    //       color: abuProfile, fontWeight: FontWeight.w600),
+                    // ),
+                    // Text(
+                    //   "No. Tagihan",
+                    //   style: TextStyle(
+                    //       color: abuProfile, fontWeight: FontWeight.w600),
+                    // ),
+                    // Text(
+                    //   "No. Kontainer",
+                    //   style: TextStyle(
+                    //       color: abuProfile, fontWeight: FontWeight.w600),
+                    // ),
                   ],
                 )
               ],
@@ -128,51 +127,51 @@ Widget cardPaid(invoiceId, tglTempo, perusahaan) {
             SizedBox(
               height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Jumlah tagihan",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "No. Tagihan",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "No. Kontainer",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "Jumlah tagihan",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "No. Tagihan",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "No. Kontainer",
-                      style: TextStyle(
-                          color: abuProfile, fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                )
-              ],
-            )
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Text(
+            //           "Jumlah tagihan",
+            //           style: TextStyle(
+            //               color: abuProfile, fontWeight: FontWeight.w600),
+            //         ),
+            //         Text(
+            //           "No. Tagihan",
+            //           style: TextStyle(
+            //               color: abuProfile, fontWeight: FontWeight.w600),
+            //         ),
+            //         Text(
+            //           "No. Kontainer",
+            //           style: TextStyle(
+            //               color: abuProfile, fontWeight: FontWeight.w600),
+            //         ),
+            //       ],
+            //     ),
+            //     Column(
+            //       crossAxisAlignment: CrossAxisAlignment.end,
+            //       children: [
+            //         Text(
+            //           "Jumlah tagihan",
+            //           style: TextStyle(
+            //               color: abuProfile, fontWeight: FontWeight.w600),
+            //         ),
+            //         Text(
+            //           "No. Tagihan",
+            //           style: TextStyle(
+            //               color: abuProfile, fontWeight: FontWeight.w600),
+            //         ),
+            //         Text(
+            //           "No. Kontainer",
+            //           style: TextStyle(
+            //               color: abuProfile, fontWeight: FontWeight.w600),
+            //         ),
+            //       ],
+            //     )
+            //   ],
+            // )
           ],
         ),
       ),

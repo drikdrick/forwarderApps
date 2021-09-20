@@ -2,8 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-Invoice invoiceFromJson(String str) =>
-    Invoice.fromJson(json.decode(str));
+Invoice invoiceFromJson(String str) => Invoice.fromJson(json.decode(str));
 
 String invoiceToJson(Invoice data) => json.encode(data.toJson());
 
@@ -69,6 +68,5 @@ Future<List<Invoice>> fetchInvoicePaid() async {
   if (response.statusCode == 201) {
     jsonResult = jsonDecode(response.body);
   }
-
   return (jsonResult["data"] as List).map((e) => Invoice.fromJson(e)).toList();
 }

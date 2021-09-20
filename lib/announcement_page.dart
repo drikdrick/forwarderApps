@@ -47,7 +47,6 @@ class _AnnouncementState extends State<Announcement> {
             body: TabBarView(children: [
               Promotion(),
               NotificationPage(),
-              // Notification()
             ])),
       ),
     );

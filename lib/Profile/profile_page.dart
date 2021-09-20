@@ -5,6 +5,7 @@ import 'package:bokshaulforwarder/Setting/HelpCentrePage.dart';
 import 'package:bokshaulforwarder/Setting/PrivatePolicyPage.dart';
 import 'package:bokshaulforwarder/Setting/TermsAndConditionPage.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shimmer/shimmer.dart';
 import 'dart:math';
 
@@ -27,7 +28,6 @@ class _ProfileState extends State<Profile> {
     super.initState();
     loadData();
     avatar = Random().nextInt(15).toString();
-    print(avatar);
   }
 
   Future loadData() async {
@@ -35,7 +35,7 @@ class _ProfileState extends State<Profile> {
       _isLoading = true;
     });
     user = await getUserProfile();
-    print(user.company);
+    // print(user.company);
     setState(() {
       _isLoading = false;
     });
@@ -56,102 +56,80 @@ class _ProfileState extends State<Profile> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  _isLoading
-                      ? SizedBox(
-                          height: 60,
-                          child: CircularProgressIndicator(),
-                        )
-                      : userProfile(user.username, user.phone, user.email),
-                  Divider(),
-                  settingOption(
-                      context, "Edit Profile", EditProfile(), Icon(Icons.edit)),
-                  Divider(),
-                  settingOption(context, "Pengaturan Aplikasi", Setting(),
-                      Icon(Icons.settings)),
-                  Divider(),
-                  settingOption(context, "Halaman Bantuan", HelpCentre(),
-                      Icon(Icons.help_center)),
-                  Divider(),
-                  settingOption(context, "Kebijakan Privasi", PrivacyPolicy(),
-                      Icon(Icons.privacy_tip)),
-                  Divider(),
-                  settingOption(context, "Syarat dan Ketentuan",
-                      TermCondition(), Icon(Icons.quiz)),
-                  Divider(),
-                  InkWell(
-                    onTap: () {
-                      reset(context);
-                    },
-                    child: SizedBox(
-                      height: 40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Icon(Icons.logout_rounded),
-                              ),
-                              Text(
-                                "Logout",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    _isLoading
+                        ? SizedBox(
+                            height: 60,
+                            child: CircularProgressIndicator(),
+                          )
+                        : userProfile(user.username, user.phone, user.email),
+                    Divider(),
+                    _isLoading
+                        ? Container()
+                        : settingOption(
+                            context,
+                            "Edit Profile",
+                            EditProfile(
+                              currentUser: user,
+                            ),
+                            Icon(Icons.edit)),
+                    Divider(),
+                    settingOption(context, "Pengaturan Aplikasi", Setting(),
+                        Icon(Icons.settings)),
+                    Divider(),
+                    settingOption(context, "Halaman Bantuan", HelpCentre(),
+                        Icon(Icons.help_center)),
+                    Divider(),
+                    settingOption(context, "Kebijakan Privasi", PrivacyPolicy(),
+                        Icon(Icons.privacy_tip)),
+                    Divider(),
+                    settingOption(context, "Syarat dan Ketentuan",
+                        TermCondition(), Icon(Icons.quiz)),
+                    Divider(),
+                    InkWell(
+                      onTap: () {
+                        reset(context);
+                      },
+                      child: SizedBox(
+                        height: 40,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Icon(Icons.logout_rounded),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            size: 15,
-                          ),
-                        ],
+                                Text(
+                                  "Logout",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 15,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Divider(),
-                ],
-              ),
-              // Align(
-              //   alignment: Alignment.bottomCenter,
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       boxShadow: [
-              //         BoxShadow(
-              //           color: Colors.grey.withOpacity(0.5),
-              //           spreadRadius: 2,
-              //           blurRadius: 5,
-              //           offset: Offset(0, 3), // changes position of shadow
-              //         ),
-              //       ],
-              //     ),
-              //     height: height * 0.05,
-              //     width: width * 1,
-              //     child: ElevatedButton(
-              //       child: Text("Log Out"),
-              //       onPressed: () {
-              //         reset(context);
-              //       },
-              //       style: ElevatedButton.styleFrom(
-              //         primary: Colors.red,
-              //         textStyle: TextStyle(
-              //           fontWeight: FontWeight.w400,
-              //           color: Colors.white,
-              //           fontSize: 18,
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // )
-            ],
+                    Divider(),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -220,7 +198,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             Text(
-              noTelp,
+              "+62"+noTelp,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,

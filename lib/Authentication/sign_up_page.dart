@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../Resource/stylesheet.dart';
 import 'package:http/http.dart' as http;
 
-import 'EmailVerificationPage.dart';
+import 'email_verification_page.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);

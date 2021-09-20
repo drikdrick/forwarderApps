@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Authentication/LoginPage.dart';
+import 'Authentication/login_page.dart';
 import 'index.dart';
 import 'package:http/http.dart' as http;
 
@@ -42,7 +42,7 @@ class _SplashscreenState extends State<Splashscreen> {
               width: MediaQuery.of(context).size.width * 0.3,
             ),
             SizedBox(
-              height: 300,
+              height: MediaQuery.of(context).size.height * 0.3,
             ),
             SizedBox(
               width: 240,
@@ -57,16 +57,6 @@ class _SplashscreenState extends State<Splashscreen> {
   void navigateUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var status = prefs.getBool('isLoggedIn') ?? false;
-    // String token = prefs.getString('token') ?? "null"; //fetch Token
-
-    // Uri url = Uri.parse(
-    //     "https://apiflutter.forwarder.boksman.co.id/orderberlangsung/22");
-
-    // var response = await http.get(url, headers: {'token': token});
-    // var jsonResult;
-    // jsonResult = jsonDecode(response.body);
-    // print(jsonResult['status']);
-    // print(jsonResult);
     print(status);
     if (status) {
       Navigator.pushAndRemoveUntil(

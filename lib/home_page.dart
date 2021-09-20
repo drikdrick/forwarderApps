@@ -1,4 +1,5 @@
 import 'package:bokshaulforwarder/Order/order_page.dart';
+import 'package:bokshaulforwarder/announcement_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -91,11 +92,12 @@ class _HomeState extends State<Home> {
                       backgroundColor: Colors.grey.withOpacity(0.50),
                       child: IconButton(
                         onPressed: () async {
-                          setState(() {});
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          var status = prefs.getString('token') ?? false;
-                          print(status);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Announcement(),
+                            ),
+                          );
                         },
                         icon: Icon(
                           Icons.notifications_none_outlined,

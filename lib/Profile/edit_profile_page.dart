@@ -3,7 +3,6 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:bokshaulforwarder/Model/user.dart';
-import 'package:bokshaulforwarder/Profile/profile_page.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:bokshaulforwarder/index.dart';
 import 'package:flutter/cupertino.dart';
@@ -63,7 +62,7 @@ class _EditProfileState extends State<EditProfile> {
       body: Stack(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            padding: EdgeInsets.symmetric(horizontal: 15),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

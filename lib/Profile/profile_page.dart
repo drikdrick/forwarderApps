@@ -1,4 +1,5 @@
 import 'package:bokshaulforwarder/Model/user.dart';
+import 'package:bokshaulforwarder/Profile/edit_password_page.dart';
 import 'package:bokshaulforwarder/Services/Authenticationi.dart';
 import 'package:bokshaulforwarder/Setting/AppSettingPage.dart';
 import 'package:bokshaulforwarder/Setting/HelpCentrePage.dart';
@@ -83,6 +84,9 @@ class _ProfileState extends State<Profile> {
                     // Divider(),
                     // settingOption(context, "Pengaturan Aplikasi", Setting(),
                     //     Icon(Icons.settings)),
+                    Divider(),
+                    settingOption(context, "Ganti Password", EditPassword(),
+                        Icon(Icons.lock)),
                     Divider(),
                     settingOption(context, "Halaman Bantuan", HelpCentre(),
                         Icon(Icons.help_center)),
@@ -198,7 +202,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             Text(
-              "+62"+noTelp,
+              "+62" + noTelp,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,

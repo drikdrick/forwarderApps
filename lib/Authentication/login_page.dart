@@ -273,7 +273,11 @@ class _LoginPageState extends State<LoginPage> {
           sharedPreferences.setBool('isLoggedIn', true);
 
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => Index()),
+              MaterialPageRoute(
+                builder: (context) => Index(
+                  index: 0,
+                ),
+              ),
               (route) => false);
           setState(() {
             _isLoading = false;

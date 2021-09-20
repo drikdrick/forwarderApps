@@ -1,5 +1,6 @@
 import 'package:bokshaulforwarder/Order/order_page.dart';
 import 'package:bokshaulforwarder/announcement_page.dart';
+import 'package:bokshaulforwarder/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -129,7 +130,9 @@ class _HomeState extends State<Home> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return OrderPage();
+                          return Index(
+                            index: 1,
+                          );
                         },
                       ),
                     );

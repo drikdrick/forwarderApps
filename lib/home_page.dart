@@ -1,9 +1,7 @@
-import 'package:bokshaulforwarder/Order/order_page.dart';
 import 'package:bokshaulforwarder/announcement_page.dart';
 import 'package:bokshaulforwarder/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Model/order_json.dart';
 import 'Resource/order_card.dart';

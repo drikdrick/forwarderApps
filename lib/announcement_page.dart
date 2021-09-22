@@ -16,43 +16,43 @@ class _AnnouncementState extends State<Announcement> {
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
-            appBar: AppBar(
-              bottom: TabBar(
-                labelColor: Colors.black,
-                tabs: [
-                  Tab(
-                    text: "Promo",
-                  ),
-                  Tab(
-                    text: "Notifikasi",
-                  ),
-                ],
-              ),
-              backgroundColor: Colors.white,
-              title: Text(
-                "Info",
-                style: TextStyle(color: Colors.black),
-              ),
-              leading: InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                ),
-              ),
-              elevation: 1,
+          appBar: AppBar(
+            // bottom: TabBar(
+            //   labelColor: Colors.black,
+            //   tabs: [
+            //     Tab(
+            //       text: "Promo",
+            //     ),
+            //     Tab(
+            //       text: "Notifikasi",
+            //     ),
+            //   ],
+            // ),
+            backgroundColor: Colors.white,
+            title: Text(
+              "Info",
+              style: TextStyle(color: Colors.black),
             ),
-            body: TabBarView(children: [
-              Promotion(),
-              NotificationPage(),
-            ])),
+            leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              ),
+            ),
+            elevation: 1,
+          ),
+          body: Promotion(),
+          // TabBarView(
+          //   children: [
+          //     Promotion(),
+          //     NotificationPage(),
+          //   ],
+          // ),
+        ),
       ),
     );
-  }
-
-  Widget notifContent(){
-    return ListView();
   }
 }

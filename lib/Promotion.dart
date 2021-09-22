@@ -1,5 +1,6 @@
 import 'package:bokshaulforwarder/Model/promo.dart';
-import 'package:bokshaulforwarder/promo_detail_page.dart';
+import 'package:bokshaulforwarder/Resource/promo_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Promotion extends StatefulWidget {
@@ -12,83 +13,78 @@ class Promotion extends StatefulWidget {
 class _PromotionState extends State<Promotion> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: promoList.length,
-      itemBuilder: (context, index) {
-        final Promo promo = promoList[index];
-        return InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return DetailPromo(
-                  promo: promo,
+    // TODO: implement build
+    return ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        FutureBuilder<List>(
+          future: fetchPromo(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              print(snapshot.data);
+              List? promotions = snapshot.data;
+              if (promotions!.length == 0) {
+                return Center(
+                  child: Text(
+                    "Belum ada promosi.",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 );
-              }),
+              }
+              return Column(
+                children: promotions
+                    .map(
+                      (promotions) => new Column(
+                        children: <Widget>[
+                          promoCard(context, promotions),
+                        ],
+                      ),
+                    )
+                    .toList(),
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text(snapshot.error.toString()),
+              );
+            }
+            return Center(
+              child: Column(
+                children: [
+                  CircularProgressIndicator(),
+                ],
+              ),
             );
           },
-          child: Card(
-              child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 25,
-                      width: 25,
-                      child: Image.asset('images/Boksman_Logogram.png'),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      promo.headline,
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  promo.description,
-                  maxLines: 2,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black.withOpacity(0.75),
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Image.asset(
-                  promo.img,
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    promo.time,
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black.withOpacity(0.5),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )),
-        );
-      },
+        ),
+      ],
     );
   }
+  // List<Promo>? promoList;
+  // @override
+  // void initState() {
+  //   _getRefreshData();
+  //   super.initState();
+  // }
+
+  // Future<void> _getRefreshData() async {
+  //   promoList = await fetchPromo();
+  //   print(promoList);
+  // }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return RefreshIndicator(
+  //     onRefresh: _getRefreshData,
+  //     child: ListView.builder(
+  //       itemCount: promoList == null ? 0 : promoList!.length,
+  //       itemBuilder: (context, index) {
+  //         final Promo promo = promoList![index];
+  //         return
+  //       },
+  //     ),
+  //   );
+  // }
 }

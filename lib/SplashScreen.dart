@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Authentication/login_page.dart';
 import 'index.dart';
-import 'package:http/http.dart' as http;
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({Key? key}) : super(key: key);
@@ -62,7 +59,9 @@ class _SplashscreenState extends State<Splashscreen> {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => Index(),
+            builder: (context) => Index(
+              index: 0,
+            ),
           ),
           (route) => false);
     } else {

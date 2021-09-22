@@ -4,8 +4,9 @@ import 'package:bokshaulforwarder/Profile/profile_page.dart';
 import 'package:bokshaulforwarder/invoice_page.dart';
 import 'package:flutter/material.dart';
 
-
 class Index extends StatefulWidget {
+  final int index;
+  const Index({required this.index});
   @override
   _IndexState createState() => _IndexState();
 }
@@ -16,7 +17,7 @@ class _IndexState extends State<Index> {
   @override
   void initState() {
     super.initState();
-    bottomIndex = 0;
+    bottomIndex = widget.index;
   }
 
   List<BottomNavigationBarItem> _bottomItems = [

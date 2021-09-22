@@ -34,8 +34,8 @@ class DetailPromo extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            'images/profitGanda.jpeg',
+          Image.network(
+            promo.banner,
             height: height * 0.3,
             width: width,
             fit: BoxFit.cover,
@@ -46,7 +46,7 @@ class DetailPromo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  promo.headline,
+                  promo.title,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
@@ -56,7 +56,7 @@ class DetailPromo extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  promo.time,
+                  promo.createdAt.toString(),
                   style: TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.w600,
@@ -66,7 +66,7 @@ class DetailPromo extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  promo.description,
+                  promo.content,
                   style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,

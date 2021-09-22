@@ -1,5 +1,4 @@
 import 'package:bokshaulforwarder/Model/invoice.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

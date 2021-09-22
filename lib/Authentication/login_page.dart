@@ -291,6 +291,7 @@ class _LoginPageState extends State<LoginPage> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
+            backgroundColor: Colors.red,
             content: Text("Username/Password salah. Coba lagi."),
           ),
         );

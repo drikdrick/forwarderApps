@@ -1,7 +1,7 @@
 import 'package:bokshaulforwarder/Model/promo.dart';
 import 'package:flutter/material.dart';
 
-import '../promo_detail_page.dart';
+import '../Notification/promo_detail_page.dart';
 
 Widget promoCard(BuildContext context, Promo promo) {
   return InkWell(
@@ -45,13 +45,16 @@ Widget promoCard(BuildContext context, Promo promo) {
           SizedBox(
             height: 5,
           ),
-          Text(
-            promo.content,
-            maxLines: 2,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: Colors.black.withOpacity(0.75),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              promo.content,
+              maxLines: 2,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: Colors.black.withOpacity(0.75),
+              ),
             ),
           ),
           SizedBox(

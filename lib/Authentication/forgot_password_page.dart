@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:ui';
 
-import 'package:bokshaulforwarder/Authentication/email_reset_password.dart';
-import 'package:bokshaulforwarder/Authentication/email_verification_page.dart';
+// import 'package:bokshaulforwarder/Authentication/email_reset_password.dart';
+// import 'package:bokshaulforwarder/Authentication/email_verification_page.dart';
 import 'package:flutter/material.dart';
 
 import '../Resource/stylesheet.dart';

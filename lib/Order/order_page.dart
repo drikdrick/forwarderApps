@@ -89,7 +89,7 @@ class _OrderPageState extends State<OrderPage> {
                                         freshOrders.addressPort ?? "Uknown",
                                         freshOrders.namaPort ?? "Uknown",
                                         freshOrders.namaGudang ?? "Uknown",
-                                        freshOrders.addressGudang ?? "Uknown")
+                                        freshOrders.addressGudang ?? "Uknown"),
                                   ],
                                 ),
                               )

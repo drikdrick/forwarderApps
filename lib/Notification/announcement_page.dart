@@ -1,6 +1,6 @@
-import 'package:bokshaulforwarder/promotion.dart';
+import 'package:bokshaulforwarder/Notification/promotion_page.dart';
 import 'package:flutter/material.dart';
-import 'notification_page.dart';
+// import 'notification_page.dart';
 
 class Announcement extends StatefulWidget {
   const Announcement({Key? key}) : super(key: key);

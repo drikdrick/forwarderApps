@@ -9,12 +9,11 @@ import 'package:http/http.dart' as http;
 Future reset(context) async {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final SharedPreferences prefs = await _prefs;
-  Navigator.pushAndRemoveUntil(
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(
       builder: (context) => LoginPage(),
     ),
-    (route) => false,
   );
   prefs.clear();
 }

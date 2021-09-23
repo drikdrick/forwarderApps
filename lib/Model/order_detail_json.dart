@@ -121,6 +121,7 @@ Future<OrderDetail> getOrderDetail(orderId) async {
   // print(jsonResult);
   // var orderData = (jsonResult as Map<String, dynamic>);
   // return OrderDetail.createOrder(orderData);
+  print(jsonResult['data']);
 
-  return OrderDetail.createOrder(jsonResult);
+  return OrderDetail.createOrder(jsonResult['data'][0]);
 }

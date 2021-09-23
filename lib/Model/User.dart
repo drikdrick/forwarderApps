@@ -39,14 +39,6 @@ class User {
     );
   }
 
-  // => User(
-  //       company: json["company"],
-  //       address: json["address"],
-  //       contact: json["contact"],
-  //       phone: json["phone"],
-  //       email: json["email"],
-  //       username: json["username"],
-  //     );
 
   Map<String, dynamic> toJson() => {
         "company": company,

@@ -23,6 +23,7 @@ class _ProfileState extends State<Profile> {
   late User user;
   late String avatar;
 
+  @override
   void initState() {
     super.initState();
     loadData();

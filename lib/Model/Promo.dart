@@ -9,10 +9,10 @@ String promoToJson(Promo data) => json.encode(data.toJson());
 
 class Promo {
   Promo({
-    required this.id,
-    required this.inboxId,
-    required this.reciever,
-    required this.recieverType,
+    // required this.id,
+    // required this.inboxId,
+    // required this.reciever,
+    // required this.recieverType,
     required this.createdAt,
     required this.title,
     required this.content,
@@ -20,10 +20,10 @@ class Promo {
     required this.banner,
   });
 
-  int id;
-  int inboxId;
-  String reciever;
-  String recieverType;
+  // int id;
+  // int inboxId;
+  // String reciever;
+  // String recieverType;
   DateTime createdAt;
   String title;
   String content;
@@ -31,10 +31,10 @@ class Promo {
   String banner;
 
   factory Promo.fromJson(Map<String, dynamic> json) => Promo(
-        id: json["id"],
-        inboxId: json["inbox_id"],
-        reciever: json["reciever"],
-        recieverType: json["reciever_type"],
+        // id: json["id"],
+        // inboxId: json["inbox_id"],
+        // // reciever: json["reciever"],
+        // // recieverType: json["reciever_type"],
         createdAt: DateTime.parse(json["created_at"]),
         title: json["title"],
         content: json["content"],
@@ -43,10 +43,10 @@ class Promo {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "inbox_id": inboxId,
-        "reciever": reciever,
-        "reciever_type": recieverType,
+        // "id": id,
+        // "inbox_id": inboxId,
+        // // "reciever": reciever,
+        // // "reciever_type": recieverType,
         "created_at": createdAt.toIso8601String(),
         "title": title,
         "content": content,

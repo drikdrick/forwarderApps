@@ -1,7 +1,7 @@
 import 'package:bokshaulforwarder/home_page.dart';
 import 'package:bokshaulforwarder/Order/order_page.dart';
 import 'package:bokshaulforwarder/Profile/profile_page.dart';
-import 'package:bokshaulforwarder/invoice_page.dart';
+import 'package:bokshaulforwarder/Order/invoice_page.dart';
 import 'package:flutter/material.dart';
 
 class Index extends StatefulWidget {

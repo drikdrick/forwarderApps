@@ -56,14 +56,14 @@ class _SplashscreenState extends State<Splashscreen> {
     var status = prefs.getBool('isLoggedIn') ?? false;
     print(status);
     if (status) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Index(
-              index: 0,
-            ),
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Index(
+            index: 0,
           ),
-          (route) => false);
+        ),
+      );
     } else {
       Navigator.pushAndRemoveUntil(
           context,

@@ -1,17 +1,17 @@
 // import 'package:bokshaulforwarder/Model/Order.dart';
 // import 'package:bokshaulforwarder/Model/OrderDetailJson.dart';
+import 'package:bokshaulforwarder/Model/order_detail_json.dart';
 import 'package:bokshaulforwarder/Model/order_json.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 class SuccessOrder extends StatelessWidget {
-  final Freshorder freshOrder;
+  final OrderDetail currentOrder;
 
-  SuccessOrder({required this.freshOrder});
+  SuccessOrder({required this.currentOrder});
 
   @override
   Widget build(BuildContext context) {
-    var status = freshOrder.statusOrder;
     print(status);
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +42,7 @@ class SuccessOrder extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      freshOrder.gkOrder,
+                      currentOrder.gkOrder!,
                       style:
                           TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                     ),
@@ -89,7 +89,7 @@ class SuccessOrder extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                Text(freshOrder.slName),
+                Text(currentOrder.slName!),
               ],
             ),
             Row(
@@ -102,7 +102,7 @@ class SuccessOrder extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                Text(freshOrder.etd.toString()),
+                Text(currentOrder.eTD.toString()),
               ],
             ),
             SizedBox(
@@ -112,60 +112,7 @@ class SuccessOrder extends StatelessWidget {
               "Status Pengiriman",
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
             ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: CircleAvatar(
-                    radius: 10,
-                    child: Icon(
-                      Icons.location_on_outlined,
-                      size: 15,
-                    ),
-                  ),
-                ),
-                Flexible(
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Tempat pengambilan lorem Ipsum dolor sinaaaa",
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween, //tidak berfungsi
-                          children: [
-                            Text(
-                              freshOrder.namaPort,
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF6D6C6B),
-                              ),
-                            ),
-                            Text(
-                              "10:00 WIB",
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF6D6C6B),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
+
             // Row(
             //   children: [
             //     Padding(
@@ -193,7 +140,7 @@ class SuccessOrder extends StatelessWidget {
             //               overflow: TextOverflow.ellipsis,
             //             ),
             //             Text(
-            //               freshOrder.namaGudang,
+            //               currentOrder.namaGudang,
             //               style: TextStyle(
             //                 fontSize: 10,
             //                 fontWeight: FontWeight.w600,
@@ -209,26 +156,41 @@ class SuccessOrder extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  if (freshOrder.statusOrder == 1 ||
-                      freshOrder.statusOrder == 4) ...[
-                    milestone("Pekerjaan Diterima", "10:00 WIB"), //-4
-                    milestone("Menuju Pelabuhan", "10:00 WIB"), //-3
-                    milestone("Tiba di Pelabuhan", "10:00 WIB"), //-2
-                    milestone("Muat di Pelabuhan", "10:00 WIB"), //-1
-                    milestone("Menunggu keluar Pelabuhan", "10:00 WIB"), //0
-                    milestone("Menuju Gudang Consignee", "10:00 WIB"), //1
-                    milestone("Tiba di Gudang Consignee", "10:00 WIB"), //2
-                    milestone("Bongkar Muat", "10:00 WIB"), //3
+                  if (currentOrder.statusOrder == 1 ||
+                      currentOrder.statusOrder == 4) ...[
+                    milestone("Pekerjaan Diterima", ""), //-4
+                    milestone("Menuju Pelabuhan",
+                        currentOrder.timeMenujuPelabuhan.toString()), //-3
+                    milestone("Tiba di Pelabuhan",
+                        currentOrder.timeTibaDipelabuhan.toString()), //-2
+                    milestone("Muat di Pelabuhan",
+                        currentOrder.timeMuatBarang.toString()), //-1
+                    milestone(
+                        "Menunggu keluar Pelabuhan",
+                        currentOrder.timeMenungguKeluarPelabuhan
+                            .toString()), //0
+                    milestone("Menuju Gudang Consignee",
+                        currentOrder.timeMenujuGudangConsignee.toString()), //1
+                    milestone("Tiba di Gudang Consignee",
+                        currentOrder.timeTibaGudangConsignee.toString()), //2
+                    milestone("Bongkar Muat",
+                        currentOrder.timeBongkarMuat.toString()), //3
                   ],
 
-                  milestone("Menuju Depo", "10:00 WIB"), //4
-                  milestone("Tiba di Depo", "10:00 WIB"), //5
-                  milestone("Cek Container", "10:00 WIB"), //6
-                  milestone("Keluar Depo", "10:00 WIB"), //7
-                  if (freshOrder.statusOrder == 2 ||
-                      freshOrder.statusOrder == 3) ...[
-                    milestone("Menuju Gudang Shipper", "10:00 WIB"), //8
-                    milestone("Tiba di Gudang Shipper", "10:00 WIB"), //9
+                  milestone("Menuju Depo",
+                      currentOrder.timeMenujuDepo.toString()), //4
+                  milestone(
+                      "Tiba di Depo", currentOrder.timeTibaDepo.toString()), //5
+                  milestone("Cek Container",
+                      currentOrder.timeCekContainer.toString()), //6
+                  milestone("Keluar Depo",
+                      currentOrder.timeKeluarDepo.toString()), //7
+                  if (currentOrder.statusOrder == 2 ||
+                      currentOrder.statusOrder == 3) ...[
+                    milestone("Menuju Gudang Shipper",
+                        currentOrder.timeMenujuGudangShipper.toString()), //8
+                    milestone("Tiba di Gudang Shipper",
+                        currentOrder.timeTibaGudangShipper.toString()), //9
                     milestone("Muat Barang", "10:00 WIB"), //10
                     milestone("Menuju Pelabuhan", "10:00 WIB"), //11
                     milestone("Tiba di Pelabuhan", "10:00 WIB"), //12
@@ -244,7 +206,7 @@ class SuccessOrder extends StatelessWidget {
     );
   }
 
-  Widget milestone(title, time) {
+  Widget milestone(String title, String time) {
     return Row(
       children: [
         Padding(
@@ -276,7 +238,7 @@ class SuccessOrder extends StatelessWidget {
                       MainAxisAlignment.spaceBetween, //tidak berfungsi
                   children: [
                     Text(
-                      freshOrder.namaPort,
+                      currentOrder.namaPort!,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,

@@ -138,6 +138,26 @@ Future<List<Freshorder>> fetchOrderBerlangsung() async {
   // return freshOrders;
 }
 
+Future<List<Freshorder>> fetchOrderBerlangsungLimit() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String token = prefs.getString('token')!; //fetch Token
+  int userId = prefs.getInt('idUser')!; //fetch User ID
+
+  Uri url = Uri.parse(
+      "https://apiflutter.forwarder.boksman.co.id/orderberlangsung/limit/$userId");
+
+  var response = await http.get(url, headers: {'token': token});
+  var jsonResult;
+  if (response.statusCode == 201) {
+    jsonResult = jsonDecode(response.body);
+  }
+  return (jsonResult["data"]["freshorder"] as List)
+      .map((e) => Freshorder.fromJson(e))
+      .toList();
+
+  // return freshOrders;
+}
+
 Future<List<Freshorder>> fetchOrderPending() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token')!; //fetch Token
@@ -174,6 +194,4 @@ Future<List<Freshorder>> fetchOrderDone() async {
   return (jsonResult["data"]["freshorder"] as List)
       .map((e) => Freshorder.fromJson(e))
       .toList();
-
-  // return freshOrders;
 }

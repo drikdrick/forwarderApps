@@ -152,7 +152,7 @@ class _HomeState extends State<Home> {
               padding: EdgeInsets.zero,
               children: [
                 FutureBuilder<List>(
-                  future: fetchOrderBerlangsung(),
+                  future: fetchOrderBerlangsungLimit(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       List? freshOrders = snapshot.data;

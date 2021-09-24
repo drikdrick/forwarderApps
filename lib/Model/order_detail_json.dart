@@ -113,6 +113,24 @@ Future<OrderDetail> getOrderDetail(orderId) async {
   String token = prefs.getString('token')!; //fetch Token
 
   Uri url = Uri.parse(
+      "https://apiflutter.forwarder.boksman.co.id/orderberlangsung/detail/" +
+          orderId);
+
+  var response = await http.get(url, headers: {'token': token});
+  var jsonResult = json.decode(response.body);
+  // print(jsonResult);
+  // var orderData = (jsonResult as Map<String, dynamic>);
+  // return OrderDetail.createOrder(orderData);
+  print(jsonResult['data'][0]['time_tiba_dipelabuhan']);
+
+  return OrderDetail.createOrder(jsonResult['data'][0]);
+}
+
+Future<OrderDetail> getOrderDone(orderId) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String token = prefs.getString('token')!; //fetch Token
+
+  Uri url = Uri.parse(
       "https://apiflutter.forwarder.boksman.co.id/orderselesai/detail/" +
           orderId);
 

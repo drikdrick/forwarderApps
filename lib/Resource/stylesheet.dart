@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:lottie/lottie.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+//Color Paletter
 Color biruUtama = const Color(0xFF0891D5);
 Color btnPrimary = const Color(0xFF008DD4);
 Color merah = const Color(0xFFD71031);
@@ -13,6 +14,41 @@ Color biruMuda = const Color(0xFFE5F7FF);
 Color inputBorder = const Color(0xFFE7ECEF);
 Color selesai = const Color(0xFFE1E1E0);
 Color abuProfile = const Color(0xFF767675);
+
+//Icon
+CircleAvatar status = CircleAvatar(
+  radius: 11,
+  backgroundColor: Colors.grey,
+  child: CircleAvatar(
+    radius: 10,
+    backgroundColor: Colors.white,
+    child: Icon(
+      Icons.lens,
+      size: 15,
+      color: Colors.grey,
+    ),
+  ),
+);
+
+CircleAvatar statusNow = CircleAvatar(
+  radius: 11,
+  child: CircleAvatar(
+    radius: 10,
+    backgroundColor: Colors.white,
+    child: Icon(
+      Icons.lens,
+      size: 15,
+    ),
+  ),
+);
+
+CircleAvatar statusDone = CircleAvatar(
+  radius: 10,
+  child: Icon(
+    Icons.done,
+    size: 15,
+  ),
+);
 
 Widget loadingProcess(height, width) {
   return Container(

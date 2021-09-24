@@ -1,9 +1,8 @@
-import 'dart:convert';
+import 'dart:math';
 
+import 'package:bokshaulforwarder/Model/order_detail.dart';
 import 'package:bokshaulforwarder/Model/order_detail_json.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 
 import '../Resource/stylesheet.dart';
 import 'map_app.dart';
@@ -18,41 +17,23 @@ class OngoingOrder extends StatefulWidget {
 
 class _OngoingOrderState extends State<OngoingOrder> {
   bool isLoading = false;
-  late OrderDetail currentOrder;
+  late String avatar;
 
-  // @override
-  // void initState() {
-  //   _getFreshData();
-  //   super.initState();
-  // }
-
-  // Future<void> _getFreshData() async {
-  //   getOrderData(context);
-  // }
-
-  // void getOrderData(BuildContext context) async {
-  //   SharedPreferences pref = await SharedPreferences.getInstance();
-  //   String token = pref.getString('token')!;
-
-  //   Uri url = Uri.parse(
-  //       'https://apiflutter.forwarder.boksman.co.id/orderberlangsung/detail/' +
-  //           widget.orderid);
-  //   var jsonResponse = await http.get(url, headers: {'token': token});
-  //   setState(() {
-  //     var convertResult = jsonDecode(jsonResponse.body);
-  //     currentOrder = convertResult;
-  //   });
-  // }
+  @override
+  void initState() {
+    avatar = Random().nextInt(15).toString();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    OrderDetail order = widget.currentOrder;
     var width = MediaQuery.of(context).size.width;
-    // var height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          currentOrder.gkOrder!,
+          order.gkOrder!,
           style: TextStyle(color: Colors.black),
         ),
         leading: InkWell(
@@ -88,37 +69,35 @@ class _OngoingOrderState extends State<OngoingOrder> {
                   child: ListView(
                     controller: controller,
                     children: [
-                      Center(
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 1,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
+                      Column(
+                        children: [
+                          Container(
+                            height: 1,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
                               ),
                             ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Container(
-                              height: 1,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            height: 1,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
                               ),
                             ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                        ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,6 +110,8 @@ class _OngoingOrderState extends State<OngoingOrder> {
                                 child: CircleAvatar(
                                   backgroundColor: Colors.white,
                                   radius: width * 0.065,
+                                  backgroundImage: AssetImage(
+                                      "images/avatar/" + avatar + ".png"),
                                 ),
                               ),
                               SizedBox(
@@ -142,7 +123,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                                   Row(
                                     children: [
                                       Text(
-                                        "order.orderId",
+                                        order.noContainer.toString(),
                                         style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
@@ -156,7 +137,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                                           padding: EdgeInsets.only(
                                               left: 10, right: 10),
                                           child: Text(
-                                            "order.status",
+                                            "Berlangsung",
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 12,
@@ -176,7 +157,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                                   Row(
                                     children: [
                                       Text(
-                                        "order.namaDriver",
+                                        order.namaDriver!,
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400),
@@ -188,7 +169,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                                             fontWeight: FontWeight.w400),
                                       ),
                                       Text(
-                                        "082274867174",
+                                        order.noPolisi!,
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400),
@@ -199,84 +180,19 @@ class _OngoingOrderState extends State<OngoingOrder> {
                               ),
                             ],
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.chat_outlined,
-                              color: Colors.black,
-                            ),
-                          ),
+                          // IconButton(
+                          //   onPressed: () {},
+                          //   icon: Icon(
+                          //     Icons.chat_outlined,
+                          //     color: Colors.black,
+                          //   ),
+                          // ),
                         ],
                       ),
                       SizedBox(
                         height: 10,
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.grey,
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            children: [
-                              CircleAvatar(
-                                radius: 10,
-                                child: Icon(
-                                  Icons.location_on_outlined,
-                                  size: 15,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Flexible(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Tempat pengambilan lorem Ipsum dolor sinaaaaaaaaaaa",
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment
-                                          .spaceBetween, //tidak berfungsi
-                                      children: [
-                                        Text(
-                                          "Asal",
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xFF6D6C6B),
-                                          ),
-                                        ),
-                                        Text(
-                                          "10:00 WIB",
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xFF6D6C6B),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      currentStatus(order),
                       SizedBox(
                         height: 10,
                       ),
@@ -305,7 +221,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Shipping Line",
+                            order.slName!,
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
@@ -313,7 +229,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                             ),
                           ),
                           Text(
-                            "Jadwal Pelayaran",
+                            order.eTD!,
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
@@ -325,8 +241,11 @@ class _OngoingOrderState extends State<OngoingOrder> {
                       SizedBox(
                         height: 10,
                       ),
+                      //Asal dan Tujuan
                       Text(
-                        "Tempat Asal (Origin)",
+                        order.statusOrder == 1 || order.statusOrder == 4
+                            ? order.namaPort!
+                            : order.namaGudang!,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
@@ -334,7 +253,9 @@ class _OngoingOrderState extends State<OngoingOrder> {
                         ),
                       ),
                       Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pellentesque volutpat lorem quis auctor.",
+                        order.statusOrder == 1 || order.statusOrder == 4
+                            ? order.addressPort!
+                            : order.addressGudang!,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
@@ -345,7 +266,9 @@ class _OngoingOrderState extends State<OngoingOrder> {
                         height: 10,
                       ),
                       Text(
-                        "Tempat Tujuan (Destinasi)",
+                        order.statusOrder == 1 || order.statusOrder == 4
+                            ? order.namaGudang!
+                            : order.namaPort!,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
@@ -353,7 +276,9 @@ class _OngoingOrderState extends State<OngoingOrder> {
                         ),
                       ),
                       Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pellentesque volutpat lorem quis auctor.",
+                        order.statusOrder == 1 || order.statusOrder == 4
+                            ? order.addressGudang!
+                            : order.addressPort!,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
@@ -364,7 +289,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                         width: 10,
                       ),
                       Divider(
-                        color: Color(0xFFC4C4C3),
+                        color: Colors.blue,
                       ),
                       SizedBox(
                         width: 10,
@@ -377,18 +302,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                       SizedBox(
                         height: 10,
                       ),
-                      buildStatusOrderDone(),
-                      buildStatusOrderDone(),
-                      buildStatusOrderNow(),
-                      buildStatusOrder(),
-                      buildStatusOrder(),
-                      buildStatusOrder(),
-                      buildStatusOrder(),
-                      buildStatusOrder(),
-                      buildStatusOrder(),
-                      buildStatusOrder(),
-                      buildStatusOrder(),
-                      buildStatusOrder(),
+                      ...getOrderStatus(order),
                     ],
                   ),
                 );
@@ -400,25 +314,10 @@ class _OngoingOrderState extends State<OngoingOrder> {
     );
   }
 
-  Widget buildStatusOrder() {
+  Widget buildStatusOrder(CircleAvatar icon, String msg, String time) {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: CircleAvatar(
-            radius: 11,
-            backgroundColor: Colors.grey,
-            child: CircleAvatar(
-              radius: 10,
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.lens,
-                size: 15,
-                color: Colors.grey,
-              ),
-            ),
-          ),
-        ),
+        Padding(padding: const EdgeInsets.all(10.0), child: icon),
         Flexible(
           child: Container(
             child: Column(
@@ -426,7 +325,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Tempat pengambilan lorem Ipsum dolor sinaaaa",
+                  msg,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
@@ -434,35 +333,13 @@ class _OngoingOrderState extends State<OngoingOrder> {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  "destination",
+                  time.toString(),
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w600,
                     color: Color(0xFF6D6C6B),
                   ),
                 ),
-                // Row(
-                //   mainAxisAlignment:
-                //       MainAxisAlignment.spaceBetween, //tidak berfungsi
-                //   children: [
-                //     Text(
-                //       "destination",
-                //       style: TextStyle(
-                //         fontSize: 10,
-                //         fontWeight: FontWeight.w600,
-                //         color: Color(0xFF6D6C6B),
-                //       ),
-                //     ),
-                //     Text(
-                //       "10:00 WIB",
-                //       style: TextStyle(
-                //         fontSize: 10,
-                //         fontWeight: FontWeight.w600,
-                //         color: Color(0xFF6D6C6B),
-                //       ),
-                //     ),
-                //   ],
-                // )
               ],
             ),
           ),
@@ -471,129 +348,89 @@ class _OngoingOrderState extends State<OngoingOrder> {
     );
   }
 
-  Widget buildStatusOrderNow() {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: CircleAvatar(
-            radius: 11,
-            child: CircleAvatar(
+  List<Widget> getOrderStatus(OrderDetail order) {
+    List<Widget> currentStatus = [];
+    if (order.statusOrder == 1 || order.statusOrder == 4) {
+      for (var i = 4; i <= 13; i++) {
+        if (i >= 8 && i < 13) {
+          continue;
+        } else if (i < order.statusDriver!) {
+          currentStatus.add(
+            buildStatusOrder(statusDone, orderMessage[i + 4], "Unknown"),
+          );
+        } else if (i > order.statusDriver!) {
+          currentStatus.add(
+            buildStatusOrder(status, orderMessage[i + 4], ""),
+          );
+        } else if (i == order.statusDriver) {
+          currentStatus.add(
+            buildStatusOrder(statusNow, orderMessage[i + 4], ""),
+          );
+        }
+      }
+    } else if (order.statusOrder == 2 || order.statusOrder == 3) {
+      for (var i = 4; i <= 13; i++) {
+        if (i < order.statusDriver!) {
+          currentStatus.add(
+            buildStatusOrder(statusDone, orderMessage[i + 4], "Unknown"),
+          );
+        } else if (i > order.statusDriver!) {
+          currentStatus.add(
+            buildStatusOrder(status, orderMessage[i + 4], ""),
+          );
+        } else if (i == order.statusDriver) {
+          currentStatus.add(
+            buildStatusOrder(statusNow, orderMessage[i + 4], ""),
+          );
+        }
+      }
+    }
+    return currentStatus;
+  }
+
+  Widget currentStatus(OrderDetail order) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.grey,
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(5),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          children: [
+            CircleAvatar(
               radius: 10,
-              backgroundColor: Colors.white,
               child: Icon(
-                Icons.lens,
+                Icons.location_on_outlined,
                 size: 15,
               ),
             ),
-          ),
-        ),
-        Flexible(
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Tempat pengambilan lorem Ipsum dolor sinaaaa",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  "destination",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF6D6C6B),
-                  ),
-                ),
-                // Row(
-                //   mainAxisAlignment:
-                //       MainAxisAlignment.spaceBetween, //tidak berfungsi
-                //   children: [
-                //     Text(
-                //       "destination",
-                //       style: TextStyle(
-                //         fontSize: 10,
-                //         fontWeight: FontWeight.w600,
-                //         color: Color(0xFF6D6C6B),
-                //       ),
-                //     ),
-                //     Text(
-                //       "10:00 WIB",
-                //       style: TextStyle(
-                //         fontSize: 10,
-                //         fontWeight: FontWeight.w600,
-                //         color: Color(0xFF6D6C6B),
-                //       ),
-                //     ),
-                //   ],
-                // )
-              ],
+            SizedBox(
+              width: 10,
             ),
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget buildStatusOrderDone() {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: CircleAvatar(
-            radius: 10,
-            child: Icon(
-              Icons.done,
-              size: 15,
-            ),
-          ),
-        ),
-        Flexible(
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Tempat pengambilan lorem Ipsum dolor sinaaaa",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween, //tidak berfungsi
-                  children: [
-                    Text(
-                      "destination",
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF6D6C6B),
-                      ),
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    orderMessage[order.statusDriver! + 4],
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
                     ),
-                    Text(
-                      "10:00 WIB",
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF6D6C6B),
-                      ),
-                    ),
-                  ],
-                )
-              ],
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
             ),
-          ),
-        )
-      ],
+          ],
+        ),
+      ),
     );
   }
 }

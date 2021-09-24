@@ -20,6 +20,7 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   late Image imageOrderDone, imageOrderPending, imageOrderOngoing;
   late OrderDetail currentOrder;
+  bool isLoading = false;
   @override
   void initState() {
     super.initState();
@@ -37,7 +38,6 @@ class _OrderPageState extends State<OrderPage> {
   }
 
   Widget build(BuildContext context) {
-    bool isLoading = false;
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return SafeArea(

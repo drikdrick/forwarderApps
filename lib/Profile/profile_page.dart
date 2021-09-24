@@ -43,9 +43,6 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    // var width = MediaQuery.of(context).size.width;
-    // var height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       appBar: AppBar(
         title: _isLoading
@@ -55,84 +52,80 @@ class _ProfileState extends State<Profile> {
             : Text(user.company),
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    _isLoading
-                        ? SizedBox(
-                            height: 60,
-                            child: CircularProgressIndicator(),
-                          )
-                        : userProfile(user.username, user.phone, user.email),
-                    Divider(),
-                    _isLoading
-                        ? Container()
-                        : settingOption(
-                            context,
-                            "Edit Profile",
-                            EditProfile(
-                              currentUser: user,
-                            ),
-                            Icon(Icons.edit)),
-                    // Divider(),
-                    // settingOption(context, "Pengaturan Aplikasi", Setting(),
-                    //     Icon(Icons.settings)),
-                    Divider(),
-                    settingOption(context, "Ganti Password", EditPassword(),
-                        Icon(Icons.lock)),
-                    Divider(),
-                    settingOption(context, "Halaman Bantuan", HelpCentre(),
-                        Icon(Icons.help_center)),
-                    Divider(),
-                    settingOption(context, "Kebijakan Privasi", PrivacyPolicy(),
-                        Icon(Icons.privacy_tip)),
-                    Divider(),
-                    settingOption(context, "Syarat dan Ketentuan",
-                        TermCondition(), Icon(Icons.quiz)),
-                    Divider(),
-                    InkWell(
-                      onTap: () {
-                        reset(context);
-                      },
-                      child: SizedBox(
-                        height: 40,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Icon(Icons.logout_rounded),
-                                ),
-                                Text(
-                                  "Logout",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 15,
-                            ),
-                          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  _isLoading
+                      ? SizedBox(
+                          height: 60,
+                          child: CircularProgressIndicator(),
+                        )
+                      : userProfile(user.username, user.phone, user.email),
+                  Divider(),
+                  _isLoading
+                      ? Container()
+                      : settingOption(
+                          context,
+                          "Edit Profile",
+                          EditProfile(
+                            currentUser: user,
+                          ),
+                          Icon(Icons.edit),
                         ),
+                  Divider(),
+                  settingOption(context, "Ganti Password", EditPassword(),
+                      Icon(Icons.lock)),
+                  Divider(),
+                  settingOption(context, "Halaman Bantuan", HelpCentre(),
+                      Icon(Icons.help_center)),
+                  Divider(),
+                  settingOption(context, "Kebijakan Privasi", PrivacyPolicy(),
+                      Icon(Icons.privacy_tip)),
+                  Divider(),
+                  settingOption(context, "Syarat dan Ketentuan",
+                      TermCondition(), Icon(Icons.quiz)),
+                  Divider(),
+                  InkWell(
+                    onTap: () {
+                      reset(context);
+                    },
+                    child: SizedBox(
+                      height: 40,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Icon(Icons.logout_rounded),
+                              ),
+                              Text(
+                                "Logout",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
+                        ],
                       ),
                     ),
-                    Divider(),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  Divider(),
+                ],
+              ),
+            ],
           ),
         ),
       ),

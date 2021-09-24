@@ -121,7 +121,28 @@ Future<OrderDetail> getOrderDetail(orderId) async {
   // print(jsonResult);
   // var orderData = (jsonResult as Map<String, dynamic>);
   // return OrderDetail.createOrder(orderData);
-  print(jsonResult['data']);
+  print(jsonResult['data'][0]['time_tiba_dipelabuhan']);
 
   return OrderDetail.createOrder(jsonResult['data'][0]);
 }
+
+List orderMessage = [
+  "Pekerjaan diterima.",
+  "Menuju pelabuhan.",
+  "Tiba di pelabuhan.",
+  "Muat di pelabuhan.",
+  "Menunggu keluar pelabuhan.",
+  "Menuju gudang consignee.",
+  "Tiba di gudang consignee.",
+  "Bongkar muat.",
+  "Menuju depo.",
+  "Tiba di depo.",
+  "Cek kontainer.",
+  "Keluar depo",
+  "Menuju gudang shipper",
+  "Tiba digudang shipper",
+  "Muat barang",
+  "Menuju pelabuhan",
+  "Tiba di pelabuhan.",
+  "Selesai",
+];

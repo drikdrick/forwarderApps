@@ -42,7 +42,7 @@ class SuccessOrder extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      currentOrder.gkOrder!,
+                      currentOrder.gkOrder,
                       style:
                           TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                     ),
@@ -89,7 +89,7 @@ class SuccessOrder extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                Text(currentOrder.slName!),
+                Text(currentOrder.slName),
               ],
             ),
             Row(
@@ -238,7 +238,7 @@ class SuccessOrder extends StatelessWidget {
                       MainAxisAlignment.spaceBetween, //tidak berfungsi
                   children: [
                     Text(
-                      currentOrder.namaPort!,
+                      currentOrder.namaPort,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,

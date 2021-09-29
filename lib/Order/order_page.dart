@@ -73,8 +73,7 @@ class _OrderPageState extends State<OrderPage> {
                             List? freshOrders = snapshot.data;
                             if (freshOrders!.length == 0) {
                               return Column(
-                                crossAxisAlignment:
-                                    CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
@@ -83,8 +82,8 @@ class _OrderPageState extends State<OrderPage> {
                                   Image.asset('images/null_ongoing.png'),
                                   Text(
                                     "Belum ada order yang berlangsung.",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w700),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w700),
                                   ),
                                 ],
                               );
@@ -96,15 +95,13 @@ class _OrderPageState extends State<OrderPage> {
                                       children: <Widget>[
                                         InkWell(
                                           child: cardOnGoingOrder(
-                                              freshOrders.gkOrder ??
-                                                  "Uknown",
+                                              freshOrders.gkOrder ?? "Uknown",
                                               freshOrders.name ?? "Uknown",
                                               freshOrders.noContainer ??
                                                   "Uknown",
                                               freshOrders.addressPort ??
                                                   "Uknown",
-                                              freshOrders.namaPort ??
-                                                  "Uknown",
+                                              freshOrders.namaPort ?? "Uknown",
                                               freshOrders.namaGudang ??
                                                   "Uknown",
                                               freshOrders.addressGudang ??
@@ -113,15 +110,10 @@ class _OrderPageState extends State<OrderPage> {
                                             setState(() {
                                               isLoading = true;
                                             });
-                                            getOrderDetail(
-                                                    freshOrders.gkOrder)
+                                            getOrderDetail(freshOrders.gkOrder)
                                                 .then(
                                               (value) {
                                                 currentOrder = value;
-                                                print(currentOrder.gkOrder);
-                                                setState(() {
-                                                  isLoading = false;
-                                                });
                                                 Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
@@ -132,6 +124,9 @@ class _OrderPageState extends State<OrderPage> {
                                                     ),
                                                   ),
                                                 );
+                                                setState(() {
+                                                  isLoading = false;
+                                                });
                                               },
                                             );
                                           },
@@ -149,8 +144,7 @@ class _OrderPageState extends State<OrderPage> {
                           return new Center(
                             child: new Column(
                               children: <Widget>[
-                                new Padding(
-                                    padding: new EdgeInsets.all(50.0)),
+                                new Padding(padding: new EdgeInsets.all(50.0)),
                                 new CircularProgressIndicator(),
                               ],
                             ),

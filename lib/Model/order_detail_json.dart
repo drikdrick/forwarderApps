@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class OrderDetail {
-  String? gkOrder;
+  String gkOrder;
   String? eTD;
   String? namaDriver;
   String? noPolisi;
@@ -30,47 +30,52 @@ class OrderDetail {
   String? timeMuatBarang;
   String? timeMenujuPelabuhanEx;
   String? timeTibaDipelabuhanEx;
-  String? slName;
-  String? vesselName;
-  String? voyageNumber;
-  String? namaPort;
-  String? addressPort;
-  String? namaGudang;
-  String? addressGudang;
+  String slName;
+  String vesselName;
+  String voyageNumber;
+  String namaPort;
+  String addressPort;
+  String coordinatePort;
+  String namaGudang;
+  String coordinateGudang;
+  String addressGudang;
 
-  OrderDetail(
-      {required this.gkOrder,
-      required this.eTD,
-      required this.namaDriver,
-      required this.noPolisi,
-      required this.companyName,
-      required this.noContainer,
-      required this.statusOrder,
-      required this.statusDriver,
-      required this.timeSelesai,
-      required this.timeMenujuPelabuhan,
-      required this.timeTibaDipelabuhan,
-      required this.timeMuatDipelabuhan,
-      required this.timeMenungguKeluarPelabuhan,
-      required this.timeMenujuGudangConsignee,
-      required this.timeTibaGudangConsignee,
-      required this.timeBongkarMuat,
-      required this.timeMenujuDepo,
-      required this.timeTibaDepo,
-      required this.timeCekContainer,
-      required this.timeKeluarDepo,
-      required this.timeMenujuGudangShipper,
-      required this.timeTibaGudangShipper,
-      required this.timeMuatBarang,
-      required this.timeMenujuPelabuhanEx,
-      required this.timeTibaDipelabuhanEx,
-      required this.slName,
-      required this.vesselName,
-      required this.voyageNumber,
-      required this.namaPort,
-      required this.addressPort,
-      required this.namaGudang,
-      required this.addressGudang});
+  OrderDetail({
+    required this.gkOrder,
+    required this.eTD,
+    required this.namaDriver,
+    required this.noPolisi,
+    required this.companyName,
+    required this.noContainer,
+    required this.statusOrder,
+    required this.statusDriver,
+    required this.timeSelesai,
+    required this.timeMenujuPelabuhan,
+    required this.timeTibaDipelabuhan,
+    required this.timeMuatDipelabuhan,
+    required this.timeMenungguKeluarPelabuhan,
+    required this.timeMenujuGudangConsignee,
+    required this.timeTibaGudangConsignee,
+    required this.timeBongkarMuat,
+    required this.timeMenujuDepo,
+    required this.timeTibaDepo,
+    required this.timeCekContainer,
+    required this.timeKeluarDepo,
+    required this.timeMenujuGudangShipper,
+    required this.timeTibaGudangShipper,
+    required this.timeMuatBarang,
+    required this.timeMenujuPelabuhanEx,
+    required this.timeTibaDipelabuhanEx,
+    required this.slName,
+    required this.vesselName,
+    required this.voyageNumber,
+    required this.namaPort,
+    required this.addressPort,
+    required this.coordinatePort,
+    required this.namaGudang,
+    required this.coordinateGudang,
+    required this.addressGudang,
+  });
 
   factory OrderDetail.createOrder(Map<String, dynamic> json) => OrderDetail(
         gkOrder: json['gk_order'],
@@ -98,13 +103,15 @@ class OrderDetail {
         timeMuatBarang: json['time_muat_barang'],
         timeMenujuPelabuhanEx: json['time_menuju_pelabuhan_ex'],
         timeTibaDipelabuhanEx: json['time_tiba_dipelabuhan_ex'],
-        slName: json['sl_name'],
-        vesselName: json['vessel_name'],
-        voyageNumber: json['voyage_number'],
-        namaPort: json['nama_port'],
-        addressPort: json['address_port'],
-        namaGudang: json['nama_gudang'],
-        addressGudang: json['address_gudang'],
+        slName: json["sl_name"],
+        vesselName: json["vessel_name"],
+        voyageNumber: json["voyage_number"],
+        namaPort: json["nama_port"],
+        addressPort: json["address_port"],
+        coordinatePort: json["coordinate_port"],
+        namaGudang: json["nama_gudang"],
+        coordinateGudang: json["coordinate_gudang"],
+        addressGudang: json["address_gudang"],
       );
 }
 
@@ -118,10 +125,6 @@ Future<OrderDetail> getOrderDetail(orderId) async {
 
   var response = await http.get(url, headers: {'token': token});
   var jsonResult = json.decode(response.body);
-  // print(jsonResult);
-  // var orderData = (jsonResult as Map<String, dynamic>);
-  // return OrderDetail.createOrder(orderData);
-  print(jsonResult['data'][0]['time_tiba_dipelabuhan']);
 
   return OrderDetail.createOrder(jsonResult['data'][0]);
 }

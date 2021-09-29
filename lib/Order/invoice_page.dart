@@ -58,7 +58,7 @@ class _InvoiceState extends State<Invoice> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         List? invoiceUnpaid = snapshot.data;
-                        print(invoiceUnpaid);
+                        // print(invoiceUnpaid);
                         if (invoiceUnpaid!.length == 0) {
                           return Center(
                             child: Column(
@@ -116,7 +116,7 @@ class _InvoiceState extends State<Invoice> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         List? invoiceUnpaid = snapshot.data;
-                        print(invoiceUnpaid);
+                        // print(invoiceUnpaid);
                         if (invoiceUnpaid!.length == 0) {
                           return Center(
                             child: Column(

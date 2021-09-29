@@ -3,6 +3,8 @@
    <application
         android:label="BoksHaul Forwarder New"
         android:icon="@mipmap/launcher_icon">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCR-sNC4IhH4v9U52j-BhfvOX_CRSxpvOM"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

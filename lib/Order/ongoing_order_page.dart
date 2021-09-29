@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:bokshaulforwarder/Model/order_detail.dart';
 import 'package:bokshaulforwarder/Model/order_detail_json.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +32,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          order.gkOrder!,
+          order.gkOrder,
           style: TextStyle(color: Colors.black),
         ),
         leading: InkWell(
@@ -51,7 +50,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
         child: Stack(
           children: [
             Center(
-              child: Map(),
+              child: Map(order: order,),
             ),
             DraggableScrollableSheet(
               initialChildSize: 0.25,
@@ -221,7 +220,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            order.slName!,
+                            order.slName,
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
@@ -244,8 +243,8 @@ class _OngoingOrderState extends State<OngoingOrder> {
                       //Asal dan Tujuan
                       Text(
                         order.statusOrder == 1 || order.statusOrder == 4
-                            ? order.namaPort!
-                            : order.namaGudang!,
+                            ? order.namaPort
+                            : order.namaGudang,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
@@ -254,8 +253,8 @@ class _OngoingOrderState extends State<OngoingOrder> {
                       ),
                       Text(
                         order.statusOrder == 1 || order.statusOrder == 4
-                            ? order.addressPort!
-                            : order.addressGudang!,
+                            ? order.addressPort
+                            : order.addressGudang,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
@@ -267,8 +266,8 @@ class _OngoingOrderState extends State<OngoingOrder> {
                       ),
                       Text(
                         order.statusOrder == 1 || order.statusOrder == 4
-                            ? order.namaGudang!
-                            : order.namaPort!,
+                            ? order.namaGudang
+                            : order.namaPort,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
@@ -277,8 +276,8 @@ class _OngoingOrderState extends State<OngoingOrder> {
                       ),
                       Text(
                         order.statusOrder == 1 || order.statusOrder == 4
-                            ? order.addressGudang!
-                            : order.addressPort!,
+                            ? order.addressGudang
+                            : order.addressPort,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
@@ -348,39 +347,191 @@ class _OngoingOrderState extends State<OngoingOrder> {
     );
   }
 
+  Widget nextStatusOrder(CircleAvatar icon, String msg) {
+    return Row(
+      children: [
+        Padding(padding: const EdgeInsets.all(10.0), child: icon),
+        Text(
+          msg,
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
+    );
+  }
+
   List<Widget> getOrderStatus(OrderDetail order) {
     List<Widget> currentStatus = [];
     if (order.statusOrder == 1 || order.statusOrder == 4) {
-      for (var i = 4; i <= 13; i++) {
+      for (var i = -4; i <= 13; i++) {
         if (i >= 8 && i < 13) {
           continue;
         } else if (i < order.statusDriver!) {
-          currentStatus.add(
-            buildStatusOrder(statusDone, orderMessage[i + 4], "Unknown"),
-          );
+          switch (i) {
+            case -4:
+              currentStatus
+                  .add(nextStatusOrder(statusDone, orderMessage[i + 4]));
+
+              break;
+            case -3:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeMenujuPelabuhan.toString()),
+              );
+
+              break;
+            case -2:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeTibaDipelabuhan.toString()),
+              );
+
+              break;
+            case -1:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeMuatDipelabuhan.toString()),
+              );
+
+              break;
+            case 0:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeMenungguKeluarPelabuhan.toString()),
+              );
+
+              break;
+            case 1:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeMenujuGudangConsignee.toString()),
+              );
+
+              break;
+            case 2:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeTibaGudangConsignee.toString()),
+              );
+
+              break;
+            case 3:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeBongkarMuat.toString()),
+              );
+
+              break;
+            case 4:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeMenujuDepo.toString()),
+              );
+
+              break;
+            case 5:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeTibaDepo.toString()),
+              );
+
+              break;
+            case 6:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeCekContainer.toString()),
+              );
+
+              break;
+            case 7:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeKeluarDepo.toString()),
+              );
+
+              break;
+            default:
+          }
         } else if (i > order.statusDriver!) {
           currentStatus.add(
-            buildStatusOrder(status, orderMessage[i + 4], ""),
+            nextStatusOrder(status, orderMessage[i + 4]),
           );
         } else if (i == order.statusDriver) {
           currentStatus.add(
-            buildStatusOrder(statusNow, orderMessage[i + 4], ""),
+            nextStatusOrder(statusNow, orderMessage[i + 4]),
           );
         }
       }
     } else if (order.statusOrder == 2 || order.statusOrder == 3) {
       for (var i = 4; i <= 13; i++) {
         if (i < order.statusDriver!) {
-          currentStatus.add(
-            buildStatusOrder(statusDone, orderMessage[i + 4], "Unknown"),
-          );
+          switch (i) {
+            case 4:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeMenujuDepo.toString()),
+              );
+              break;
+            case 5:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeTibaDepo.toString()),
+              );
+              break;
+            case 6:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeCekContainer.toString()),
+              );
+              break;
+            case 7:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeKeluarDepo.toString()),
+              );
+              break;
+            case 8:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeMenujuGudangShipper.toString()),
+              );
+              break;
+            case 9:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeTibaGudangShipper.toString()),
+              );
+              break;
+            case 10:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeMuatBarang.toString()),
+              );
+              break;
+            case 11:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeMenujuPelabuhan.toString()),
+              );
+              break;
+            case 12:
+              currentStatus.add(
+                buildStatusOrder(statusDone, orderMessage[i + 4],
+                    order.timeTibaDipelabuhanEx.toString()),
+              );
+              break;
+            default:
+          }
         } else if (i > order.statusDriver!) {
           currentStatus.add(
-            buildStatusOrder(status, orderMessage[i + 4], ""),
+            nextStatusOrder(status, orderMessage[i + 4]),
           );
         } else if (i == order.statusDriver) {
           currentStatus.add(
-            buildStatusOrder(statusNow, orderMessage[i + 4], ""),
+            nextStatusOrder(statusNow, orderMessage[i + 4]),
           );
         }
       }

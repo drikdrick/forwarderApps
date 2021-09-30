@@ -89,8 +89,17 @@ class SuccessOrder extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                Text(currentOrder.slName),
+                Expanded(
+                  child: Text(
+                    currentOrder.slName,
+                    overflow: TextOverflow.visible,
+                    textAlign: TextAlign.right,
+                  ),
+                ),
               ],
+            ),
+            SizedBox(
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -191,12 +200,16 @@ class SuccessOrder extends StatelessWidget {
                         currentOrder.timeMenujuGudangShipper.toString()), //8
                     milestone("Tiba di Gudang Shipper",
                         currentOrder.timeTibaGudangShipper.toString()), //9
-                    milestone("Muat Barang", "10:00 WIB"), //10
-                    milestone("Menuju Pelabuhan", "10:00 WIB"), //11
-                    milestone("Tiba di Pelabuhan", "10:00 WIB"), //12
+                    milestone("Muat Barang",
+                        currentOrder.timeMuatBarang.toString()), //10
+                    milestone("Menuju Pelabuhan",
+                        currentOrder.timeMenujuPelabuhanEx.toString()), //11
+                    milestone("Tiba di Pelabuhan",
+                        currentOrder.timeTibaDipelabuhanEx.toString()), //12
                   ],
 
-                  milestone("Selesai", "10:00 WIB"), //13
+                  milestone(
+                      "Selesai", currentOrder.timeSelesai.toString()), //13
                 ],
               ),
             ),

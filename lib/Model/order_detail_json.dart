@@ -6,30 +6,30 @@ import 'package:http/http.dart' as http;
 
 class OrderDetail {
   String gkOrder;
-  String? eTD;
-  String? namaDriver;
-  String? noPolisi;
-  String? companyName;
-  String? noContainer;
-  int? statusOrder;
-  int? statusDriver;
-  String? timeSelesai;
-  String? timeMenujuPelabuhan;
-  String? timeTibaDipelabuhan;
-  String? timeMuatDipelabuhan;
-  String? timeMenungguKeluarPelabuhan;
-  String? timeMenujuGudangConsignee;
-  String? timeTibaGudangConsignee;
-  String? timeBongkarMuat;
-  String? timeMenujuDepo;
-  String? timeTibaDepo;
-  String? timeCekContainer;
-  String? timeKeluarDepo;
-  String? timeMenujuGudangShipper;
-  String? timeTibaGudangShipper;
-  String? timeMuatBarang;
-  String? timeMenujuPelabuhanEx;
-  String? timeTibaDipelabuhanEx;
+  String eTD;
+  String namaDriver;
+  String noPolisi;
+  String companyName;
+  String noContainer;
+  int statusOrder;
+  int statusDriver;
+  String timeSelesai;
+  String timeMenujuPelabuhan;
+  String timeTibaDipelabuhan;
+  String timeMuatDipelabuhan;
+  String timeMenungguKeluarPelabuhan;
+  String timeMenujuGudangConsignee;
+  String timeTibaGudangConsignee;
+  String timeBongkarMuat;
+  String timeMenujuDepo;
+  String timeTibaDepo;
+  String timeCekContainer;
+  String timeKeluarDepo;
+  String timeMenujuGudangShipper;
+  String timeTibaGudangShipper;
+  String timeMuatBarang;
+  String timeMenujuPelabuhanEx;
+  String timeTibaDipelabuhanEx;
   String slName;
   String vesselName;
   String voyageNumber;
@@ -78,40 +78,40 @@ class OrderDetail {
   });
 
   factory OrderDetail.createOrder(Map<String, dynamic> json) => OrderDetail(
-        gkOrder: json['gk_order'],
-        eTD: json['ETD'],
-        namaDriver: json['nama_driver'],
-        noPolisi: json['no_polisi'],
-        companyName: json['company_name'],
-        noContainer: json['no_container'],
+        gkOrder: json['gk_order'] ?? "Uknown",
+        eTD: json['ETD'] ?? "Uknown",
+        namaDriver: json['nama_driver'] ?? "Uknown",
+        noPolisi: json['no_polisi'] ?? "Uknown",
+        companyName: json['company_name'] ?? "Uknown",
+        noContainer: json['no_container'] ?? "Uknown",
         statusOrder: json['status_order'],
         statusDriver: json['status_driver'],
-        timeSelesai: json['time_selesai'],
-        timeMenujuPelabuhan: json['time_menuju_pelabuhan'],
-        timeTibaDipelabuhan: json['time_tiba_dipelabuhan'],
-        timeMuatDipelabuhan: json['time_muat_dipelabuhan'],
-        timeMenungguKeluarPelabuhan: json['time_menunggu_keluar_pelabuhan'],
-        timeMenujuGudangConsignee: json['time_menuju_gudang_consignee'],
-        timeTibaGudangConsignee: json['time_tiba_gudang_consignee'],
-        timeBongkarMuat: json['time_bongkar_muat'],
-        timeMenujuDepo: json['time_menuju_depo'],
-        timeTibaDepo: json['time_tiba_depo'],
-        timeCekContainer: json['time_cek_container'],
-        timeKeluarDepo: json['time_keluar_depo'],
-        timeMenujuGudangShipper: json['time_menuju_gudang_shipper'],
-        timeTibaGudangShipper: json['time_tiba_gudang_shipper'],
-        timeMuatBarang: json['time_muat_barang'],
-        timeMenujuPelabuhanEx: json['time_menuju_pelabuhan_ex'],
-        timeTibaDipelabuhanEx: json['time_tiba_dipelabuhan_ex'],
-        slName: json["sl_name"],
-        vesselName: json["vessel_name"],
-        voyageNumber: json["voyage_number"],
-        namaPort: json["nama_port"],
-        addressPort: json["address_port"],
-        coordinatePort: json["coordinate_port"],
-        namaGudang: json["nama_gudang"],
-        coordinateGudang: json["coordinate_gudang"],
-        addressGudang: json["address_gudang"],
+        timeSelesai: json['time_selesai'] ?? "--:--",
+        timeMenujuPelabuhan: json['time_menuju_pelabuhan'] ?? "--:--",
+        timeTibaDipelabuhan: json['time_tiba_dipelabuhan'] ?? "--:--",
+        timeMuatDipelabuhan: json['time_muat_dipelabuhan'] ?? "--:--",
+        timeMenungguKeluarPelabuhan: json['time_menunggu_keluar_pelabuhan'] ?? "--:--",
+        timeMenujuGudangConsignee: json['time_menuju_gudang_consignee'] ?? "--:--",
+        timeTibaGudangConsignee: json['time_tiba_gudang_consignee'] ?? "--:--",
+        timeBongkarMuat: json['time_bongkar_muat'] ?? "--:--",
+        timeMenujuDepo: json['time_menuju_depo'] ?? "--:--",
+        timeTibaDepo: json['time_tiba_depo'] ?? "--:--",
+        timeCekContainer: json['time_cek_container'] ?? "--:--",
+        timeKeluarDepo: json['time_keluar_depo'] ?? "--:--",
+        timeMenujuGudangShipper: json['time_menuju_gudang_shipper'] ?? "--:--",
+        timeTibaGudangShipper: json['time_tiba_gudang_shipper'] ?? "--:--",
+        timeMuatBarang: json['time_muat_barang'] ?? "--:--",
+        timeMenujuPelabuhanEx: json['time_menuju_pelabuhan_ex'] ?? "--:--",
+        timeTibaDipelabuhanEx: json['time_tiba_dipelabuhan_ex'] ?? "--:--",
+        slName: json["sl_name"] ?? "Uknown",
+        vesselName: json["vessel_name"] ?? "Uknown",
+        voyageNumber: json["voyage_number"] ?? "Uknown",
+        namaPort: json["nama_port"] ?? "Uknown",
+        addressPort: json["address_port"] ?? "Uknown",
+        coordinatePort: json["coordinate_port"] ?? "Uknown",
+        namaGudang: json["nama_gudang"] ?? "Uknown",
+        coordinateGudang: json["coordinate_gudang"] ?? "Uknown",
+        addressGudang: json["address_gudang"] ?? "Uknown",
       );
 }
 

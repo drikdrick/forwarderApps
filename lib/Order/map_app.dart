@@ -42,7 +42,7 @@ class _MapState extends State<Map> {
         initialCameraPosition: CameraPosition(
           //innital position in map
           target: center, //initial position
-          zoom: 10.0,
+          zoom: 10,
           //initial zoom level
         ),
         markers: getmarkers(), //markers to show on map

@@ -50,7 +50,9 @@ class _OngoingOrderState extends State<OngoingOrder> {
         child: Stack(
           children: [
             Center(
-              child: Map(order: order,),
+              child: Map(
+                order: order,
+              ),
             ),
             DraggableScrollableSheet(
               initialChildSize: 0.25,
@@ -156,7 +158,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                                   Row(
                                     children: [
                                       Text(
-                                        order.namaDriver!,
+                                        order.namaDriver,
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400),
@@ -168,7 +170,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                                             fontWeight: FontWeight.w400),
                                       ),
                                       Text(
-                                        order.noPolisi!,
+                                        order.noPolisi,
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400),
@@ -228,7 +230,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                             ),
                           ),
                           Text(
-                            order.eTD!,
+                            order.eTD,
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
@@ -369,7 +371,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
       for (var i = -4; i <= 13; i++) {
         if (i >= 8 && i < 13) {
           continue;
-        } else if (i < order.statusDriver!) {
+        } else if (i < order.statusDriver) {
           switch (i) {
             case -4:
               currentStatus
@@ -455,7 +457,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
               break;
             default:
           }
-        } else if (i > order.statusDriver!) {
+        } else if (i > order.statusDriver) {
           currentStatus.add(
             nextStatusOrder(status, orderMessage[i + 4]),
           );
@@ -467,7 +469,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
       }
     } else if (order.statusOrder == 2 || order.statusOrder == 3) {
       for (var i = 4; i <= 13; i++) {
-        if (i < order.statusDriver!) {
+        if (i < order.statusDriver) {
           switch (i) {
             case 4:
               currentStatus.add(
@@ -525,7 +527,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
               break;
             default:
           }
-        } else if (i > order.statusDriver!) {
+        } else if (i > order.statusDriver) {
           currentStatus.add(
             nextStatusOrder(status, orderMessage[i + 4]),
           );
@@ -569,7 +571,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    orderMessage[order.statusDriver! + 4],
+                    orderMessage[order.statusDriver + 4],
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,

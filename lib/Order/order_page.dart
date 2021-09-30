@@ -113,14 +113,12 @@ class _OrderPageState extends State<OrderPage> {
                                             getOrderDetail(freshOrders.gkOrder)
                                                 .then(
                                               (value) {
-                                                currentOrder = value;
                                                 Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
                                                         OngoingOrder(
-                                                      currentOrder:
-                                                          currentOrder,
+                                                      currentOrder: value,
                                                     ),
                                                   ),
                                                 );

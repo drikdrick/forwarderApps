@@ -1,5 +1,9 @@
 import 'dart:convert';
 
+import 'package:bokshaulforwarder/Order/invoice_detail_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+
 DetailInvoice detailInvoiceFromJson(String str) =>
     DetailInvoice.fromJson(json.decode(str));
 
@@ -155,61 +159,61 @@ class DataCustomer {
 
   factory DataCustomer.fromJson(Map<String, dynamic> json) => DataCustomer(
         idCustomer: json["id_customer"],
-        firstLogin: json["first_login"],
-        company: json["company"],
-        address: json["address"],
-        district: json["district"],
-        city: json["city"],
-        state: json["state"],
-        country: json["country"],
-        zipCode: json["zip_code"],
-        contact: json["contact"],
-        username: json["username"],
-        password: json["password"],
-        phone: json["phone"],
-        telp: json["telp"],
-        email: json["email"],
-        coordinate: json["coordinate"],
-        level: json["level"],
-        entryDate: DateTime.parse(json["entry_date"]),
-        statusCustomer: json["status_customer"],
-        custType: json["cust_type"],
-        systemInvoice: json["system_invoice"],
-        bulanSystemInvoice: json["bulan_system_invoice"],
-        employeeNumberAe: json["employee_number_ae"],
-        memberSalesSupportId: json["member_sales_support_id"],
-        status: json["status"],
-        createDate: json["create_date"],
-        updateDateStatus: json["update_date_status"],
-        idAdminMpm: json["id_admin_mpm"],
-        npwpNumber: json["npwp_number"],
-        portId: json["port_id"],
-        createdAt: DateTime.parse(json["created_at"]),
-        createdBy: json["created_by"],
-        updatedAt: DateTime.parse(json["updated_at"]),
-        updatedBy: json["updated_by"],
-        deletedAt: json["deleted_at"],
-        deletedBy: json["deleted_by"],
-        dueDateInvoice: json["due_date_invoice"],
-        vendorNumber: json["vendor_number"],
-        vendorCode: json["vendor_code"],
-        vatInvoice: json["vat_invoice"],
-        financeEmail: json["finance_email"],
-        phase: json["phase"],
-        companyTypeId: json["company_type_id"],
-        website: json["website"],
-        personalEmail: json["personal_email"],
-        isSopData: json["is_sop_data"],
-        verifiedBy: json["verified_by"],
-        rejectedBy: json["rejected_by"],
-        dueDate: DateTime.parse(json["due_date"]),
-        invoiceDate: DateTime.parse(json["invoice_date"]),
-        jobOrder: json["job_order"],
-        bookingCode: json["booking_code"],
-        invoiceAmount: json["invoice_amount"],
-        terbilangInd: json["terbilang_ind"],
-        terbilangEng: json["terbilang_eng"],
-        totalVat: json["total_vat"],
+        firstLogin: json["first_login"] ?? "",
+        company: json["company"] ?? "",
+        address: json["address"] ?? "",
+        district: json["district"] ?? "",
+        city: json["city"] ?? "",
+        state: json["state"] ?? "",
+        country: json["country"] ?? "",
+        zipCode: json["zip_code"] ?? "",
+        contact: json["contact"] ?? "",
+        username: json["username"] ?? "",
+        password: json["password"] ?? "",
+        phone: json["phone"] ?? "",
+        telp: json["telp"] ?? "",
+        email: json["email"] ?? "",
+        coordinate: json["coordinate"] ?? "",
+        level: json["level"] ?? "",
+        entryDate: DateTime.parse(json["entry_date"] ?? ""),
+        statusCustomer: json["status_customer"] ?? "",
+        custType: json["cust_type"] ?? "",
+        systemInvoice: json["system_invoice"] ?? "",
+        bulanSystemInvoice: json["bulan_system_invoice"] ?? "",
+        employeeNumberAe: json["employee_number_ae"] ?? "",
+        memberSalesSupportId: json["member_sales_support_id"] ?? "",
+        status: json["status"] ?? "",
+        createDate: json["create_date"] ?? "",
+        updateDateStatus: json["update_date_status"] ?? "",
+        idAdminMpm: json["id_admin_mpm"] ?? "",
+        npwpNumber: json["npwp_number"] ?? "",
+        portId: json["port_id"] ?? "",
+        createdAt: DateTime.parse(json["created_at"] ?? ""),
+        createdBy: json["created_by"] ?? "",
+        updatedAt: DateTime.parse(json["updated_at"] ?? ""),
+        updatedBy: json["updated_by"] ?? "",
+        deletedAt: json["deleted_at"] ?? "",
+        deletedBy: json["deleted_by"] ?? "",
+        dueDateInvoice: json["due_date_invoice"] ?? "",
+        vendorNumber: json["vendor_number"] ?? "",
+        vendorCode: json["vendor_code"] ?? "",
+        vatInvoice: json["vat_invoice"] ?? "",
+        financeEmail: json["finance_email"] ?? "",
+        phase: json["phase"] ?? "",
+        companyTypeId: json["company_type_id"] ?? "",
+        website: json["website"] ?? "",
+        personalEmail: json["personal_email"] ?? "",
+        isSopData: json["is_sop_data"] ?? "",
+        verifiedBy: json["verified_by"] ?? "",
+        rejectedBy: json["rejected_by"] ?? "",
+        dueDate: DateTime.parse(json["due_date"] ?? ""),
+        invoiceDate: DateTime.parse(json["invoice_date"] ?? ""),
+        jobOrder: json["job_order"] ?? "",
+        bookingCode: json["booking_code"] ?? "",
+        invoiceAmount: json["invoice_amount"] ?? "",
+        terbilangInd: json["terbilang_ind"] ?? "",
+        terbilangEng: json["terbilang_eng"] ?? "",
+        totalVat: json["total_vat"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -298,16 +302,16 @@ class DataOrder {
   String slVv;
 
   factory DataOrder.fromJson(Map<String, dynamic> json) => DataOrder(
-        gkOrder: json["gk_order"],
-        containerSize: json["container_size"],
-        noPolisi: json["no_polisi"],
-        containerNumber: json["container_number"],
-        typeIoOrder: json["type_io_order"],
-        origin: json["origin"],
-        destination: json["destination"],
-        grandtotal: json["grandtotal"],
-        hargaDasar: json["harga_dasar"],
-        slVv: json["sl_vv"],
+        gkOrder: json["gk_order"] ?? "",
+        containerSize: json["container_size"] ?? "",
+        noPolisi: json["no_polisi"] ?? "",
+        containerNumber: json["container_number"] ?? "",
+        typeIoOrder: json["type_io_order"] ?? "",
+        origin: json["origin"] ?? "",
+        destination: json["destination"] ?? "",
+        grandtotal: json["grandtotal"] ?? "",
+        hargaDasar: json["harga_dasar"] ?? "",
+        slVv: json["sl_vv"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -324,5 +328,16 @@ class DataOrder {
       };
 }
 
-//Services
+Future<DetailInvoice> getInvoiceDetail(String invoiceID) async {
+  SharedPreferences _prefs = await SharedPreferences.getInstance();
+  String token = _prefs.getString('token')!;
 
+  Uri url =
+      Uri.parse("https://apiflutter.forwarder.boksman.co.id/detail/invoice");
+
+  var response = await http
+      .post(url, headers: {'token': token}, body: {"invoicenumber": invoiceID});
+
+  var jsonResult = json.decode(response.body);
+  return DetailInvoice.fromJson(jsonResult);
+}

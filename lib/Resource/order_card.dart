@@ -40,7 +40,7 @@ Widget cardOnGoingOrder(orderId, driverName, containerId, addressPort, namePort,
                         ),
                       ),
                       decoration: BoxDecoration(
-                        color: hijau,
+                        color: success,
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
@@ -111,7 +111,7 @@ Widget cardOnGoingOrder(orderId, driverName, containerId, addressPort, namePort,
             ),
             Divider(
               thickness: 1,
-              color: Colors.blue,
+              color: biruUtama,
             ),
             Row(
               children: [
@@ -239,7 +239,7 @@ Widget cardPendingOrder(orderId, driverName, containerId, addressPort, namePort,
                       child: Icon(
                         Icons.location_on_outlined,
                         size: 15,
-                        color: Colors.blue,
+                        color: biruUtama,
                       ),
                     ),
                   ),
@@ -403,7 +403,7 @@ Widget cardDoneOrder(orderId, driverName, containerId, addressPort, namePort,
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: CircleAvatar(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: biruUtama,
                     radius: 9,
                     child: Icon(
                       Icons.location_on_outlined,
@@ -446,7 +446,7 @@ Widget cardDoneOrder(orderId, driverName, containerId, addressPort, namePort,
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: CircleAvatar(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: biruUtama,
                     radius: 9,
                     child: Icon(
                       Icons.done,

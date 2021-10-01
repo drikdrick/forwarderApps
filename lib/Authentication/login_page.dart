@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                               fontSize: 30,
                               fontWeight: FontWeight.w700,
                               decoration: TextDecoration.underline,
-                              decorationColor: Colors.blue.withOpacity(0.75),
+                              decorationColor: biruUtama.withOpacity(0.75),
                               decorationThickness: 5,
                             ),
                           ),
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                                   borderSide: BorderSide(color: inputBorder),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
+                                  borderSide: BorderSide(color: biruUtama),
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                                 errorBorder: OutlineInputBorder(
@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                                   borderSide: BorderSide(color: inputBorder),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
+                                  borderSide: BorderSide(color: biruUtama),
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                                 errorBorder: OutlineInputBorder(
@@ -199,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.blue,
+                                  primary: biruUtama,
                                   textStyle: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     color: Colors.white,

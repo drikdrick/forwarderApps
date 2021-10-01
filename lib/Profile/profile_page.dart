@@ -1,5 +1,6 @@
 import 'package:bokshaulforwarder/Model/user.dart';
 import 'package:bokshaulforwarder/Profile/edit_password_page.dart';
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:bokshaulforwarder/Services/Authenticationi.dart';
 import 'package:bokshaulforwarder/Setting/HelpCentrePage.dart';
 import 'package:bokshaulforwarder/Setting/PrivatePolicyPage.dart';
@@ -176,7 +177,7 @@ class _ProfileState extends State<Profile> {
     return Row(
       children: [
         CircleAvatar(
-          backgroundColor: Colors.blue,
+          backgroundColor: biruUtama,
           radius: 35,
           backgroundImage: AssetImage("images/avatar/" + avatar + ".png"),
         ),
@@ -222,7 +223,7 @@ class _ProfileState extends State<Profile> {
           child: Container(
             width: double.infinity,
             height: 25,
-            color: Colors.blue,
+            color: biruUtama,
           ),
           gradient: LinearGradient(
             colors: [

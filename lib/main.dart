@@ -1,11 +1,12 @@
 // import 'package:bokshaulforwarder/LoginPage.dart';
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:bokshaulforwarder/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.blue.withOpacity(0.2),
+    statusBarColor: biruUtama.withOpacity(0.2),
   ));
   runApp(MyApp());
 }
@@ -18,8 +19,11 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Inter',
         primaryColor: Colors.black,
-        textTheme: TextTheme()
-            .apply(bodyColor: Colors.black, displayColor: Colors.black),
+        textTheme: TextTheme().apply(
+          bodyColor: Colors.black,
+          displayColor: Colors.black,
+        ),
+        primarySwatch: Colors.lightBlue,
       ),
       home: Splashscreen(),
     );

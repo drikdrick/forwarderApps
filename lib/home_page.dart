@@ -1,4 +1,5 @@
 import 'package:bokshaulforwarder/Notification/announcement_page.dart';
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:bokshaulforwarder/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -140,7 +141,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: Colors.blue,
+                      color: biruUtama,
                     ),
                   ),
                 ),

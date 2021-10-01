@@ -1,3 +1,4 @@
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 class Setting extends StatefulWidget {
@@ -39,7 +40,7 @@ class _SettingState extends State<Setting> {
   //       ),
   //       Checkbox(
   //         value: status,
-  //         activeColor: Colors.blue,
+  //         activeColor: biruUtama,
   //         onChanged: (bool? newValue) {
   //           setState(() {
   //             status = newValue!;
@@ -111,7 +112,7 @@ class _SettingState extends State<Setting> {
                     ),
                     Checkbox(
                       value: _isCheckedNotif,
-                      activeColor: Colors.blue,
+                      activeColor: biruUtama,
                       onChanged: (bool? newValue) {
                         setState(() {
                           _isCheckedNotif = newValue!;
@@ -147,7 +148,7 @@ class _SettingState extends State<Setting> {
                     ),
                     Checkbox(
                       value: _isCheckedNotifEmail,
-                      activeColor: Colors.blue,
+                      activeColor: biruUtama,
                       onChanged: (bool? newValue) {
                         setState(() {
                           _isCheckedNotifEmail = newValue!;
@@ -183,7 +184,7 @@ class _SettingState extends State<Setting> {
                     ),
                     Checkbox(
                       value: _isCheckedNotifTelepon,
-                      activeColor: Colors.blue,
+                      activeColor: biruUtama,
                       onChanged: (bool? newValue) {
                         setState(() {
                           _isCheckedNotifTelepon = newValue!;
@@ -219,7 +220,7 @@ class _SettingState extends State<Setting> {
                     ),
                     Checkbox(
                       value: _isCheckedFontSize,
-                      activeColor: Colors.blue,
+                      activeColor: biruUtama,
                       onChanged: (bool? newValue) {
                         setState(() {
                           _isCheckedFontSize = newValue!;
@@ -258,7 +259,7 @@ class _SettingState extends State<Setting> {
                     ),
                     Checkbox(
                       value: _isCheckedAssistHour,
-                      activeColor: Colors.blue,
+                      activeColor: biruUtama,
                       onChanged: (bool? newValue) {
                         setState(() {
                           _isCheckedAssistHour = newValue!;

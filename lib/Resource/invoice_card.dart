@@ -1,3 +1,4 @@
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 //Unpaid
@@ -5,7 +6,7 @@ Widget cardUnpaid(invoiceId, tglTempo, perusahaan) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
     child: Card(
-      shadowColor: Colors.blue,
+      shadowColor: biruUtama,
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -100,7 +101,7 @@ Widget cardPaid(invoiceId, tglTempo, perusahaan) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
     child: Card(
-      shadowColor: Colors.blue,
+      shadowColor: biruUtama,
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -189,7 +190,7 @@ Widget invoiceDetail(String asal, String tujuan, String container, String truck,
         borderRadius: BorderRadius.circular(10.0),
       ),
       elevation: 5,
-      shadowColor: Colors.blue,
+      shadowColor: biruUtama,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

@@ -7,7 +7,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 Color biruUtama = const Color(0xFF0891D5);
 Color btnPrimary = const Color(0xFF008DD4);
 Color merah = const Color(0xFFD71031);
-Color hijau = const Color(0xFF7FB800);
+// Color hijau = const Color(0xFF7FB800);
 Color success = const Color(0xFF7AC64F);
 Color orange = const Color(0xFFF08401);
 Color biruMuda = const Color(0xFFE5F7FF);
@@ -56,7 +56,7 @@ Widget loadingProcess(height, width) {
     decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
-          color: Colors.blue,
+          color: biruUtama,
           width: 1,
         ),
         borderRadius: BorderRadius.all(

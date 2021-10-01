@@ -45,7 +45,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             fontSize: 30,
                             fontWeight: FontWeight.w700,
                             decoration: TextDecoration.underline,
-                            decorationColor: Colors.blue.withOpacity(0.75),
+                            decorationColor: biruUtama.withOpacity(0.75),
                             decorationThickness: 5,
                           ),
                         ),
@@ -69,7 +69,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               borderSide: BorderSide(color: inputBorder),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blue),
+                              borderSide: BorderSide(color: biruUtama),
                             ),
                           ),
                         ),
@@ -89,7 +89,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           sendOTP();
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
+                          primary: biruUtama,
                           textStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             color: Colors.white,
@@ -137,7 +137,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       // );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: biruUtama,
           content: Text("OTP berhasil dikirim, cek email anda."),
         ),
       );

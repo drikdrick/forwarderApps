@@ -76,7 +76,7 @@ class _EditPasswordState extends State<EditPassword> {
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: biruUtama),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.red),
@@ -118,7 +118,7 @@ class _EditPasswordState extends State<EditPassword> {
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: biruUtama),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.red),
@@ -160,7 +160,7 @@ class _EditPasswordState extends State<EditPassword> {
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: biruUtama),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.red),
@@ -197,7 +197,7 @@ class _EditPasswordState extends State<EditPassword> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
+                        primary: biruUtama,
                         textStyle: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: Colors.white,

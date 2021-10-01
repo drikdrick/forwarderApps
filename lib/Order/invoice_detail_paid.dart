@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:bokshaulforwarder/Model/invoice_detail.dart';
 import 'package:bokshaulforwarder/Resource/invoice_card.dart';
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -63,10 +64,10 @@ class _InvoiceDetaiPaidState extends State<InvoiceDetaiPaid> {
               ),
             ),
             Divider(
-              color: Colors.blue,
+              color: biruUtama,
             ),
             Container(
-              color: Colors.blue.withOpacity(0.1),
+              color: biruUtama.withOpacity(0.1),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -116,7 +117,7 @@ class _InvoiceDetaiPaidState extends State<InvoiceDetaiPaid> {
               ),
             ),
             Divider(
-              color: Colors.blue,
+              color: biruUtama,
             ),
             Text(
               "Daftar Order",
@@ -137,7 +138,7 @@ class _InvoiceDetaiPaidState extends State<InvoiceDetaiPaid> {
         decoration: BoxDecoration(
           border: Border.symmetric(
             horizontal: BorderSide(
-              color: Colors.blue,
+              color: biruUtama,
               width: 2,
             ),
           ),
@@ -156,7 +157,7 @@ class _InvoiceDetaiPaidState extends State<InvoiceDetaiPaid> {
                   widget.currentInvoice.dataCustomer[0].invoiceAmount +
                   ",-",
               style: TextStyle(
-                color: Colors.blue,
+                color: biruUtama,
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),

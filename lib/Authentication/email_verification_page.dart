@@ -41,7 +41,7 @@ class _EmailVerificationState extends State<EmailVerification> {
                             fontSize: 30,
                             fontWeight: FontWeight.w700,
                             decoration: TextDecoration.underline,
-                            decorationColor: Colors.blue.withOpacity(0.75),
+                            decorationColor: biruUtama.withOpacity(0.75),
                             decorationThickness: 5,
                           ),
                         ),
@@ -83,7 +83,7 @@ class _EmailVerificationState extends State<EmailVerification> {
                           fieldHeight: 50,
                           fieldWidth: 40,
                           activeFillColor: Colors.white,
-                          inactiveColor: Colors.blue.withOpacity(0.2),
+                          inactiveColor: biruUtama.withOpacity(0.2),
                         ),
                         animationDuration: Duration(milliseconds: 300),
                         // errorAnimationController: errorController,
@@ -118,7 +118,7 @@ class _EmailVerificationState extends State<EmailVerification> {
                                   children: [
                                     TextSpan(
                                         text: "kirim ulang ",
-                                        style: TextStyle(color: hijau),
+                                        style: TextStyle(color: success),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
                                             setState(() {
@@ -147,7 +147,7 @@ class _EmailVerificationState extends State<EmailVerification> {
                   //         Navigator.pop(context);
                   //       },
                   //       style: ElevatedButton.styleFrom(
-                  //         primary: Colors.blue,
+                  //         primary: biruUtama,
                   //         textStyle: TextStyle(
                   //           fontWeight: FontWeight.w400,
                   //           color: Colors.white,

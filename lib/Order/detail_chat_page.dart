@@ -1,3 +1,4 @@
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 class DetailChat extends StatefulWidget {
@@ -84,7 +85,7 @@ class _DetailChatState extends State<DetailChat> {
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),
                           ),
-                          color: Colors.blue.withOpacity(0.5),
+                          color: biruUtama.withOpacity(0.5),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(10),

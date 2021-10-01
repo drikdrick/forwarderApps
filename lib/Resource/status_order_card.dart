@@ -1,9 +1,10 @@
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 Widget cardStatusOrder() {
   return Card(
     // semanticContainer: false,
-    shadowColor: Colors.blue,
+    shadowColor: biruUtama,
     elevation: 5,
     child: ListTile(
       leading: CircleAvatar(

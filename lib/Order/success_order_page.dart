@@ -1,7 +1,6 @@
 // import 'package:bokshaulforwarder/Model/Order.dart';
 // import 'package:bokshaulforwarder/Model/OrderDetailJson.dart';
 import 'package:bokshaulforwarder/Model/order_detail_json.dart';
-import 'package:bokshaulforwarder/Model/order_json.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 

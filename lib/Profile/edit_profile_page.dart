@@ -71,7 +71,7 @@ class _EditProfileState extends State<EditProfile> {
                     height: 25,
                   ),
                   CircleAvatar(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: biruUtama,
                     radius: 50,
                     backgroundImage:
                         AssetImage("images/avatar/" + avatar + ".png"),
@@ -81,7 +81,7 @@ class _EditProfileState extends State<EditProfile> {
                   //   style: TextStyle(
                   //     fontSize: 14,
                   //     fontWeight: FontWeight.w600,
-                  //     color: Colors.blue,
+                  //     color: biruUtama,
                   //   ),
                   // ),
                   SizedBox(
@@ -95,7 +95,7 @@ class _EditProfileState extends State<EditProfile> {
                         borderSide: BorderSide(color: inputBorder),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: biruUtama),
                       ),
                     ),
                   ),
@@ -111,7 +111,7 @@ class _EditProfileState extends State<EditProfile> {
                         borderSide: BorderSide(color: inputBorder),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: biruUtama),
                       ),
                     ),
                   ),
@@ -127,7 +127,7 @@ class _EditProfileState extends State<EditProfile> {
                         borderSide: BorderSide(color: inputBorder),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: biruUtama),
                       ),
                     ),
                   ),
@@ -144,7 +144,7 @@ class _EditProfileState extends State<EditProfile> {
                         borderSide: BorderSide(color: inputBorder),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: biruUtama),
                       ),
                     ),
                   ),
@@ -164,7 +164,7 @@ class _EditProfileState extends State<EditProfile> {
                         updateProfile();
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
+                        primary: biruUtama,
                         textStyle: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: Colors.white,
@@ -225,7 +225,7 @@ class _EditProfileState extends State<EditProfile> {
       );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: biruUtama,
           content: Text("Profil berhasil diperbaharui."),
         ),
       );

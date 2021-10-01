@@ -1,3 +1,4 @@
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:bokshaulforwarder/home_page.dart';
 import 'package:bokshaulforwarder/Order/order_page.dart';
 import 'package:bokshaulforwarder/Profile/profile_page.dart';
@@ -28,7 +29,7 @@ class _IndexState extends State<Index> {
       ),
       activeIcon: Icon(
         Icons.home,
-        color: Colors.blue,
+        color: biruUtama,
       ),
     ),
     BottomNavigationBarItem(
@@ -38,7 +39,7 @@ class _IndexState extends State<Index> {
       ),
       activeIcon: Icon(
         Icons.directions_car,
-        color: Colors.blue,
+        color: biruUtama,
       ),
     ),
     BottomNavigationBarItem(
@@ -48,7 +49,7 @@ class _IndexState extends State<Index> {
       ),
       activeIcon: Icon(
         Icons.article,
-        color: Colors.blue,
+        color: biruUtama,
       ),
     ),
     BottomNavigationBarItem(
@@ -58,7 +59,7 @@ class _IndexState extends State<Index> {
       ),
       activeIcon: Icon(
         Icons.account_circle,
-        color: Colors.blue,
+        color: biruUtama,
       ),
     ),
   ];

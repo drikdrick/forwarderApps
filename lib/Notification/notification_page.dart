@@ -1,3 +1,4 @@
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 import '../Model/notif.dart';
@@ -17,7 +18,7 @@ class _NotificationPageState extends State<NotificationPage> {
       itemBuilder: (context, index) {
         final Notif notif = notifList[index];
         return Card(
-          // color: notifList[index].isRead==false ? Colors.white : Colors.blue.withOpacity(0.5),
+          // color: notifList[index].isRead==false ? Colors.white : biruUtama.withOpacity(0.5),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -27,7 +28,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   // mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CircleAvatar(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: biruUtama,
                       radius: 16,
                       child: CircleAvatar(
                         radius: 15,

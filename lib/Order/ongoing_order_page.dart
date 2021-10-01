@@ -106,7 +106,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                           Row(
                             children: [
                               CircleAvatar(
-                                backgroundColor: Colors.blue,
+                                backgroundColor: biruUtama,
                                 radius: width * 0.07,
                                 child: CircleAvatar(
                                   backgroundColor: Colors.white,
@@ -290,7 +290,7 @@ class _OngoingOrderState extends State<OngoingOrder> {
                         width: 10,
                       ),
                       Divider(
-                        color: Colors.blue,
+                        color: biruUtama,
                       ),
                       SizedBox(
                         width: 10,

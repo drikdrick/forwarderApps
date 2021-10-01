@@ -1,4 +1,5 @@
 import 'package:bokshaulforwarder/Order/detail_chat_page.dart';
+import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
@@ -85,7 +86,7 @@ class _ChatState extends State<Chat> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: biruUtama,
                             borderRadius: BorderRadius.all(
                               Radius.circular(50),
                             ),
@@ -153,7 +154,7 @@ class _ChatState extends State<Chat> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: biruUtama,
                           borderRadius: BorderRadius.all(
                             Radius.circular(50),
                           ),
@@ -220,7 +221,7 @@ class _ChatState extends State<Chat> {
                       ),
                       // Container(
                       //   decoration: BoxDecoration(
-                      //     color: Colors.blue,
+                      //     color: biruUtama,
                       //     borderRadius: BorderRadius.all(
                       //       Radius.circular(50),
                       //     ),
@@ -287,7 +288,7 @@ class _ChatState extends State<Chat> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: biruUtama,
                           borderRadius: BorderRadius.all(
                             Radius.circular(50),
                           ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 
 // import 'package:bokshaulforwarder/Authentication/email_reset_password.dart';
 // import 'package:bokshaulforwarder/Authentication/email_verification_page.dart';
+import 'package:bokshaulforwarder/Authentication/email_verif_pass.dart';
 import 'package:flutter/material.dart';
 
 import '../Resource/stylesheet.dart';
@@ -81,7 +82,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       height: height * 0.075,
                       width: width * 0.55,
                       child: ElevatedButton(
-                        child: Text("Kirim Kode"),
+                        child: Text(
+                          "Kirim Kode",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         onPressed: () {
                           setState(() {
                             isLoading = true;
@@ -123,20 +127,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         Uri.parse("https://apiflutter.forwarder.boksman.co.id/lupapassword");
 
     var response = await http.post(url, body: {'email': emailController.text});
-    var jsonObject = jsonDecode(response.body);
-    print(jsonObject['success']);
     setState(() {
       isLoading = false;
     });
     if (response.statusCode == 201) {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => EmailResetPassword(),
-      //   ),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => EmailVerification(
+            email: emailController.text,
+          ),
+        ),
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
+          behavior: SnackBarBehavior.floating,
           backgroundColor: biruUtama,
           content: Text("OTP berhasil dikirim, cek email anda."),
         ),
@@ -144,8 +149,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
+          behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.red,
-          content: Text("Email tidak ditermukan, coba lagi."),
+          content: Text("Email tidak ditemukan, coba lagi."),
         ),
       );
     }

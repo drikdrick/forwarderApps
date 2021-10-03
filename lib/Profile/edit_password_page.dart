@@ -107,7 +107,7 @@ class _EditPasswordState extends State<EditPassword> {
                                 : isVisible2 = true;
                           });
                         },
-                        icon: Icon(isVisible
+                        icon: Icon(isVisible2
                             ? Icons.visibility_off_outlined
                             : Icons.remove_red_eye_outlined),
                       ),
@@ -149,7 +149,7 @@ class _EditPasswordState extends State<EditPassword> {
                                 : isVisible3 = true;
                           });
                         },
-                        icon: Icon(isVisible
+                        icon: Icon(isVisible3
                             ? Icons.visibility_off_outlined
                             : Icons.remove_red_eye_outlined),
                       ),
@@ -189,11 +189,12 @@ class _EditPasswordState extends State<EditPassword> {
                       onPressed: () {
                         // Validate returns true if the form is valid, or false otherwise.
                         if (_formKey.currentState!.validate()) {
-                          // If the form is valid, display a snackbar. In the real world,
-                          // you'd often call a server or save the information in a database.
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Processing Data')),
-                          );
+                          setState(() {
+                            isLoading = true;
+                          });
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //   const SnackBar(content: Text('Processing Data')),
+                          // );
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -214,8 +215,8 @@ class _EditPasswordState extends State<EditPassword> {
               ? Center(
                   child: BackdropFilter(
                     filter: ImageFilter.blur(
-                      sigmaX: 10,
-                      sigmaY: 10,
+                      sigmaX: 5,
+                      sigmaY: 5,
                     ),
                     child: loadingProcess(
                       height,

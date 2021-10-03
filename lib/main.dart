@@ -18,12 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Inter',
-        primaryColor: Colors.black,
-        textTheme: TextTheme().apply(
-          bodyColor: Colors.black,
-          displayColor: Colors.black,
-        ),
         primarySwatch: Colors.lightBlue,
+        // textTheme: Theme.of(context).textTheme.(),
       ),
       home: Splashscreen(),
     );

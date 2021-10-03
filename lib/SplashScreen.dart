@@ -17,7 +17,7 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     super.initState();
     //Lama nya splashscreen
-    Future.delayed(Duration(milliseconds: 1850), () {
+    Future.delayed(Duration(milliseconds: 2250), () {
       navigateUser();
     });
   }

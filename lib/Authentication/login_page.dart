@@ -189,7 +189,10 @@ class _LoginPageState extends State<LoginPage> {
                               height: height * 0.075,
                               width: width * 0.55,
                               child: ElevatedButton(
-                                child: Text("Log In"),
+                                child: Text(
+                                  "Log In",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
                                     setState(() {
@@ -292,6 +295,7 @@ class _LoginPageState extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
             content: Text("Username/Password salah. Coba lagi."),
           ),
         );
@@ -300,7 +304,9 @@ class _LoginPageState extends State<LoginPage> {
       reset(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Silahkan login kembali."),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+          content: Text("Terjadi kesalahan. Silahkan login kembali."),
         ),
       );
     }

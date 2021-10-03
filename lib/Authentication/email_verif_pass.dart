@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bokshaulforwarder/Authentication/login_page.dart';
+import 'package:bokshaulforwarder/Authentication/reset_password_page.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +8,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:http/http.dart' as http;
 
 class EmailVerification extends StatefulWidget {
-  final String username, email;
-  const EmailVerification({required this.username, required this.email});
+  final String email;
+  const EmailVerification({required this.email});
 
   @override
   _EmailVerificationState createState() => _EmailVerificationState();
@@ -95,9 +95,6 @@ class _EmailVerificationState extends State<EmailVerification> {
                         },
                         onChanged: (value) {
                           print(value);
-                          setState(() {
-                            // currentText = value;
-                          });
                         },
                       ),
                       Container(
@@ -118,16 +115,18 @@ class _EmailVerificationState extends State<EmailVerification> {
                                       color: Colors.black, fontSize: 11),
                                   children: [
                                     TextSpan(
-                                        text: "kirim ulang ",
-                                        style: TextStyle(color: success),
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap = () {
-                                            setState(() {
+                                      text: "kirim ulang ",
+                                      style: TextStyle(color: success),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          setState(
+                                            () {
                                               _isLoading = true;
-                                            });
-                                            resendOTP(
-                                                widget.username, widget.email);
-                                          }),
+                                            },
+                                          );
+                                          resendOTP(widget.email);
+                                        },
+                                    ),
                                     TextSpan(text: "kode. "),
                                   ],
                                 ),
@@ -138,26 +137,6 @@ class _EmailVerificationState extends State<EmailVerification> {
                       )
                     ],
                   ),
-                  // Center(
-                  //   child: SizedBox(
-                  //     height: height * 0.075,
-                  //     width: width * 0.55,
-                  //     child: ElevatedButton(
-                  //       child: Text("Verifikasi Email"),
-                  //       onPressed: () {
-                  //         Navigator.pop(context);
-                  //       },
-                  //       style: ElevatedButton.styleFrom(
-                  //         primary: biruUtama,
-                  //         textStyle: TextStyle(
-                  //           fontWeight: FontWeight.w400,
-                  //           color: Colors.white,
-                  //           fontSize: 18,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
               _isLoading
@@ -172,9 +151,9 @@ class _EmailVerificationState extends State<EmailVerification> {
     );
   }
 
-  Future<void> verifOTP(otp) async {
-    Uri url =
-        Uri.parse('https://apiflutter.forwarder.boksman.co.id/verifikasi/otp/lupapassword');
+  Future<void> verifOTP(String otp) async {
+    Uri url = Uri.parse(
+        'https://apiflutter.forwarder.boksman.co.id/verifikasi/otp/lupapassword');
     var response = await http.post(url, body: {'otp': otp});
 
     if (response.statusCode == 201) {
@@ -184,11 +163,15 @@ class _EmailVerificationState extends State<EmailVerification> {
       });
       if (jsonResponse["success"]) {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => LoginPage()),
+            MaterialPageRoute(
+              builder: (context) => ResetPassword(
+                userId: jsonResponse["id_user"],
+              ),
+            ),
             (route) => false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("Registrasi berhasil. Silahkan login."),
+            content: Text("Verifikasi berhasil. Silahkan buat password baru."),
             behavior: SnackBarBehavior.floating,
             backgroundColor: Colors.blue,
           ),
@@ -208,15 +191,13 @@ class _EmailVerificationState extends State<EmailVerification> {
     }
   }
 
-  Future<void> resendOTP(username, email) async {
+  Future<void> resendOTP(email) async {
     Map data = {
-      'username': username,
       'email': email,
     };
     var jsonResponse;
 
-    Uri url =
-        Uri.parse('https://apiflutter.forwarder.boksman.co.id/resend/otp');
+    Uri url = Uri.parse('https://apiflutter.forwarder.boksman.co.id/resendotp');
     var response = await http.post(url, body: data);
     if (response.statusCode == 201) {
       jsonResponse = json.decode(response.body);

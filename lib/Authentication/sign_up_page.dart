@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../Resource/stylesheet.dart';
@@ -90,10 +91,14 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
+                        keyboardType: TextInputType.number,
                         controller: _phoneNumberController,
                         decoration: InputDecoration(
-                          prefix: Text("62"),
+                          prefix: Text("+62"),
                           labelText: "No. Hanphone",
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: inputBorder),
@@ -116,6 +121,9 @@ class _SignUpState extends State<SignUp> {
                           }
                           return null;
                         },
+                      ),
+                      SizedBox(
+                        height: 10,
                       ),
                       TextFormField(
                         controller: _usernameController,
@@ -143,6 +151,9 @@ class _SignUpState extends State<SignUp> {
                           return null;
                         },
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
@@ -168,6 +179,9 @@ class _SignUpState extends State<SignUp> {
                           }
                           return null;
                         },
+                      ),
+                      SizedBox(
+                        height: 10,
                       ),
                       TextFormField(
                         controller: _passwordController,
@@ -218,7 +232,10 @@ class _SignUpState extends State<SignUp> {
                               height: height * 0.075,
                               width: width * 0.55,
                               child: ElevatedButton(
-                                child: Text("Sign Up"),
+                                child: Text(
+                                  "Sign Up",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
                                     setState(() {
@@ -293,25 +310,40 @@ class _SignUpState extends State<SignUp> {
     Uri url = Uri.parse('https://apiflutter.forwarder.boksman.co.id/register');
     var response = await http.post(url, body: data);
 
+    jsonResponse = jsonDecode(response.body);
     if (response.statusCode == 201) {
-      jsonResponse = jsonDecode(response.body);
       print(jsonResponse);
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => EmailVerification(username: _usernameController.text, email: _emailController.text)),
+          MaterialPageRoute(
+              builder: (context) => EmailVerification(
+                  username: _usernameController.text,
+                  email: _emailController.text)),
           (route) => false);
       setState(() {
         _isLoading = false;
       });
     } else {
-      jsonResponse = jsonDecode(response.body);
+      print(jsonResponse);
       setState(() {
         _isLoading = false;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Registrasi gagal. Coba lagi."),
-        ),
-      );
+      if (response.body.contains("company")) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            content: Text(jsonResponse['company'][0].toString()),
+          ),
+        );
+      } else if (response.body.contains("username")) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            content: Text(jsonResponse['username'][0].toString()),
+          ),
+        );
+      }
     }
   }
 }

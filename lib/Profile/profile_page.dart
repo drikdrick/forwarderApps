@@ -53,80 +53,74 @@ class _ProfileState extends State<Profile> {
             : Text(user.company),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: _isLoading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    userProfile(user.username, user.phone, user.email),
-                    Divider(),
-                    settingOption(
-                      context,
-                      "Edit Profile",
-                      EditProfile(
-                        currentUser: user,
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: _isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      userProfile(user.username, user.phone, user.email),
+                      Divider(),
+                      settingOption(
+                        context,
+                        "Edit Profile",
+                        EditProfile(
+                          currentUser: user,
+                        ),
+                        Icon(Icons.edit),
                       ),
-                      Icon(Icons.edit),
-                    ),
-                    Divider(),
-                    settingOption(context, "Ganti Password", EditPassword(),
-                        Icon(Icons.lock)),
-                    Divider(),
-                    settingOption(context, "Halaman Bantuan", HelpCentre(),
-                        Icon(Icons.help_center)),
-                    Divider(),
-                    settingOption(context, "Kebijakan Privasi", PrivacyPolicy(),
-                        Icon(Icons.privacy_tip)),
-                    Divider(),
-                    settingOption(context, "Syarat dan Ketentuan",
-                        TermCondition(), Icon(Icons.quiz)),
-                    Divider(),
-                    InkWell(
-                      onTap: () {
+                      Divider(),
+                      settingOption(
+                        context,
+                        "Ganti Password",
+                        EditPassword(),
+                        Icon(Icons.lock),
+                      ),
+                      Divider(),
+                      settingOption(
+                        context,
+                        "Halaman Bantuan",
+                        HelpCentre(),
+                        Icon(Icons.help_center),
+                      ),
+                      Divider(),
+                      settingOption(
+                        context,
+                        "Kebijakan Privasi",
+                        PrivacyPolicy(),
+                        Icon(Icons.privacy_tip),
+                      ),
+                      Divider(),
+                      settingOption(
+                        context,
+                        "Syarat dan Ketentuan",
+                        TermCondition(),
+                        Icon(Icons.quiz),
+                      ),
+                      Divider(),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 115,
+                    height: 50,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        primary: merah,
+                        side: BorderSide(color: merah),
+                      ),
+                      onPressed: () {
                         reset(context);
                       },
-                      child: SizedBox(
-                        height: 40,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Icon(Icons.logout_rounded),
-                                ),
-                                Text(
-                                  "Logout",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 15,
-                            ),
-                          ],
-                        ),
-                      ),
+                      child: Text("Log Out"),
                     ),
-                    Divider(),
-                  ],
-                ),
-          // _isLoading
-          //     ? Center(child: CircularProgressIndicator())
-          //     : SizedBox(
-          //         height: 10,
-          //       ),
-        ),
+                  ),
+                ],
+              ),
       ),
     );
   }

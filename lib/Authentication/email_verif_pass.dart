@@ -173,7 +173,7 @@ class _EmailVerificationState extends State<EmailVerification> {
           SnackBar(
             content: Text("Verifikasi berhasil. Silahkan buat password baru."),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: Colors.blue,
+            backgroundColor: biruUtama,
           ),
         );
       } else {
@@ -207,7 +207,7 @@ class _EmailVerificationState extends State<EmailVerification> {
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: biruUtama,
           content: Text(jsonResponse["message"]),
           behavior: SnackBarBehavior.floating,
         ),

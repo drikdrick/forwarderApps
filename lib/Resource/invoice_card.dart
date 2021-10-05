@@ -129,51 +129,6 @@ Widget cardPaid(invoiceId, tglTempo, perusahaan) {
             SizedBox(
               height: 10,
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     Column(
-            //       crossAxisAlignment: CrossAxisAlignment.start,
-            //       children: [
-            //         Text(
-            //           "Jumlah tagihan",
-            //           style: TextStyle(
-            //               color: abuProfile, fontWeight: FontWeight.w600),
-            //         ),
-            //         Text(
-            //           "No. Tagihan",
-            //           style: TextStyle(
-            //               color: abuProfile, fontWeight: FontWeight.w600),
-            //         ),
-            //         Text(
-            //           "No. Kontainer",
-            //           style: TextStyle(
-            //               color: abuProfile, fontWeight: FontWeight.w600),
-            //         ),
-            //       ],
-            //     ),
-            //     Column(
-            //       crossAxisAlignment: CrossAxisAlignment.end,
-            //       children: [
-            //         Text(
-            //           "Jumlah tagihan",
-            //           style: TextStyle(
-            //               color: abuProfile, fontWeight: FontWeight.w600),
-            //         ),
-            //         Text(
-            //           "No. Tagihan",
-            //           style: TextStyle(
-            //               color: abuProfile, fontWeight: FontWeight.w600),
-            //         ),
-            //         Text(
-            //           "No. Kontainer",
-            //           style: TextStyle(
-            //               color: abuProfile, fontWeight: FontWeight.w600),
-            //         ),
-            //       ],
-            //     )
-            //   ],
-            // )
           ],
         ),
       ),
@@ -182,11 +137,12 @@ Widget cardPaid(invoiceId, tglTempo, perusahaan) {
 }
 
 //Card Invoice Detail
-Widget invoiceDetail(String asal, String tujuan, String container, String truck, String size, String amount) {
+Widget invoiceDetail(String orderId, String asal, String tujuan,
+    String container, String truck, String size, String amount) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 8),
     child: Card(
-      shape: BeveledRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
       elevation: 5,
@@ -196,7 +152,7 @@ Widget invoiceDetail(String asal, String tujuan, String container, String truck,
         child: Column(
           children: [
             Text(
-              "GK-822101406010235",
+              orderId,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
               ),
@@ -213,7 +169,10 @@ Widget invoiceDetail(String asal, String tujuan, String container, String truck,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text("HITACHI CONSTRUCTION MACHINERY"),
+                Text(
+                  asal,
+                  overflow: TextOverflow.visible,
+                ),
               ],
             ),
             Row(
@@ -225,7 +184,7 @@ Widget invoiceDetail(String asal, String tujuan, String container, String truck,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text("New Priok Container Terminal One"),
+                Text(tujuan),
               ],
             ),
             Row(
@@ -235,7 +194,7 @@ Widget invoiceDetail(String asal, String tujuan, String container, String truck,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                     )),
-                Text("NYKU 4918652"),
+                Text(container),
               ],
             ),
             Row(
@@ -245,7 +204,7 @@ Widget invoiceDetail(String asal, String tujuan, String container, String truck,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                     )),
-                Text("B9755UEH"),
+                Text(truck),
               ],
             ),
             Row(
@@ -255,7 +214,7 @@ Widget invoiceDetail(String asal, String tujuan, String container, String truck,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                     )),
-                Text("40'GP"),
+                Text(size),
               ],
             ),
             Row(
@@ -265,7 +224,7 @@ Widget invoiceDetail(String asal, String tujuan, String container, String truck,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                     )),
-                Text("1,650,000"),
+                Text(amount),
               ],
             ),
           ],

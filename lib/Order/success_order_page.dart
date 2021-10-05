@@ -36,43 +36,34 @@ class SuccessOrder extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Text(
-                      currentOrder.gkOrder,
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Container(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10),
-                        child: Text(
-                          "Selesai",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: selesai,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                      ),
-                    )
-                  ],
+                Text(
+                  currentOrder.gkOrder,
+                  style:
+                      TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                 ),
-                Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  color: Colors.grey,
+                SizedBox(
+                  width: 5,
                 ),
+                Container(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Text(
+                      "Selesai",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: selesai,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                )
               ],
             ),
             SizedBox(

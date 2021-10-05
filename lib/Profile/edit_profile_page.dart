@@ -226,6 +226,7 @@ class _EditProfileState extends State<EditProfile> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: biruUtama,
+          behavior: SnackBarBehavior.floating,
           content: Text("Profil berhasil diperbaharui."),
         ),
       );
@@ -233,6 +234,7 @@ class _EditProfileState extends State<EditProfile> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
           content: Text("Profil gagal diperbaharui."),
         ),
       );

@@ -271,7 +271,6 @@ class _LoginPageState extends State<LoginPage> {
       var response = await http.post(url, body: data);
       if (response.statusCode == 201) {
         jsonResponse = json.decode(response.body);
-        print(jsonResponse);
         if (jsonResponse["success"]) {
           sharedPreferences.setBool('isLoggedIn', true);
 

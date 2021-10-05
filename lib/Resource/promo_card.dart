@@ -72,7 +72,7 @@ Widget promoCard(BuildContext context, Promo promo) {
           Align(
             alignment: Alignment.centerRight,
             child: Text(
-              promo.createdAt.toString(),
+              promo.createdAt.toString().split(' ')[0],
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.w600,

@@ -23,12 +23,12 @@ class DetailPromo extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        actions: [
-          Icon(
-            Icons.share_outlined,
-            color: Colors.black,
-          ),
-        ],
+        // actions: [
+        //   Icon(
+        //     Icons.share_outlined,
+        //     color: Colors.black,
+        //   ),
+        // ],
         elevation: 0,
       ),
       body: Column(

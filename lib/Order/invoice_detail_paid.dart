@@ -23,7 +23,21 @@ class _InvoiceDetaiPaidState extends State<InvoiceDetaiPaid> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Invoice Detail"),
+        backgroundColor: Colors.white,
+        title: Text(
+          "Invoice Detail",
+          style: TextStyle(color: Colors.black),
+        ),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+        elevation: 1,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -173,6 +187,7 @@ class _InvoiceDetaiPaidState extends State<InvoiceDetaiPaid> {
     for (var i = 0; i < invoice.dataOrder.length; i++) {
       cardList.add(
         invoiceDetail(
+            invoice.dataOrder[i].gkOrder,
             invoice.dataOrder[i].origin,
             invoice.dataOrder[i].destination,
             invoice.dataOrder[i].containerNumber,

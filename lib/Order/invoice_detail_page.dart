@@ -19,12 +19,25 @@ class InvoiceDetail extends StatefulWidget {
 }
 
 class _InvoiceDetailState extends State<InvoiceDetail> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Invoice Detail"),
+        backgroundColor: Colors.white,
+        title: Text(
+          "Invoice Detail",
+          style: TextStyle(color: Colors.black),
+        ),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+        elevation: 1,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -43,7 +56,8 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Text(widget.currentInvoice.dataCustomer[0].address.toLowerCase()),
+                    Text(widget.currentInvoice.dataCustomer[0].address
+                        .toLowerCase()),
                     RichText(
                       text: TextSpan(
                         text: widget.currentInvoice.dataCustomer[0].state + " ",
@@ -193,6 +207,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
     for (var i = 0; i < invoice.dataOrder.length; i++) {
       cardList.add(
         invoiceDetail(
+            invoice.dataOrder[i].gkOrder,
             invoice.dataOrder[i].origin,
             invoice.dataOrder[i].destination,
             invoice.dataOrder[i].containerNumber,

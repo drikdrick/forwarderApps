@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
+import 'package:bokshaulforwarder/Services/config.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class EditPassword extends StatefulWidget {
   const EditPassword({Key? key}) : super(key: key);
@@ -192,9 +195,7 @@ class _EditPasswordState extends State<EditPassword> {
                           setState(() {
                             isLoading = true;
                           });
-                          // ScaffoldMessenger.of(context).showSnackBar(
-                          //   const SnackBar(content: Text('Processing Data')),
-                          // );
+                          updatePassword();
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -235,7 +236,37 @@ class _EditPasswordState extends State<EditPassword> {
   void updatePassword() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String token = prefs.getString('token')!;
     int userId = prefs.getInt('idUser')!;
+
+    Uri url =
+        Uri.parse(baseUrl + "/profil/resetpassword");
+    var response = await http.post(url, body: {
+      "id_customer": userId.toString(),
+      "old_password": oldPassword.text,
+      "password": newPassword.text,
+      "repassword": retypePassword.text,
+    });
+    var jsonResponse = jsonDecode(response.body);
+    setState(() {
+      isLoading = false;
+    });
+    if (jsonResponse["success"]) {
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: biruUtama,
+          behavior: SnackBarBehavior.floating,
+          content: Text("Password berhasil diperbaharui."),
+        ),
+      );
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: merah,
+          behavior: SnackBarBehavior.floating,
+          content: Text("Password lama salah. Coba lagi."),
+        ),
+      );
+    }
   }
 }

@@ -4,6 +4,7 @@ import 'package:bokshaulforwarder/Model/invoice.dart';
 import 'package:bokshaulforwarder/Model/invoice_detail.dart';
 import 'package:bokshaulforwarder/Order/invoice_detail_page.dart';
 import 'package:bokshaulforwarder/Order/invoice_detail_paid.dart';
+import 'package:bokshaulforwarder/Resource/error_return.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -126,9 +127,7 @@ class _InvoiceState extends State<Invoice> {
                                     .toList(),
                               );
                             } else if (snapshot.hasError) {
-                              return Center(
-                                child: Text(snapshot.error.toString()),
-                              );
+                              return throwError(context);
                             }
                             return new Center(
                               child: new Column(
@@ -151,9 +150,9 @@ class _InvoiceState extends State<Invoice> {
                           future: fetchInvoicePaid(),
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
-                              List? invoiceUnpaid = snapshot.data;
-                              // print(invoiceUnpaid);
-                              if (invoiceUnpaid!.length == 0) {
+                              List? invoicePaid = snapshot.data;
+                              // print(invoicePaid);
+                              if (invoicePaid!.length == 0) {
                                 return Center(
                                   child: Column(
                                     children: [
@@ -171,9 +170,9 @@ class _InvoiceState extends State<Invoice> {
                                 );
                               }
                               return Column(
-                                children: invoiceUnpaid
+                                children: invoicePaid
                                     .map(
-                                      (invoiceUnpaid) => Column(
+                                      (invoicePaid) => Column(
                                         children: <Widget>[
                                           InkWell(
                                             onTap: () {
@@ -181,7 +180,7 @@ class _InvoiceState extends State<Invoice> {
                                                 isLoading = true;
                                               });
                                               getInvoiceDetail(
-                                                      invoiceUnpaid.invoiceCode)
+                                                      invoicePaid.invoiceCode)
                                                   .then((value) {
                                                 Navigator.push(
                                                     context,
@@ -197,9 +196,9 @@ class _InvoiceState extends State<Invoice> {
                                               });
                                             },
                                             child: cardPaid(
-                                              invoiceUnpaid.invoiceCode,
-                                              invoiceUnpaid.dueDate,
-                                              invoiceUnpaid.company,
+                                              invoicePaid.invoiceCode,
+                                              invoicePaid.dueDate,
+                                              invoicePaid.company,
                                             ),
                                           )
                                         ],
@@ -208,9 +207,7 @@ class _InvoiceState extends State<Invoice> {
                                     .toList(),
                               );
                             } else if (snapshot.hasError) {
-                              return Center(
-                                child: Text(snapshot.error.toString()),
-                              );
+                              return throwError(context);
                             }
                             return new Center(
                               child: new Column(

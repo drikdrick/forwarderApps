@@ -5,6 +5,7 @@ import 'package:bokshaulforwarder/Model/order_json.dart';
 import 'package:bokshaulforwarder/Order/ongoing_order_page.dart';
 import 'package:bokshaulforwarder/Order/pending_order_page.dart';
 import 'package:bokshaulforwarder/Order/success_order_page.dart';
+import 'package:bokshaulforwarder/Resource/error_return.dart';
 import 'package:bokshaulforwarder/Resource/order_card.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
 import 'package:flutter/cupertino.dart';
@@ -135,9 +136,7 @@ class _OrderPageState extends State<OrderPage> {
                                   .toList(),
                             );
                           } else if (snapshot.hasError) {
-                            return Text(
-                              snapshot.error.toString(),
-                            );
+                            return throwError(context);
                           }
                           return new Center(
                             child: new Column(
@@ -208,9 +207,7 @@ class _OrderPageState extends State<OrderPage> {
                                   .toList(),
                             );
                           } else if (snapshot.hasError) {
-                            return Text(
-                              snapshot.error.toString(),
-                            );
+                            return throwError(context);
                           }
                           return new Center(
                             child: new Column(
@@ -300,9 +297,7 @@ class _OrderPageState extends State<OrderPage> {
                                   .toList(),
                             );
                           } else if (snapshot.hasError) {
-                            return Text(
-                              snapshot.error.toString(),
-                            );
+                            return throwError(context);
                           }
                           return new Center(
                             child: new Column(

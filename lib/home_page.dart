@@ -1,7 +1,10 @@
 import 'package:bokshaulforwarder/Notification/announcement_page.dart';
+import 'package:bokshaulforwarder/Resource/error_return.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
+import 'package:bokshaulforwarder/Services/Authenticationi.dart';
 import 'package:bokshaulforwarder/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Model/order_json.dart';
@@ -189,9 +192,7 @@ class _HomeState extends State<Home> {
                             .toList(),
                       );
                     } else if (snapshot.hasError) {
-                      return Text(
-                        snapshot.error.toString(),
-                      );
+                      return throwError(context);
                     }
                     return new Center(
                       child: new Column(

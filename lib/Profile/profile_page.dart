@@ -56,78 +56,76 @@ class _ProfileState extends State<Profile> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  _isLoading
-                      ? SizedBox(
-                          height: 60,
-                          child: CircularProgressIndicator(),
-                        )
-                      : userProfile(user.username, user.phone, user.email),
-                  Divider(),
-                  _isLoading
-                      ? Container()
-                      : settingOption(
-                          context,
-                          "Edit Profile",
-                          EditProfile(
-                            currentUser: user,
-                          ),
-                          Icon(Icons.edit),
-                        ),
-                  Divider(),
-                  settingOption(context, "Ganti Password", EditPassword(),
-                      Icon(Icons.lock)),
-                  Divider(),
-                  settingOption(context, "Halaman Bantuan", HelpCentre(),
-                      Icon(Icons.help_center)),
-                  Divider(),
-                  settingOption(context, "Kebijakan Privasi", PrivacyPolicy(),
-                      Icon(Icons.privacy_tip)),
-                  Divider(),
-                  settingOption(context, "Syarat dan Ketentuan",
-                      TermCondition(), Icon(Icons.quiz)),
-                  Divider(),
-                  InkWell(
-                    onTap: () {
-                      reset(context);
-                    },
-                    child: SizedBox(
-                      height: 40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Icon(Icons.logout_rounded),
-                              ),
-                              Text(
-                                "Logout",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
+          child: _isLoading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    userProfile(user.username, user.phone, user.email),
+                    Divider(),
+                    settingOption(
+                      context,
+                      "Edit Profile",
+                      EditProfile(
+                        currentUser: user,
+                      ),
+                      Icon(Icons.edit),
+                    ),
+                    Divider(),
+                    settingOption(context, "Ganti Password", EditPassword(),
+                        Icon(Icons.lock)),
+                    Divider(),
+                    settingOption(context, "Halaman Bantuan", HelpCentre(),
+                        Icon(Icons.help_center)),
+                    Divider(),
+                    settingOption(context, "Kebijakan Privasi", PrivacyPolicy(),
+                        Icon(Icons.privacy_tip)),
+                    Divider(),
+                    settingOption(context, "Syarat dan Ketentuan",
+                        TermCondition(), Icon(Icons.quiz)),
+                    Divider(),
+                    InkWell(
+                      onTap: () {
+                        reset(context);
+                      },
+                      child: SizedBox(
+                        height: 40,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Icon(Icons.logout_rounded),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            size: 15,
-                          ),
-                        ],
+                                Text(
+                                  "Logout",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 15,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Divider(),
-                ],
-              ),
-            ],
-          ),
+                    Divider(),
+                  ],
+                ),
+          // _isLoading
+          //     ? Center(child: CircularProgressIndicator())
+          //     : SizedBox(
+          //         height: 10,
+          //       ),
         ),
       ),
     );

@@ -208,14 +208,14 @@ class _OngoingOrderState extends State<OngoingOrder> {
                               color: Color(0xFF6D6C6B),
                             ),
                           ),
-                          Text(
-                            "Jadwal Pelayaran",
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF6D6C6B),
-                            ),
-                          ),
+                          // Text(
+                          //   "Jadwal Pelayaran",
+                          //   style: TextStyle(
+                          //     fontSize: 10,
+                          //     fontWeight: FontWeight.w600,
+                          //     color: Color(0xFF6D6C6B),
+                          //   ),
+                          // ),
                         ],
                       ),
                       Row(
@@ -229,14 +229,14 @@ class _OngoingOrderState extends State<OngoingOrder> {
                               color: Color(0xFF6D6C6B),
                             ),
                           ),
-                          Text(
-                            order.eTD,
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFF6D6C6B),
-                            ),
-                          ),
+                          // Text(
+                          //   order.,
+                          //   style: TextStyle(
+                          //     fontSize: 10,
+                          //     fontWeight: FontWeight.w400,
+                          //     color: Color(0xFF6D6C6B),
+                          //   ),
+                          // ),
                         ],
                       ),
                       SizedBox(
@@ -244,22 +244,10 @@ class _OngoingOrderState extends State<OngoingOrder> {
                       ),
                       //Asal dan Tujuan
                       Text(
-                        order.statusOrder == 1 || order.statusOrder == 4
-                            ? order.namaPort
-                            : order.namaGudang,
+                        order.origin,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF6D6C6B),
-                        ),
-                      ),
-                      Text(
-                        order.statusOrder == 1 || order.statusOrder == 4
-                            ? order.addressPort
-                            : order.addressGudang,
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
                           color: Color(0xFF6D6C6B),
                         ),
                       ),
@@ -267,22 +255,10 @@ class _OngoingOrderState extends State<OngoingOrder> {
                         height: 10,
                       ),
                       Text(
-                        order.statusOrder == 1 || order.statusOrder == 4
-                            ? order.namaGudang
-                            : order.namaPort,
+                        order.destination,
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF6D6C6B),
-                        ),
-                      ),
-                      Text(
-                        order.statusOrder == 1 || order.statusOrder == 4
-                            ? order.addressGudang
-                            : order.addressPort,
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
                           color: Color(0xFF6D6C6B),
                         ),
                       ),
@@ -367,96 +343,16 @@ class _OngoingOrderState extends State<OngoingOrder> {
 
   List<Widget> getOrderStatus(OrderDetail order) {
     List<Widget> currentStatus = [];
-    if (order.statusOrder == 1 || order.statusOrder == 4) {
+    if (order.statusOrder == "1" ||
+        order.statusOrder == "4" ||
+        order.statusOrder == "inbound") {
       for (var i = -4; i <= 13; i++) {
         if (i >= 8 && i < 13) {
           continue;
         } else if (i < order.statusDriver) {
-          switch (i) {
-            case -4:
-              currentStatus
-                  .add(nextStatusOrder(statusDone, orderMessage[i + 4]));
-
-              break;
-            case -3:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeMenujuPelabuhan.toString()),
-              );
-
-              break;
-            case -2:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeTibaDipelabuhan.toString()),
-              );
-
-              break;
-            case -1:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeMuatDipelabuhan.toString()),
-              );
-
-              break;
-            case 0:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeMenungguKeluarPelabuhan.toString()),
-              );
-
-              break;
-            case 1:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeMenujuGudangConsignee.toString()),
-              );
-
-              break;
-            case 2:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeTibaGudangConsignee.toString()),
-              );
-
-              break;
-            case 3:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeBongkarMuat.toString()),
-              );
-
-              break;
-            case 4:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeMenujuDepo.toString()),
-              );
-
-              break;
-            case 5:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeTibaDepo.toString()),
-              );
-
-              break;
-            case 6:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeCekContainer.toString()),
-              );
-
-              break;
-            case 7:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeKeluarDepo.toString()),
-              );
-
-              break;
-            default:
-          }
+          currentStatus.add(
+            buildStatusOrder(statusDone, orderMessage[i + 4], ""),
+          );
         } else if (i > order.statusDriver) {
           currentStatus.add(
             nextStatusOrder(status, orderMessage[i + 4]),
@@ -467,66 +363,14 @@ class _OngoingOrderState extends State<OngoingOrder> {
           );
         }
       }
-    } else if (order.statusOrder == 2 || order.statusOrder == 3) {
+    } else if (order.statusOrder == "2" ||
+        order.statusOrder == "3" ||
+        order.statusOrder == "outbound") {
       for (var i = 4; i <= 13; i++) {
         if (i < order.statusDriver) {
-          switch (i) {
-            case 4:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeMenujuDepo.toString()),
-              );
-              break;
-            case 5:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeTibaDepo.toString()),
-              );
-              break;
-            case 6:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeCekContainer.toString()),
-              );
-              break;
-            case 7:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeKeluarDepo.toString()),
-              );
-              break;
-            case 8:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeMenujuGudangShipper.toString()),
-              );
-              break;
-            case 9:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeTibaGudangShipper.toString()),
-              );
-              break;
-            case 10:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeMuatBarang.toString()),
-              );
-              break;
-            case 11:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeMenujuPelabuhan.toString()),
-              );
-              break;
-            case 12:
-              currentStatus.add(
-                buildStatusOrder(statusDone, orderMessage[i + 4],
-                    order.timeTibaDipelabuhanEx.toString()),
-              );
-              break;
-            default:
-          }
+          currentStatus.add(
+            buildStatusOrder(statusDone, orderMessage[i + 4], ""),
+          );
         } else if (i > order.statusDriver) {
           currentStatus.add(
             nextStatusOrder(status, orderMessage[i + 4]),

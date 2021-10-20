@@ -64,29 +64,4 @@ class _PromotionState extends State<Promotion> {
       ),
     );
   }
-  // List<Promo>? promoList;
-  // @override
-  // void initState() {
-  //   _getRefreshData();
-  //   super.initState();
-  // }
-
-  // Future<void> _getRefreshData() async {
-  //   promoList = await fetchPromo();
-  //   print(promoList);
-  // }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return RefreshIndicator(
-  //     onRefresh: _getRefreshData,
-  //     child: ListView.builder(
-  //       itemCount: promoList == null ? 0 : promoList!.length,
-  //       itemBuilder: (context, index) {
-  //         final Promo promo = promoList![index];
-  //         return
-  //       },
-  //     ),
-  //   );
-  // }
 }

@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:bokshaulforwarder/Notification/announcement_page.dart';
 import 'package:bokshaulforwarder/Resource/error_return.dart';
 import 'package:bokshaulforwarder/Resource/stylesheet.dart';
-import 'package:bokshaulforwarder/Services/Authenticationi.dart';
 import 'package:bokshaulforwarder/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,7 +48,6 @@ class _HomeState extends State<Home> {
                       options: CarouselOptions(
                         height: 250,
                         viewportFraction: 1,
-                        // aspectRatio: 1.5 / 1,
                         autoPlay: true,
                         onPageChanged: (index, reason) {
                           setState(

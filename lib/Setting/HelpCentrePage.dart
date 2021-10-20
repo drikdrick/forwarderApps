@@ -29,9 +29,7 @@ class _HelpCentreState extends State<HelpCentre> {
         ),
       ),
       body: Column(
-        // crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // cardOption(Icon(Icons.chat_bubble_outline), "Chat dengan CS kami."),
           InkWell(
             child: cardOption(
                 Icon(Icons.email_outlined), "Hubungi kami melalui Email"),

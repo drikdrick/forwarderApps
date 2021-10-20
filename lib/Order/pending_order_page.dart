@@ -5,7 +5,7 @@ import 'package:flutter/painting.dart';
 
 class PendingOrder extends StatelessWidget {
   // final Order order;
-  final Freshorder freshOrder;
+  final Order freshOrder;
 
   PendingOrder({required this.freshOrder});
 

@@ -76,7 +76,6 @@ class _EmailVerificationState extends State<EmailVerification> {
                         keyboardType: TextInputType.number,
                         appContext: context,
                         length: 4,
-                        obscureText: false,
                         animationType: AnimationType.scale,
                         pinTheme: PinTheme(
                           shape: PinCodeFieldShape.box,

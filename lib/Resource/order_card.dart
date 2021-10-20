@@ -88,7 +88,7 @@ Widget cardOnGoingOrder(orderId, driverName, containerId, addressPort, namePort,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          addressPort,
+                          namePort,
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
@@ -96,7 +96,7 @@ Widget cardOnGoingOrder(orderId, driverName, containerId, addressPort, namePort,
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          namePort,
+                          addressPort,
                           style: TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.w600,

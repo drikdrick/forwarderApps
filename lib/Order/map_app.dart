@@ -22,8 +22,8 @@ class _MapState extends State<Map> {
   @override
   void initState() {
     // TODO: implement initState
-    gudang = widget.order.coordinateGudang.split(',');
-    port = widget.order.coordinatePort.split(',');
+    gudang = widget.order.originCoordinate.split(',');
+    port = widget.order.destinationCoordinate.split(',');
     latLngPort = LatLng(double.parse(port[0]), double.parse(port[1]));
     latLngGudang = LatLng(double.parse(gudang[0]), double.parse(gudang[1]));
     center = LatLng(
@@ -67,8 +67,7 @@ class _MapState extends State<Map> {
           ), //position of marker
           infoWindow: InfoWindow(
             //popup info
-            title: widget.order.namaGudang,
-            snippet: widget.order.addressGudang,
+            title: widget.order.origin,
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(
               BitmapDescriptor.hueAzure), //Icon for Marker
@@ -84,8 +83,7 @@ class _MapState extends State<Map> {
             ), //position of marker
             infoWindow: InfoWindow(
               //popup info
-              title: widget.order.namaPort,
-              snippet: widget.order.addressPort,
+              title: widget.order.destination,
             ),
             icon: BitmapDescriptor.defaultMarker, //Icon for Marker
           ),

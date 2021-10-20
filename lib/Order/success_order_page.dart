@@ -39,8 +39,7 @@ class SuccessOrder extends StatelessWidget {
               children: [
                 Text(
                   currentOrder.gkOrder,
-                  style:
-                      TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                 ),
                 SizedBox(
                   width: 5,
@@ -94,14 +93,14 @@ class SuccessOrder extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Jadwal Pelayaran",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                  ),
-                ),
-                Text(currentOrder.eTD.toString()),
+                // Text(
+                //   "Jadwal Pelayaran",
+                //   style: TextStyle(
+                //     fontWeight: FontWeight.w600,
+                //     color: Colors.black,
+                //   ),
+                // ),
+                // Text(currentOrder.eTD.toString()),
               ],
             ),
             SizedBox(
@@ -155,51 +154,34 @@ class SuccessOrder extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  if (currentOrder.statusOrder == 1 ||
-                      currentOrder.statusOrder == 4) ...[
+                  if (currentOrder.statusOrder == "1" ||
+                      currentOrder.statusOrder == "4" ||
+                      currentOrder.statusOrder == "inbound") ...[
                     milestone("Pekerjaan Diterima", ""), //-4
-                    milestone("Menuju Pelabuhan",
-                        currentOrder.timeMenujuPelabuhan.toString()), //-3
-                    milestone("Tiba di Pelabuhan",
-                        currentOrder.timeTibaDipelabuhan.toString()), //-2
-                    milestone("Muat di Pelabuhan",
-                        currentOrder.timeMuatBarang.toString()), //-1
-                    milestone(
-                        "Menunggu keluar Pelabuhan",
-                        currentOrder.timeMenungguKeluarPelabuhan
-                            .toString()), //0
-                    milestone("Menuju Gudang Consignee",
-                        currentOrder.timeMenujuGudangConsignee.toString()), //1
-                    milestone("Tiba di Gudang Consignee",
-                        currentOrder.timeTibaGudangConsignee.toString()), //2
-                    milestone("Bongkar Muat",
-                        currentOrder.timeBongkarMuat.toString()), //3
+                    milestone("Menuju Pelabuhan", ""), //-3
+                    milestone("Tiba di Pelabuhan", ""), //-2
+                    milestone("Muat di Pelabuhan", ""), //-1
+                    milestone("Menunggu keluar Pelabuhan", ""), //0
+                    milestone("Menuju Gudang Consignee", ""), //1
+                    milestone("Tiba di Gudang Consignee", ""), //2
+                    milestone("Bongkar Muat", ""), //3
                   ],
 
-                  milestone("Menuju Depo",
-                      currentOrder.timeMenujuDepo.toString()), //4
-                  milestone(
-                      "Tiba di Depo", currentOrder.timeTibaDepo.toString()), //5
-                  milestone("Cek Container",
-                      currentOrder.timeCekContainer.toString()), //6
-                  milestone("Keluar Depo",
-                      currentOrder.timeKeluarDepo.toString()), //7
-                  if (currentOrder.statusOrder == 2 ||
-                      currentOrder.statusOrder == 3) ...[
-                    milestone("Menuju Gudang Shipper",
-                        currentOrder.timeMenujuGudangShipper.toString()), //8
-                    milestone("Tiba di Gudang Shipper",
-                        currentOrder.timeTibaGudangShipper.toString()), //9
-                    milestone("Muat Barang",
-                        currentOrder.timeMuatBarang.toString()), //10
-                    milestone("Menuju Pelabuhan",
-                        currentOrder.timeMenujuPelabuhanEx.toString()), //11
-                    milestone("Tiba di Pelabuhan",
-                        currentOrder.timeTibaDipelabuhanEx.toString()), //12
+                  milestone("Menuju Depo", ""), //4
+                  milestone("Tiba di Depo", ""), //5
+                  milestone("Cek Container", ""), //6
+                  milestone("Keluar Depo", ""), //7
+                  if (currentOrder.statusOrder == "2" ||
+                      currentOrder.statusOrder == "3" ||
+                      currentOrder.statusOrder == "outbound") ...[
+                    milestone("Menuju Gudang Shipper", ""), //8
+                    milestone("Tiba di Gudang Shipper", ""), //9
+                    milestone("Muat Barang", ""), //10
+                    milestone("Menuju Pelabuhan", ""), //11
+                    milestone("Tiba di Pelabuhan", ""), //12
                   ],
 
-                  milestone(
-                      "Selesai", currentOrder.timeSelesai.toString()), //13
+                  milestone("Selesai", ""), //13
                 ],
               ),
             ),
@@ -241,7 +223,7 @@ class SuccessOrder extends StatelessWidget {
                       MainAxisAlignment.spaceBetween, //tidak berfungsi
                   children: [
                     Text(
-                      currentOrder.namaPort,
+                      title,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,

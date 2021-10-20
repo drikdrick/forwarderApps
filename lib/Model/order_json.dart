@@ -2,60 +2,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-OrderBerlangsung orderBerlangsungFromJson(String str) =>
-    OrderBerlangsung.fromJson(json.decode(str));
+Order orderFromJson(String str) => Order.fromJson(json.decode(str));
 
-String orderBerlangsungToJson(OrderBerlangsung data) =>
-    json.encode(data.toJson());
+String orderToJson(Order data) => json.encode(data.toJson());
 
-class OrderBerlangsung {
-  OrderBerlangsung({
-    required this.success,
-    required this.message,
-    required this.data,
-  });
-
-  bool success;
-  String message;
-  Data data;
-
-  factory OrderBerlangsung.fromJson(Map<String, dynamic> json) =>
-      OrderBerlangsung(
-        success: json["success"],
-        message: json["message"],
-        data: Data.fromJson(json["data"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "success": success,
-        "message": message,
-        "data": data.toJson(),
-      };
-}
-
-class Data {
-  Data({
-    required this.freshorder,
-    required this.trackTrace,
-  });
-
-  List<Freshorder> freshorder;
-  List<dynamic> trackTrace;
-
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-        freshorder: List<Freshorder>.from(
-            json["freshorder"].map((x) => Freshorder.fromJson(x))),
-        trackTrace: List<dynamic>.from(json["track_trace"].map((x) => x)),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "freshorder": List<dynamic>.from(freshorder.map((x) => x.toJson())),
-        "track_trace": List<dynamic>.from(trackTrace.map((x) => x)),
-      };
-}
-
-class Freshorder {
-  Freshorder({
+class Order {
+  Order({
     required this.gkOrder,
     required this.etd,
     required this.noContainer,
@@ -72,9 +24,9 @@ class Freshorder {
   });
 
   String gkOrder;
-  DateTime etd;
-  String? noContainer;
-  int statusOrder;
+  String etd;
+  String noContainer;
+  String statusOrder;
   String slName;
   String vesselName;
   String voyageNumber;
@@ -85,25 +37,25 @@ class Freshorder {
   String namaGudang;
   String addressGudang;
 
-  factory Freshorder.fromJson(Map<String, dynamic> json) => Freshorder(
-        gkOrder: json["gk_order"] ?? null,
-        etd: DateTime.parse(json["ETD"] ?? ""),
-        noContainer: json["no_container"] ?? "",
-        statusOrder: json["status_order"] ?? "",
-        slName: json["sl_name"] ?? "",
-        vesselName: json["vessel_name"] ?? "",
-        voyageNumber: json["voyage_number"] ?? "",
-        name: json["name"] ?? "",
-        noPolisi: json["no_polisi"] ?? "",
-        namaPort: json["nama_port"],
-        addressPort: json["address_port"] ?? "",
-        namaGudang: json["nama_gudang"] ?? "",
-        addressGudang: json["address_gudang"] ?? "",
+  factory Order.fromJson(Map<String, dynamic> json) => Order(
+        gkOrder: json["gk_order"] ?? "Uknown",
+        etd: json["ETD"] ?? "Uknown",
+        noContainer: json["no_container"] ?? "Uknown",
+        statusOrder: json["status_order"].toString(),
+        slName: json["sl_name"] ?? "Uknown",
+        vesselName: json["vessel_name"] ?? "Uknown",
+        voyageNumber: json["voyage_number"] ?? "Uknown",
+        name: json["name"] ?? "Uknown",
+        noPolisi: json["no_polisi"] ?? "Uknown",
+        namaPort: json["nama_port"] ?? "Uknown",
+        addressPort: json["address_port"] ?? "Uknown",
+        namaGudang: json["nama_gudang"] ?? "Uknown",
+        addressGudang: json["address_gudang"] ?? "Uknown",
       );
 
   Map<String, dynamic> toJson() => {
         "gk_order": gkOrder,
-        "ETD": etd.toIso8601String(),
+        "ETD": etd,
         "no_container": noContainer,
         "status_order": statusOrder,
         "sl_name": slName,
@@ -118,7 +70,7 @@ class Freshorder {
       };
 }
 
-Future<List<Freshorder>> fetchOrderBerlangsung() async {
+Future<List<Order>> fetchOrderBerlangsung() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token')!; //fetch Token
   int userId = prefs.getInt('idUser')!; //fetch User ID
@@ -127,18 +79,15 @@ Future<List<Freshorder>> fetchOrderBerlangsung() async {
       "https://apiflutter.forwarder.boksman.co.id/orderberlangsung/$userId");
 
   var response = await http.get(url, headers: {'token': token});
-  var jsonResult;
-  if (response.statusCode == 201) {
-    jsonResult = jsonDecode(response.body);
+  var jsonResult = jsonDecode(response.body);
+  if (jsonResult["success"]) {
+    return (jsonResult["data"] as List).map((e) => Order.fromJson(e)).toList();
+  } else {
+    throw Exception(jsonResult["message"]);
   }
-  return (jsonResult["data"]["freshorder"] as List)
-      .map((e) => Freshorder.fromJson(e))
-      .toList();
-
-  // return freshOrders;
 }
 
-Future<List<Freshorder>> fetchOrderBerlangsungLimit() async {
+Future<List<Order>> fetchOrderBerlangsungLimit() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token')!; //fetch Token
   int userId = prefs.getInt('idUser')!; //fetch User ID
@@ -147,18 +96,15 @@ Future<List<Freshorder>> fetchOrderBerlangsungLimit() async {
       "https://apiflutter.forwarder.boksman.co.id/orderberlangsung/limit/$userId");
 
   var response = await http.get(url, headers: {'token': token});
-  var jsonResult;
-  if (response.statusCode == 201) {
-    jsonResult = jsonDecode(response.body);
+  var jsonResult = jsonDecode(response.body);
+  if (jsonResult["success"]) {
+    return (jsonResult["data"] as List).map((e) => Order.fromJson(e)).toList();
+  } else {
+    throw Exception(jsonResult["message"]);
   }
-  return (jsonResult["data"]["freshorder"] as List)
-      .map((e) => Freshorder.fromJson(e))
-      .toList();
-
-  // return freshOrders;
 }
 
-Future<List<Freshorder>> fetchOrderPending() async {
+Future<List<Order>> fetchOrderPending() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token')!; //fetch Token
   int userId = prefs.getInt('idUser')!; //fetch User ID
@@ -167,18 +113,17 @@ Future<List<Freshorder>> fetchOrderPending() async {
       "https://apiflutter.forwarder.boksman.co.id/ordermenunggu/$userId");
 
   var response = await http.get(url, headers: {'token': token});
-  var jsonResult;
-  if (response.statusCode == 201) {
-    jsonResult = jsonDecode(response.body);
+  var jsonResult = jsonDecode(response.body);
+  if (jsonResult["success"]) {
+    return (jsonResult["data"] as List).map((e) => Order.fromJson(e)).toList();
+  } else {
+    throw Exception(jsonResult["message"]);
   }
-  return (jsonResult["data"]["freshorder"] as List)
-      .map((e) => Freshorder.fromJson(e))
-      .toList();
 
   // return freshOrders;
 }
 
-Future<List<Freshorder>> fetchOrderDone() async {
+Future<List<Order>> fetchOrderDone() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token')!; //fetch Token
   int userId = prefs.getInt('idUser')!; //fetch User ID
@@ -187,11 +132,10 @@ Future<List<Freshorder>> fetchOrderDone() async {
       "https://apiflutter.forwarder.boksman.co.id/orderselesai/$userId");
 
   var response = await http.get(url, headers: {'token': token});
-  var jsonResult;
-  if (response.statusCode == 201) {
-    jsonResult = jsonDecode(response.body);
+  var jsonResult = jsonDecode(response.body);
+  if (jsonResult["success"]) {
+    return (jsonResult["data"] as List).map((e) => Order.fromJson(e)).toList();
+  } else {
+    throw Exception(jsonResult["message"]);
   }
-  return (jsonResult["data"]["freshorder"] as List)
-      .map((e) => Freshorder.fromJson(e))
-      .toList();
 }

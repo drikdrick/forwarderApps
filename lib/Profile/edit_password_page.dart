@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:ui';
 
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
-import 'package:bokshaulforwarder/Services/config.dart';
+import '../Resource/stylesheet.dart';
+import '../Services/config.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;

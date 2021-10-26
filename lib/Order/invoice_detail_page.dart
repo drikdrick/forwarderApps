@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:bokshaulforwarder/Model/invoice_detail.dart';
-import 'package:bokshaulforwarder/Resource/invoice_card.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
+import '../Model/invoice_detail.dart';
+import '../Resource/invoice_card.dart';
+import '../Resource/stylesheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:bokshaulforwarder/Model/order_detail_json.dart';
+import '../Model/order_detail_json.dart';
 import 'package:flutter/material.dart';
 
 import '../Resource/stylesheet.dart';

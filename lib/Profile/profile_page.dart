@@ -1,10 +1,10 @@
-import 'package:bokshaulforwarder/Model/user.dart';
-import 'package:bokshaulforwarder/Profile/edit_password_page.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
-import 'package:bokshaulforwarder/Services/Authenticationi.dart';
-import 'package:bokshaulforwarder/Setting/HelpCentrePage.dart';
-import 'package:bokshaulforwarder/Setting/PrivatePolicyPage.dart';
-import 'package:bokshaulforwarder/Setting/TermsAndConditionPage.dart';
+import '../Model/user.dart';
+import 'edit_password_page.dart';
+import '../Resource/stylesheet.dart';
+import '../Services/Authenticationi.dart';
+import '../Setting/HelpCentrePage.dart';
+import '../Setting/PrivatePolicyPage.dart';
+import '../Setting/TermsAndConditionPage.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'dart:math';

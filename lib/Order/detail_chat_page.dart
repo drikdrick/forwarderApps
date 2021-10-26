@@ -1,4 +1,4 @@
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
+import '../Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 class DetailChat extends StatefulWidget {

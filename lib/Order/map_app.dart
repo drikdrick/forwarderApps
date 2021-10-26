@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bokshaulforwarder/Model/order_detail_json.dart';
+import '../Model/order_detail_json.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

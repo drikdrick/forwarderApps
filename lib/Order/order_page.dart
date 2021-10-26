@@ -1,13 +1,13 @@
 import 'dart:ui';
 
-import 'package:bokshaulforwarder/Model/order_detail_json.dart';
-import 'package:bokshaulforwarder/Model/order_json.dart';
-import 'package:bokshaulforwarder/Order/ongoing_order_page.dart';
-import 'package:bokshaulforwarder/Order/pending_order_page.dart';
-import 'package:bokshaulforwarder/Order/success_order_page.dart';
-import 'package:bokshaulforwarder/Resource/error_return.dart';
-import 'package:bokshaulforwarder/Resource/order_card.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
+import '../Model/order_detail_json.dart';
+import '../Model/order_json.dart';
+import 'ongoing_order_page.dart';
+import 'pending_order_page.dart';
+import 'success_order_page.dart';
+import '../Resource/error_return.dart';
+import '../Resource/order_card.dart';
+import '../Resource/stylesheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

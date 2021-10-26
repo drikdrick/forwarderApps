@@ -1,6 +1,6 @@
-import 'package:bokshaulforwarder/Model/promo.dart';
-import 'package:bokshaulforwarder/Resource/error_return.dart';
-import 'package:bokshaulforwarder/Resource/promo_card.dart';
+import '../Model/promo.dart';
+import '../Resource/error_return.dart';
+import '../Resource/promo_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

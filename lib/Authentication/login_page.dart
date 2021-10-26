@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:bokshaulforwarder/Authentication/forgot_password_page.dart';
-import 'package:bokshaulforwarder/Services/Authenticationi.dart';
+import 'forgot_password_page.dart';
+import '../Services/Authenticationi.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/gestures.dart';

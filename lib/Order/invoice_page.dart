@@ -1,11 +1,11 @@
 import 'dart:ui';
 
-import 'package:bokshaulforwarder/Model/invoice.dart';
-import 'package:bokshaulforwarder/Model/invoice_detail.dart';
-import 'package:bokshaulforwarder/Order/invoice_detail_page.dart';
-import 'package:bokshaulforwarder/Order/invoice_detail_paid.dart';
-import 'package:bokshaulforwarder/Resource/error_return.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
+import '../Model/invoice.dart';
+import '../Model/invoice_detail.dart';
+import 'invoice_detail_page.dart';
+import 'invoice_detail_paid.dart';
+import '../Resource/error_return.dart';
+import '../Resource/stylesheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:bokshaulforwarder/Notification/announcement_page.dart';
-import 'package:bokshaulforwarder/Resource/error_return.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
-import 'package:bokshaulforwarder/index.dart';
+import 'Notification/announcement_page.dart';
+import 'Resource/error_return.dart';
+import 'Resource/stylesheet.dart';
+import 'index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

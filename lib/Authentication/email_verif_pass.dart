@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:bokshaulforwarder/Authentication/reset_password_page.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
+import 'reset_password_page.dart';
+import '../Resource/stylesheet.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';

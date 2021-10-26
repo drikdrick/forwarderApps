@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:ui';
 
-import 'package:bokshaulforwarder/Authentication/login_page.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
+import 'login_page.dart';
+import '../Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:bokshaulforwarder/Services/config.dart';
+import '../Services/config.dart';
 
 class ResetPassword extends StatefulWidget {
   final int userId;

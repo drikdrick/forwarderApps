@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bokshaulforwarder">
    <application
-        android:label="BoksHaul Forwarder"
+        android:label="BoksMan Forwarder"
         android:icon="@mipmap/launcher_icon">
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyCR-sNC4IhH4v9U52j-BhfvOX_CRSxpvOM"/>

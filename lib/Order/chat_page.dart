@@ -1,5 +1,5 @@
-import 'package:bokshaulforwarder/Order/detail_chat_page.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
+import 'detail_chat_page.dart';
+import '../Resource/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {

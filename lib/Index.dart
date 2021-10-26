@@ -1,8 +1,8 @@
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
-import 'package:bokshaulforwarder/home_page.dart';
-import 'package:bokshaulforwarder/Order/order_page.dart';
-import 'package:bokshaulforwarder/Profile/profile_page.dart';
-import 'package:bokshaulforwarder/Order/invoice_page.dart';
+import 'Resource/stylesheet.dart';
+import 'home_page.dart';
+import 'Order/order_page.dart';
+import 'Profile/profile_page.dart';
+import 'Order/invoice_page.dart';
 import 'package:flutter/material.dart';
 
 class Index extends StatefulWidget {

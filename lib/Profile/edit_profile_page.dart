@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:bokshaulforwarder/Model/user.dart';
-import 'package:bokshaulforwarder/Resource/stylesheet.dart';
-import 'package:bokshaulforwarder/index.dart';
+import '../Model/user.dart';
+import '../Resource/stylesheet.dart';
+import '../index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

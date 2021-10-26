@@ -1,4 +1,4 @@
-import 'package:bokshaulforwarder/Notification/promotion_page.dart';
+import 'promotion_page.dart';
 import 'package:flutter/material.dart';
 // import 'notification_page.dart';
 
